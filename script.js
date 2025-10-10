@@ -55,11 +55,11 @@ galleryTabs.forEach(tab => {
 
 // Arrays de imagens para carregar mais
 const imagensEletricas = [
-    {url: "eletrica-24.jpg", descricao: "Serviço de elétrica"},
-    {url: "eletrica-25.jpg", descricao: "Serviço de elétrica"},
-    {url: "eletrica-26.jpg", descricao: "Serviço de elétrica"},
-    {url: "eletrica-27.jpg", descricao: "Serviço de elétrica"},
-    {url: "eletrica-28.jpg", descricao: "Serviço de elétrica"}
+    {url: "imagens/eletrica-24.jpg", descricao: "Serviço de elétrica"},
+    {url: "imagens/eletrica-25.jpg", descricao: "Serviço de elétrica"},
+    {url: "imagens/eletrica-26.jpg", descricao: "Serviço de elétrica"},
+    {url: "imagens/eletrica-27.jpg", descricao: "Serviço de elétrica"},
+    {url: "imagens/eletrica-28.jpg", descricao: "Serviço de elétrica"}
 ];
 
 // Load More Photos Functionality
