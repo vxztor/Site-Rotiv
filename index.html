@@ -54,14 +54,14 @@
                 </div>
             </div>
             <nav class="hidden md:flex space-x-4 lg:space-x-6">
-                <a href="#inicio" class="text-gray-700 hover:text-rotiv-orange font-medium text-sm lg:text-base">Início</a>
-                <a href="#servicos" class="text-gray-700 hover:text-rotiv-orange font-medium text-sm lg:text-base">Serviços</a>
-                <a href="#galeria" class="text-gray-700 hover:text-rotiv-orange font-medium text-sm lg:text-base">Galeria</a>
-                <a href="#quem-somos" class="text-gray-700 hover:text-rotiv-orange font-medium text-sm lg:text-base">Quem Somos</a>
-                <a href="#avaliacoes" class="text-gray-700 hover:text-rotiv-orange font-medium text-sm lg:text-base">Avaliações</a>
-                <a href="#contato" class="text-gray-700 hover:text-rotiv-orange font-medium text-sm lg:text-base">Contato</a>
+                <a href="#inicio" class="text-gray-900 hover:text-rotiv-orange font-medium text-sm lg:text-base">Início</a>
+                <a href="#servicos" class="text-gray-900 hover:text-rotiv-orange font-medium text-sm lg:text-base">Serviços</a>
+                <a href="#galeria" class="text-gray-900 hover:text-rotiv-orange font-medium text-sm lg:text-base">Galeria</a>
+                <a href="#quem-somos" class="text-gray-900 hover:text-rotiv-orange font-medium text-sm lg:text-base">Quem Somos</a>
+                <a href="#avaliacoes" class="text-gray-900 hover:text-rotiv-orange font-medium text-sm lg:text-base">Avaliações</a>
+                <a href="#contato" class="text-gray-900 hover:text-rotiv-orange font-medium text-sm lg:text-base">Contato</a>
             </nav>
-            <button class="md:hidden text-gray-700 focus:outline-none" id="menu-toggle" aria-label="Menu">
+            <button class="md:hidden text-gray-900 focus:outline-none" id="menu-toggle" aria-label="Menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
@@ -69,28 +69,32 @@
         </div>
         <div class="md:hidden hidden bg-white w-full py-3 px-4 shadow-md" id="mobile-menu">
             <div class="flex flex-col space-y-3">
-                <a href="#inicio" class="text-gray-700 hover:text-rotiv-orange font-medium py-2 text-center">Início</a>
-                <a href="#servicos" class="text-gray-700 hover:text-rotiv-orange font-medium py-2 text-center">Serviços</a>
-                <a href="#galeria" class="text-gray-700 hover:text-rotiv-orange font-medium py-2 text-center">Galeria</a>
-                <a href="#quem-somos" class="text-gray-700 hover:text-rotiv-orange font-medium py-2 text-center">Quem Somos</a>
-                <a href="#avaliacoes" class="text-gray-700 hover:text-rotiv-orange font-medium py-2 text-center">Avaliações</a>
-                <a href="#contato" class="text-gray-700 hover:text-rotiv-orange font-medium py-2 text-center">Contato</a>
+                <a href="#inicio" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Início</a>
+                <a href="#servicos" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Serviços</a>
+                <a href="#galeria" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Galeria</a>
+                <a href="#quem-somos" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Quem Somos</a>
+                <a href="#avaliacoes" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Avaliações</a>
+                <a href="#contato" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Contato</a>
             </div>
         </div>
     </header>
 
     <main>
-        <section id="inicio" class="hero-banner-container">
-            <div class="hero-banner-wrapper">
-                <img src="imagens/banner-hero.jpg" alt="Banner Principal da ROTIV" class="hero-banner-img" data-banner>
-            </div>
-            <div class="hero-contact-btn-container">
-                <a href="#" class="hero-contact-btn inline-flex items-center bg-rotiv-orange hover:bg-orange-600 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-all text-sm sm:text-base whatsapp-btn" onclick="openWhatsApp()">
-                    <i class="fab fa-whatsapp mr-2 text-lg sm:text-xl"></i>
-                    Entre em contato: &#40;21&#41; 97112-9223
-                </a>
-            </div>
-        </section>
+
+<section id="inicio" class="hero-banner-container">
+    <div class="hero-banner-wrapper">
+        <img src="imagens/banner-hero.jpg" alt="Banner Principal da ROTIV" class="hero-banner-img" data-banner>
+    </div>
+</section>
+
+<section class="bg-rotiv-orange hover:bg-orange-600 transition-colors">
+    <a href="#" onclick="openWhatsApp()" class="block w-full py-3 whatsapp-btn-bar">
+        <div class="container mx-auto px-4 flex justify-center items-center text-white">
+            <i class="fab fa-whatsapp mr-3 text-2xl"></i>
+            <span class="font-bold text-base sm:text-lg">Entre em contato: (21) 97112-9223</span>
+        </div>
+    </a>
+</section>
 
         <section id="servicos" class="py-10 sm:py-16 bg-white">
             <div class="container mx-auto px-4">
@@ -103,7 +107,7 @@
                                 <i class="fas fa-bolt text-white text-xl sm:text-2xl"></i>
                             </div>
                             <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Instalações Elétricas</h3>
-                            <p class="text-gray-600 text-center text-sm sm:text-base">Realizamos instalações elétricas residenciais, comerciais e industriais com segurança e qualidade.</p>
+                            <p class="text-gray-900 text-center text-sm sm:text-base">Realizamos instalações elétricas residenciais, comerciais e industriais com segurança e qualidade.</p>
                         </div>
                     </div>
                     <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
@@ -113,7 +117,7 @@
                                 <i class="fas fa-snowflake text-white text-xl sm:text-2xl"></i>
                             </div>
                             <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Ar-Condicionado</h3>
-                            <p class="text-gray-600 text-center text-sm sm:text-base">Instalação, manutenção, limpeza e higienização de aparelhos de ar-condicionado.</p>
+                            <p class="text-gray-900 text-center text-sm sm:text-base">Instalação, manutenção, limpeza e higienização de aparelhos de ar-condicionado.</p>
                         </div>
                     </div>
                     <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
@@ -123,7 +127,7 @@
                                 <i class="fas fa-home text-white text-xl sm:text-2xl"></i>
                             </div>
                             <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Automação Residencial</h3>
-                            <p class="text-gray-600 text-center text-sm sm:text-base">Transforme sua casa em um ambiente inteligente com nossas soluções de automação.</p>
+                            <p class="text-gray-900 text-center text-sm sm:text-base">Transforme sua casa em um ambiente inteligente com nossas soluções de automação.</p>
                         </div>
                     </div>
                     <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
@@ -133,7 +137,7 @@
                                 <i class="fas fa-plug text-white text-xl sm:text-2xl"></i>
                             </div>
                             <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Padrão Light</h3>
-                            <p class="text-gray-600 text-center text-sm sm:text-base">Instalação de padrões de entrada conforme normas da Light, garantindo segurança e conformidade para seu imóvel.</p>
+                            <p class="text-gray-900 text-center text-sm sm:text-base">Instalação de padrões de entrada conforme normas da Light, garantindo segurança e conformidade para seu imóvel.</p>
                         </div>
                     </div>
                     <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
@@ -143,7 +147,7 @@
                                 <i class="fas fa-building text-white text-xl sm:text-2xl"></i>
                             </div>
                             <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Instalações Comerciais</h3>
-                            <p class="text-gray-600 text-center text-sm sm:text-base">Projetos e instalações elétricas para ambientes comerciais, garantindo eficiência e segurança para seu negócio.</p>
+                            <p class="text-gray-900 text-center text-sm sm:text-base">Projetos e instalações elétricas para ambientes comerciais, garantindo eficiência e segurança para seu negócio.</p>
                         </div>
                     </div>
                     <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
@@ -153,7 +157,7 @@
                                 <i class="fas fa-cogs text-white text-xl sm:text-2xl"></i>
                             </div>
                             <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Fabricação de Quadros Elétricos</h3>
-                            <p class="text-gray-600 text-center text-sm sm:text-base">Produção de quadros elétricos personalizados para residências e condomínios, com alta qualidade e segurança.</p>
+                            <p class="text-gray-900 text-center text-sm sm:text-base">Produção de quadros elétricos personalizados para residências e condomínios, com alta qualidade e segurança.</p>
                         </div>
                     </div>
                 </div>
@@ -223,19 +227,31 @@
 
         <section id="quem-somos" class="py-10 sm:py-16 bg-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-10">Quem Somos</h2>
-                <div class="bg-gray-50 rounded-xl shadow-md p-4 sm:p-8 mb-6 sm:mb-10 max-w-4xl mx-auto">
-                    <h3 class="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-center text-rotiv-blue">Nossa História</h3>
-                    <div class="about-profile-container">
-                        <div class="profile-image-container text-center mb-4 md:mb-0">
-                            <div class="w-40 h-40 sm:w-64 sm:h-64 rounded-full overflow-hidden border-4 border-rotiv-blue profile-image mx-auto">
-                                <img src="imagens/foto-fundador.jpg" alt="Marcos Davi da Silva Abreu, fundador da ROTIV" class="w-full h-full object-cover" data-founder-photo>
-                            </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <div class="text-content">
+                        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Nossa Trajetória: Qualidade e Segurança em Cada Projeto</h2>
+                        <p class="text-gray-900 text-lg mb-4">
+                            Fundada em 2018 por Marcos Davi da Silva Abreu, a ROTIV nasceu com a missão de oferecer excelência em instalações elétricas e sistemas de ar-condicionado. O que começou com a visão de um profissional experiente, hoje se consolidou como uma empresa robusta, dedicada a entregar soluções seguras e eficientes para clientes residenciais, comerciais e industriais.
+                        </p>
+                        <p class="text-gray-900 text-lg mb-4">
+                            Prezamos por um acompanhamento técnico criterioso e um compromisso absoluto com as normas de segurança. Nossa equipe é composta por profissionais capacitados, incluindo eletrotécnicos, técnicos de refrigeração e engenheiros eletricistas, garantindo que cada etapa do processo seja executada com máxima precisão.
+                        </p>
+                        <p class="text-gray-900 text-lg">
+                            Mais do que prestar um serviço, buscamos construir relacionamentos de confiança, oferecendo atendimento personalizado, soluções práticas e o suporte contínuo que nossos clientes merecem.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col items-center gap-6">
+                        <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-rotiv-blue profile-image">
+                            <img src="imagens/foto-fundador.jpg" alt="Marcos Davi da Silva Abreu, fundador da ROTIV" class="w-full h-full object-cover">
                         </div>
-                        <div class="text-content">
-                            <p class="text-gray-700 text-sm sm:text-lg history-text">
-                                A <span data-company>ROTIV</span> surgiu no ano de <span data-year>2018</span>, fundada por <span data-founder>Marcos Davi da Silva Abreu</span>, profissional com vasta experiência em refrigeração e elétrica. Nascemos com a missão de oferecer serviços de alta qualidade em instalações elétricas e sistemas de ar-condicionado para clientes residenciais, comerciais e industriais.
-                            </p>
+                        <div class="grid grid-cols-2 gap-4 w-full max-w-md">
+                            <div class="h-64 rounded-lg overflow-hidden shadow-lg border-4 border-rotiv-orange">
+                                <img src="imagens/foto-da-equipe.jpg.jpeg" alt="Equipe ROTIV em serviço" class="w-full h-full object-cover">
+                            </div>
+                            <div class="h-64 rounded-lg overflow-hidden shadow-lg border-4 border-rotiv-orange">
+                                <img src="imagens/foto-da-equipe-2.jpg" alt="Equipe ROTIV em serviço" class="w-full h-full object-cover">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -244,7 +260,7 @@
 
         <section id="avaliacoes" class="py-10 sm:py-16 bg-gray-100">
             <div class="container mx-auto px-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-gray-800">Confiança e Qualidade: Nossas Avaliações no Google</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-gray-900">Confiança e Qualidade: Nossas Avaliações no Google</h2>
                 
                 <div class="swiper-container mySwiper">
                     <div class="swiper-wrapper">
@@ -257,7 +273,7 @@
                                 <div class="text-yellow-400 mb-4">
                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
-                                <p class="text-gray-700 italic flex-grow">"Serviço excelente! Já contratei a Rotiv Elétrica e Refrigeração e fui muito bem atendido. Trabalho rápido, honesto e de qualidade. Recomendo!"</p>
+                                <p class="text-gray-900 italic flex-grow">"Serviço excelente! Já contratei a Rotiv Elétrica e Refrigeração e fui muito bem atendido. Trabalho rápido, honesto e de qualidade. Recomendo!"</p>
                             </div>
                         </div>
                         <div class="swiper-slide h-auto">
@@ -269,7 +285,7 @@
                                 <div class="text-yellow-400 mb-4">
                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
-                                <p class="text-gray-700 italic flex-grow">"Excelente profissional. Atendimento com cordialidade e profissionalismo. Demonstra conhecimento técnico e compromisso com a segurança e qualidade do serviço. Recomendo a todos que buscam serviços elétricos confiáveis e eficientes."</p>
+                                <p class="text-gray-900 italic flex-grow">"Excelente profissional. Atendimento com cordialidade e profissionalismo. Demonstra conhecimento técnico e compromisso com a segurança e qualidade do serviço. Recomendo a todos que buscam serviços elétricos confiáveis e eficientes."</p>
                             </div>
                         </div>
                         <div class="swiper-slide h-auto">
@@ -281,7 +297,7 @@
                                 <div class="text-yellow-400 mb-4">
                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
-                                <p class="text-gray-700 italic flex-grow">"Excelente atendimento e serviço de qualidade! A empresa demonstrou profissionalismo, pontualidade e muita competência na instalação elétrica. Recomendo com confiança."</p>
+                                <p class="text-gray-900 italic flex-grow">"Excelente atendimento e serviço de qualidade! A empresa demonstrou profissionalismo, pontualidade e muita competência na instalação elétrica. Recomendo com confiança."</p>
                             </div>
                         </div>
                         <div class="swiper-slide h-auto">
@@ -293,7 +309,7 @@
                                 <div class="text-yellow-400 mb-4">
                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
-                                <p class="text-gray-700 italic flex-grow">"Muito bom o serviço!!! Super indico!! Ótimo profissional!!"</p>
+                                <p class="text-gray-900 italic flex-grow">"Muito bom o serviço!!! Super indico!! Ótimo profissional!!"</p>
                             </div>
                         </div>
                         <div class="swiper-slide h-auto">
@@ -305,7 +321,7 @@
                                 <div class="text-yellow-400 mb-4">
                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
-                                <p class="text-gray-700 italic flex-grow">"Recomendo os serviços da empresa, competente, pontual e preço justo, superou as expectativas."</p>
+                                <p class="text-gray-900 italic flex-grow">"Recomendo os serviços da empresa, competente, pontual e preço justo, superou as expectativas."</p>
                             </div>
                         </div>
                         <div class="swiper-slide h-auto">
@@ -317,7 +333,7 @@
                                 <div class="text-yellow-400 mb-4">
                                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
-                                <p class="text-gray-700 italic flex-grow">"Excelente profissional. Super recomendo."</p>
+                                <p class="text-gray-900 italic flex-grow">"Excelente profissional. Super recomendo."</p>
                             </div>
                         </div>
                     </div>
