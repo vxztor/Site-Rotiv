@@ -15,7 +15,34 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    
     <link rel="stylesheet" href="style.css">
+
+    <script>
+        // Tailwind Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rotiv-blue': '#0E4666',
+                        'rotiv-orange': '#F47C20',
+                    },
+                    screens: {
+                        'xs': '375px',
+                        'sm': '640px',
+                        'md': '768px',
+                        'lg': '1024px',
+                        'xl': '1280px',
+                        '2xl': '1536px',
+                    }
+                },
+                fontFamily: {
+                    'sans': ['Montserrat', 'sans-serif'],
+                }
+            }
+        }
+    </script>
 </head>
 <body class="font-sans bg-gray-50">
 
@@ -31,6 +58,7 @@
                 <a href="#servicos" class="text-gray-700 hover:text-rotiv-orange font-medium text-sm lg:text-base">Serviços</a>
                 <a href="#galeria" class="text-gray-700 hover:text-rotiv-orange font-medium text-sm lg:text-base">Galeria</a>
                 <a href="#quem-somos" class="text-gray-700 hover:text-rotiv-orange font-medium text-sm lg:text-base">Quem Somos</a>
+                <a href="#avaliacoes" class="text-gray-700 hover:text-rotiv-orange font-medium text-sm lg:text-base">Avaliações</a>
                 <a href="#contato" class="text-gray-700 hover:text-rotiv-orange font-medium text-sm lg:text-base">Contato</a>
             </nav>
             <button class="md:hidden text-gray-700 focus:outline-none" id="menu-toggle" aria-label="Menu">
@@ -45,181 +73,268 @@
                 <a href="#servicos" class="text-gray-700 hover:text-rotiv-orange font-medium py-2 text-center">Serviços</a>
                 <a href="#galeria" class="text-gray-700 hover:text-rotiv-orange font-medium py-2 text-center">Galeria</a>
                 <a href="#quem-somos" class="text-gray-700 hover:text-rotiv-orange font-medium py-2 text-center">Quem Somos</a>
+                <a href="#avaliacoes" class="text-gray-700 hover:text-rotiv-orange font-medium py-2 text-center">Avaliações</a>
                 <a href="#contato" class="text-gray-700 hover:text-rotiv-orange font-medium py-2 text-center">Contato</a>
             </div>
         </div>
     </header>
 
-    <section id="inicio" class="hero-banner-container">
-        <div class="hero-banner-wrapper">
-            <img src="imagens/banner-hero.jpg" alt="Banner Principal da ROTIV" class="hero-banner-img" data-banner>
-        </div>
-        <div class="hero-contact-btn-container">
-            <a href="#" class="hero-contact-btn inline-flex items-center bg-rotiv-orange hover:bg-orange-600 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-all text-sm sm:text-base whatsapp-btn" onclick="openWhatsApp()">
-                <i class="fab fa-whatsapp mr-2 text-lg sm:text-xl"></i>
-                Entre em contato: &#40;21&#41; 97112-9223
-            </a>
-        </div>
-    </section>
+    <main>
+        <section id="inicio" class="hero-banner-container">
+            <div class="hero-banner-wrapper">
+                <img src="imagens/banner-hero.jpg" alt="Banner Principal da ROTIV" class="hero-banner-img" data-banner>
+            </div>
+            <div class="hero-contact-btn-container">
+                <a href="#" class="hero-contact-btn inline-flex items-center bg-rotiv-orange hover:bg-orange-600 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-all text-sm sm:text-base whatsapp-btn" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp mr-2 text-lg sm:text-xl"></i>
+                    Entre em contato: &#40;21&#41; 97112-9223
+                </a>
+            </div>
+        </section>
 
-    <section id="servicos" class="py-10 sm:py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">Nossos Serviços</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-                    <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                    <div class="p-4 sm:p-6">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
-                            <i class="fas fa-bolt text-white text-xl sm:text-2xl"></i>
+        <section id="servicos" class="py-10 sm:py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">Nossos Serviços</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                        <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
+                        <div class="p-4 sm:p-6">
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                                <i class="fas fa-bolt text-white text-xl sm:text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Instalações Elétricas</h3>
+                            <p class="text-gray-600 text-center text-sm sm:text-base">Realizamos instalações elétricas residenciais, comerciais e industriais com segurança e qualidade.</p>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Instalações Elétricas</h3>
-                        <p class="text-gray-600 text-center text-sm sm:text-base">Realizamos instalações elétricas residenciais, comerciais e industriais com segurança e qualidade.</p>
                     </div>
-                </div>
-                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-                    <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                    <div class="p-4 sm:p-6">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
-                            <i class="fas fa-snowflake text-white text-xl sm:text-2xl"></i>
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                        <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
+                        <div class="p-4 sm:p-6">
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                                <i class="fas fa-snowflake text-white text-xl sm:text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Ar-Condicionado</h3>
+                            <p class="text-gray-600 text-center text-sm sm:text-base">Instalação, manutenção, limpeza e higienização de aparelhos de ar-condicionado.</p>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Ar-Condicionado</h3>
-                        <p class="text-gray-600 text-center text-sm sm:text-base">Instalação, manutenção, limpeza e higienização de aparelhos de ar-condicionado.</p>
                     </div>
-                </div>
-                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-                    <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                    <div class="p-4 sm:p-6">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
-                            <i class="fas fa-home text-white text-xl sm:text-2xl"></i>
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                        <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
+                        <div class="p-4 sm:p-6">
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                                <i class="fas fa-home text-white text-xl sm:text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Automação Residencial</h3>
+                            <p class="text-gray-600 text-center text-sm sm:text-base">Transforme sua casa em um ambiente inteligente com nossas soluções de automação.</p>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Automação Residencial</h3>
-                        <p class="text-gray-600 text-center text-sm sm:text-base">Transforme sua casa em um ambiente inteligente com nossas soluções de automação.</p>
                     </div>
-                </div>
-                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-                    <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                    <div class="p-4 sm:p-6">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
-                            <i class="fas fa-plug text-white text-xl sm:text-2xl"></i>
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                        <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
+                        <div class="p-4 sm:p-6">
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                                <i class="fas fa-plug text-white text-xl sm:text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Padrão Light</h3>
+                            <p class="text-gray-600 text-center text-sm sm:text-base">Instalação de padrões de entrada conforme normas da Light, garantindo segurança e conformidade para seu imóvel.</p>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Padrão Light</h3>
-                        <p class="text-gray-600 text-center text-sm sm:text-base">Instalação de padrões de entrada conforme normas da Light, garantindo segurança e conformidade para seu imóvel.</p>
                     </div>
-                </div>
-                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-                    <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                    <div class="p-4 sm:p-6">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
-                            <i class="fas fa-building text-white text-xl sm:text-2xl"></i>
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                        <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
+                        <div class="p-4 sm:p-6">
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                                <i class="fas fa-building text-white text-xl sm:text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Instalações Comerciais</h3>
+                            <p class="text-gray-600 text-center text-sm sm:text-base">Projetos e instalações elétricas para ambientes comerciais, garantindo eficiência e segurança para seu negócio.</p>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Instalações Comerciais</h3>
-                        <p class="text-gray-600 text-center text-sm sm:text-base">Projetos e instalações elétricas para ambientes comerciais, garantindo eficiência e segurança para seu negócio.</p>
                     </div>
-                </div>
-                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-                    <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                    <div class="p-4 sm:p-6">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
-                            <i class="fas fa-cogs text-white text-xl sm:text-2xl"></i>
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                        <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
+                        <div class="p-4 sm:p-6">
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                                <i class="fas fa-cogs text-white text-xl sm:text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Fabricação de Quadros Elétricos</h3>
+                            <p class="text-gray-600 text-center text-sm sm:text-base">Produção de quadros elétricos personalizados para residências e condomínios, com alta qualidade e segurança.</p>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Fabricação de Quadros Elétricos</h3>
-                        <p class="text-gray-600 text-center text-sm sm:text-base">Produção de quadros elétricos personalizados para residências e condomínios, com alta qualidade e segurança.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="galeria" class="py-10 sm:py-16 bg-gray-100 gallery-container">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Galeria de Serviços</h2>
-            <div class="flex justify-center mb-6 sm:mb-8">
-                <button class="gallery-tab active px-3 sm:px-6 py-2 rounded-l-lg border border-rotiv-orange font-medium text-xs sm:text-base" data-tab="eletrica">Elétrica</button>
-                <button class="gallery-tab px-3 sm:px-6 py-2 rounded-r-lg border border-rotiv-orange font-medium text-xs sm:text-base" data-tab="ar-condicionado">Ar-Condicionado</button>
-            </div>
-            <div id="eletrica-gallery" class="gallery-content">
-                <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-01.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-02.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-03.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-04.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-05.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-06.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-07.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-08.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-09.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-10.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-11.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-12.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-13.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-14.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-15.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-16.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-17.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-18.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-19.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-20.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-21.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-22.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-23.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+        <section id="galeria" class="py-10 sm:py-16 bg-gray-100 gallery-container">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Galeria de Serviços</h2>
+                <div class="flex justify-center mb-6 sm:mb-8">
+                    <button class="gallery-tab active px-3 sm:px-6 py-2 rounded-l-lg border border-rotiv-orange font-medium text-xs sm:text-base" data-tab="eletrica">Elétrica</button>
+                    <button class="gallery-tab px-3 sm:px-6 py-2 rounded-r-lg border border-rotiv-orange font-medium text-xs sm:text-base" data-tab="ar-condicionado">Ar-Condicionado</button>
                 </div>
-                <div class="text-center mt-6 sm:mt-8">
-                    <button id="load-more-eletrica" class="bg-rotiv-blue hover:bg-blue-700 text-white font-medium py-2 px-4 sm:px-6 rounded-lg transition-all text-sm sm:text-base">Carregar mais fotos</button>
+                <div id="eletrica-gallery" class="gallery-content">
+                    <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-01.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-02.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-03.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-04.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-05.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-06.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-07.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-08.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-09.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-10.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-11.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-12.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-13.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-14.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-15.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-16.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-17.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-18.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-19.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-20.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-21.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-22.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-23.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
+                    </div>
+                    <div class="text-center mt-6 sm:mt-8">
+                        <button id="load-more-eletrica" class="bg-rotiv-blue hover:bg-blue-700 text-white font-medium py-2 px-4 sm:px-6 rounded-lg transition-all text-sm sm:text-base">Carregar mais fotos</button>
+                    </div>
+                </div>
+                <div id="ar-condicionado-gallery" class="gallery-content hidden">
+                    <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-01.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-02.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-03.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-04.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-05.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-06.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-07.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-08.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-09.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-10.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-11.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-12.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-13.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-14.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-15.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
+                    </div>
                 </div>
             </div>
-            <div id="ar-condicionado-gallery" class="gallery-content hidden">
-                <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-01.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-02.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-03.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-04.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-05.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-06.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-07.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-08.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-09.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-10.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-11.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-12.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-13.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-14.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-15.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="quem-somos" class="py-10 sm:py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-10">Quem Somos</h2>
-            <div class="bg-gray-50 rounded-xl shadow-md p-4 sm:p-8 mb-6 sm:mb-10 max-w-4xl mx-auto">
-                <h3 class="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-center text-rotiv-blue">Nossa História</h3>
-                <div class="about-profile-container">
-                    <div class="profile-image-container text-center mb-4 md:mb-0">
-                        <div class="w-40 h-40 sm:w-64 sm:h-64 rounded-full overflow-hidden border-4 border-rotiv-blue profile-image mx-auto">
-                            <img src="imagens/foto-fundador.jpg" alt="Marcos Davi da Silva Abreu, fundador da ROTIV" class="w-full h-full object-cover" data-founder-photo>
+        <section id="quem-somos" class="py-10 sm:py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-10">Quem Somos</h2>
+                <div class="bg-gray-50 rounded-xl shadow-md p-4 sm:p-8 mb-6 sm:mb-10 max-w-4xl mx-auto">
+                    <h3 class="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-center text-rotiv-blue">Nossa História</h3>
+                    <div class="about-profile-container">
+                        <div class="profile-image-container text-center mb-4 md:mb-0">
+                            <div class="w-40 h-40 sm:w-64 sm:h-64 rounded-full overflow-hidden border-4 border-rotiv-blue profile-image mx-auto">
+                                <img src="imagens/foto-fundador.jpg" alt="Marcos Davi da Silva Abreu, fundador da ROTIV" class="w-full h-full object-cover" data-founder-photo>
+                            </div>
+                        </div>
+                        <div class="text-content">
+                            <p class="text-gray-700 text-sm sm:text-lg history-text">
+                                A <span data-company>ROTIV</span> surgiu no ano de <span data-year>2018</span>, fundada por <span data-founder>Marcos Davi da Silva Abreu</span>, profissional com vasta experiência em refrigeração e elétrica. Nascemos com a missão de oferecer serviços de alta qualidade em instalações elétricas e sistemas de ar-condicionado para clientes residenciais, comerciais e industriais.
+                            </p>
                         </div>
                     </div>
-                    <div class="text-content">
-                        <p class="text-gray-700 text-sm sm:text-lg history-text">
-                            A <span data-company>ROTIV</span> surgiu no ano de <span data-year>2018</span>, fundada por <span data-founder>Marcos Davi da Silva Abreu</span>, profissional com vasta experiência em refrigeração e elétrica. Nascemos com a missão de oferecer serviços de alta qualidade em instalações elétricas e sistemas de ar-condicionado para clientes residenciais, comerciais e industriais.
-                        </p>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-10 sm:py-16 bg-rotiv-blue text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Precisa dos nossos serviços?</h2>
-            <p class="text-base sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto">Entre em contato conosco agora mesmo para um orçamento sem compromisso. Estamos prontos para atender suas necessidades!</p>
-            <a href="#" class="inline-flex items-center bg-rotiv-orange hover:bg-orange-600 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition-all text-sm sm:text-lg whatsapp-btn" onclick="openWhatsApp()">
-                <i class="fab fa-whatsapp mr-2 text-lg sm:text-xl"></i>
-                Entre em contato: &#40;21&#41; 97112-9223
-            </a>
-        </div>
-    </section>
+        <section id="avaliacoes" class="py-10 sm:py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-gray-800">Confiança e Qualidade: Nossas Avaliações no Google</h2>
+                
+                <div class="swiper-container mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-bold text-lg text-rotiv-blue">Henrique Roque</h4>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-6 h-6">
+                                </div>
+                                <div class="text-yellow-400 mb-4">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-gray-700 italic flex-grow">"Serviço excelente! Já contratei a Rotiv Elétrica e Refrigeração e fui muito bem atendido. Trabalho rápido, honesto e de qualidade. Recomendo!"</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-bold text-lg text-rotiv-blue">Andréa Siqueira</h4>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-6 h-6">
+                                </div>
+                                <div class="text-yellow-400 mb-4">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-gray-700 italic flex-grow">"Excelente profissional. Atendimento com cordialidade e profissionalismo. Demonstra conhecimento técnico e compromisso com a segurança e qualidade do serviço. Recomendo a todos que buscam serviços elétricos confiáveis e eficientes."</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide h-auto">
+                             <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-bold text-lg text-rotiv-blue">Luciana Siqueira</h4>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-6 h-6">
+                                </div>
+                                <div class="text-yellow-400 mb-4">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-gray-700 italic flex-grow">"Excelente atendimento e serviço de qualidade! A empresa demonstrou profissionalismo, pontualidade e muita competência na instalação elétrica. Recomendo com confiança."</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-bold text-lg text-rotiv-blue">Rebeca Jardim</h4>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-6 h-6">
+                                </div>
+                                <div class="text-yellow-400 mb-4">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-gray-700 italic flex-grow">"Muito bom o serviço!!! Super indico!! Ótimo profissional!!"</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-bold text-lg text-rotiv-blue">Renan Moraes</h4>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-6 h-6">
+                                </div>
+                                <div class="text-yellow-400 mb-4">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-gray-700 italic flex-grow">"Recomendo os serviços da empresa, competente, pontual e preço justo, superou as expectativas."</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-bold text-lg text-rotiv-blue">Katiana Miranda</h4>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="w-6 h-6">
+                                </div>
+                                <div class="text-yellow-400 mb-4">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-gray-700 italic flex-grow">"Excelente profissional. Super recomendo."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-10 sm:py-16 bg-rotiv-blue text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Precisa dos nossos serviços?</h2>
+                <p class="text-base sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto">Entre em contato conosco agora mesmo para um orçamento sem compromisso. Estamos prontos para atender suas necessidades!</p>
+                <a href="#" class="inline-flex items-center bg-rotiv-orange hover:bg-orange-600 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition-all text-sm sm:text-lg whatsapp-btn" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp mr-2 text-lg sm:text-xl"></i>
+                    Entre em contato: &#40;21&#41; 97112-9223
+                </a>
+            </div>
+        </section>
+    </main>
 
     <footer id="contato" class="bg-gray-900 text-white pt-8 sm:pt-12 pb-4 sm:pb-6">
         <div class="container mx-auto px-4">
@@ -267,11 +382,12 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-6 sm:mt-8 pt-4 sm:pt-6 text-center text-xs sm:text-sm text-gray-400">
-                <p>&copy; 2023 <span data-company>ROTIV</span>. Todos os direitos reservados.</p>
+                <p>&copy; 2025 <span data-company>ROTIV</span>. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

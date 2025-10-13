@@ -277,3 +277,46 @@ button, a {
         image-rendering: -webkit-optimize-contrast;
     }
 }
+
+/* ================================================ */
+/* CORREÇÃO DEFINITIVA DO CARROSSEL DE AVALIAÇÕES   */
+/* ================================================ */
+
+/* Define a seção de avaliações como referência para o posicionamento */
+#avaliacoes {
+    position: relative;
+    padding-bottom: 50px; /* Cria espaço na parte inferior para as bolinhas */
+}
+
+/* Posiciona as bolinhas dentro da seção de avaliações */
+#avaliacoes .swiper-pagination {
+    position: absolute;
+    bottom: 15px; /* Distância da parte inferior */
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+/* Estilo para as bolinhas inativas */
+.swiper-pagination-bullet {
+    background-color: #cccccc;
+    opacity: 1;
+    width: 10px;
+    height: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo para a bolinha ativa */
+.swiper-pagination-bullet-active {
+    background-color: #F47C20; /* Laranja da sua marca */
+}
+
+/* Garante que os slides tenham a mesma altura */
+.swiper-slide {
+    height: auto;
+}
+
+/* Correção para o Carrossel não "vazar" o próximo slide */
+.swiper-container {
+    overflow: hidden;
+}
