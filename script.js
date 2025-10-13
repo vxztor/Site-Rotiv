@@ -45,6 +45,13 @@ document.addEventListener('DOMContentLoaded', function () {
         {url: "imagens/eletrica-28.jpg", descricao: "Serviço de elétrica"}
     ];
 
+    // Initialize GLightbox for Gallery
+    const lightbox = GLightbox({
+        selector: '.glightbox',
+        loop: true,
+        touchNavigation: true,
+    });
+
     // "Load More" photos functionality
     const loadMoreBtn = document.getElementById('load-more-eletrica');
     if (loadMoreBtn) {
@@ -52,15 +59,24 @@ document.addEventListener('DOMContentLoaded', function () {
             const electricalGallery = document.querySelector('#eletrica-gallery .grid');
             if (electricalGallery) {
                 imagensEletricas.forEach(imageData => {
-                    const newItem = document.createElement('div');
-                    newItem.className = 'bg-white p-1 rounded-lg shadow-md gallery-image';
-                    newItem.innerHTML = `
-                        <div class="h-40 sm:h-52 rounded overflow-hidden">
-                            <img src="${imageData.url}" alt="${imageData.descricao}" class="w-full h-full object-cover">
+                    const newLink = document.createElement('a');
+                    newLink.href = imageData.url;
+                    newLink.className = 'glightbox';
+                    newLink.setAttribute('data-gallery', 'eletrica');
+                    
+                    newLink.innerHTML = `
+                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image">
+                            <div class="h-40 sm:h-52 rounded overflow-hidden">
+                                <img src="${imageData.url}" alt="${imageData.descricao}" class="w-full h-full object-cover">
+                            </div>
                         </div>
                     `;
-                    electricalGallery.appendChild(newItem);
+                    electricalGallery.appendChild(newLink);
                 });
+
+                // ESSENCIAL: Avisa a galeria que novas imagens foram adicionadas
+                lightbox.reload();
+                
                 this.style.display = 'none';
             }
         });
@@ -94,8 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Initialize Swiper Carousel for Reviews
-    // O VSCode pode sublinhar 'Swiper' como um erro, mas é seguro ignorar,
-    // pois a biblioteca Swiper é carregada no HTML antes deste script.
     const swiper = new Swiper('.mySwiper', {
         slidesPerView: 1,
         spaceBetween: 20,
@@ -108,18 +122,10 @@ document.addEventListener('DOMContentLoaded', function () {
             clickable: true,
         },
         breakpoints: {
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 30,
-            },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
+            768: { slidesPerView: 2, spaceBetween: 30 },
+            1024: { slidesPerView: 3, spaceBetween: 30 },
         },
-         // Garante que os slides tenham a mesma altura
         autoHeight: false,
-        // Habilita o loop
         loop: true,
     });
 });

@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <link rel="stylesheet" href="style.css">
-
+    
     <script>
         // Tailwind Configuration
         tailwind.config = {
@@ -161,63 +161,65 @@
         </section>
 
         <section id="galeria" class="py-10 sm:py-16 bg-gray-100 gallery-container">
-            <div class="container mx-auto px-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Galeria de Serviços</h2>
-                <div class="flex justify-center mb-6 sm:mb-8">
-                    <button class="gallery-tab active px-3 sm:px-6 py-2 rounded-l-lg border border-rotiv-orange font-medium text-xs sm:text-base" data-tab="eletrica">Elétrica</button>
-                    <button class="gallery-tab px-3 sm:px-6 py-2 rounded-r-lg border border-rotiv-orange font-medium text-xs sm:text-base" data-tab="ar-condicionado">Ar-Condicionado</button>
-                </div>
-                <div id="eletrica-gallery" class="gallery-content">
-                    <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-01.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-02.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-03.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-04.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-05.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-06.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-07.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-08.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-09.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-10.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-11.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-12.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-13.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-14.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-15.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-16.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-17.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-18.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-19.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-20.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-21.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-22.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/eletrica-23.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></div>
-                    </div>
-                    <div class="text-center mt-6 sm:mt-8">
-                        <button id="load-more-eletrica" class="bg-rotiv-blue hover:bg-blue-700 text-white font-medium py-2 px-4 sm:px-6 rounded-lg transition-all text-sm sm:text-base">Carregar mais fotos</button>
-                    </div>
-                </div>
-                <div id="ar-condicionado-gallery" class="gallery-content hidden">
-                    <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-01.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-02.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-03.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-04.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-05.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-06.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-07.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-08.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-09.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-10.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-11.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-12.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-13.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-14.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image"><div class="h-40 sm:h-52 rounded overflow-hidden"><img src="imagens/ar-condicionado-15.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></div>
-                    </div>
-                </div>
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Galeria de Serviços</h2>
+        <div class="flex justify-center mb-6 sm:mb-8">
+            <button class="gallery-tab active px-3 sm:px-6 py-2 rounded-l-lg border border-rotiv-orange font-medium text-xs sm:text-base" data-tab="eletrica">Elétrica</button>
+            <button class="gallery-tab px-3 sm:px-6 py-2 rounded-r-lg border border-rotiv-orange font-medium text-xs sm:text-base" data-tab="ar-condicionado">Ar-Condicionado</button>
+        </div>
+        
+        <div id="eletrica-gallery" class="gallery-content">
+            <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+                <a href="imagens/eletrica-01.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-01.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-02.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-02.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-03.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-03.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-04.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-04.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-05.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-05.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-06.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-06.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-07.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-07.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-08.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-08.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-09.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-09.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-10.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-10.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-11.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-11.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-12.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-12.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-13.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-13.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-14.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-14.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-15.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-15.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-16.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-16.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-17.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-17.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-18.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-18.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-19.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-19.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-20.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-20.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-21.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-21.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-22.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-22.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/eletrica-23.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-23.jpg" alt="Serviço de elétrica" class="w-full h-full object-cover"></div></a>
             </div>
-        </section>
+            <div class="text-center mt-6 sm:mt-8">
+                <button id="load-more-eletrica" class="bg-rotiv-blue hover:bg-blue-700 text-white font-medium py-2 px-4 sm:px-6 rounded-lg transition-all text-sm sm:text-base">Carregar mais fotos</button>
+            </div>
+        </div>
+
+        <div id="ar-condicionado-gallery" class="gallery-content hidden">
+            <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+                <a href="imagens/ar-condicionado-01.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-01.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/ar-condicionado-02.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-02.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/ar-condicionado-03.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-03.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/ar-condicionado-04.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-04.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/ar-condicionado-05.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-05.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/ar-condicionado-06.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-06.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/ar-condicionado-07.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-07.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/ar-condicionado-08.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-08.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/ar-condicionado-09.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-09.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/ar-condicionado-10.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-10.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/ar-condicionado-11.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-11.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/ar-condicionado-12.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-12.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/ar-condicionado-13.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-13.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/ar-condicionado-14.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-14.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+                <a href="imagens/ar-condicionado-15.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-15.jpg" alt="Serviço de ar-condicionado" class="w-full h-full object-cover"></div></a>
+            </div>
+        </div>
+    </div>
+</section>
 
         <section id="quem-somos" class="py-10 sm:py-16 bg-white">
             <div class="container mx-auto px-4">
@@ -388,6 +390,7 @@
     </footer>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
