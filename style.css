@@ -298,3 +298,75 @@ button, a {
 #quem-somos div:hover > img {
     transform: scale(1.05);
 }
+
+/* ================================================ */
+/* BOTÃO FLUTUANTE DO WHATSAPP                      */
+/* ================================================ */
+
+#whatsapp-fab {
+    position: fixed;
+    bottom: 40px; /* Aumentamos a distância da parte inferior */
+    right: 40px;  /* Aumentamos a distância da direita */
+    z-index: 1000;
+    
+    width: 60px;
+    height: 60px;
+    
+    background-color: #25D366; /* Cor oficial do WhatsApp */
+    color: white;
+    
+    border-radius: 50%; /* Deixa o botão redondo */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#whatsapp-fab i {
+    font-size: 32px; /* Tamanho do ícone */
+}
+
+/* Efeito ao passar o mouse */
+#whatsapp-fab:hover {
+    transform: scale(1.1); /* Aumenta um pouco o tamanho */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 640px) {
+    #whatsapp-fab {
+        width: 55px;
+        height: 55px;
+        bottom: 30px; /* Distância ajustada para celular */
+        right: 30px;  /* Distância ajustada para celular */
+    }
+
+    #whatsapp-fab i {
+        font-size: 28px;
+    }
+}
+
+/* ================================================ */
+/* ESTILO PARA ÍCONES DUOTONE DOS SERVIÇOS          */
+/* ================================================ */
+
+.service-card .fa-primary, .service-card .fa-secondary {
+    transition: all 0.3s ease;
+}
+
+/* Define as cores padrão do ícone */
+.service-card .fad {
+    --fa-primary-color: #F47C20;   /* Laranja */
+    --fa-secondary-color: #ffffff; /* Branco */
+    --fa-primary-opacity: 1;
+    --fa-secondary-opacity: 1;
+}
+
+/* Inverte as cores ao passar o mouse sobre o card */
+.service-card:hover .fad {
+    --fa-primary-color: #ffffff;   /* Branco */
+    --fa-secondary-color: #F47C20; /* Laranja */
+}

@@ -129,3 +129,40 @@ document.addEventListener('DOMContentLoaded', function () {
         loop: true,
     });
 });
+// ================================================ //
+// FUNÇÃO PARA WHATSAPP COM MENSAGEM DE SERVIÇO     //
+// ================================================ //
+
+function openWhatsAppService(serviceType) {
+    let message = "";
+    const phoneNumber = "5521971129223"; // Seu número de telefone
+
+    switch (serviceType) {
+        case 'refrigeração':
+            message = "Olá, gostaria de solicitar um serviço de refrigeração.";
+            break;
+        case 'elétrica':
+            message = "Olá, gostaria de solicitar um serviço de instalações elétricas.";
+            break;
+        case 'automação':
+            message = "Olá, gostaria de solicitar um serviço de automação residencial.";
+            break;
+        case 'padrão light':
+            message = "Olá! Vi no site que vocês instalam Padrão Light e gostaria de mais informações.";
+            break;
+        case 'instalações comerciais':
+            message = "Olá! Gostaria de fazer um orçamento para um projeto de instalação elétrica comercial.";
+            break;
+        case 'quadros elétricos':
+            message = "Olá! Gostaria de solicitar um orçamento para a fabricação de um quadro elétrico.";
+            break;
+        default:
+            message = "Olá, gostaria de solicitar um orçamento.";
+            break;
+    }
+
+    const encodedMessage = encodeURIComponent(message);
+    const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(url, '_blank');
+    event.preventDefault(); // Previne o comportamento padrão do link
+}

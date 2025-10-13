@@ -97,72 +97,79 @@
 </section>
 
         <section id="servicos" class="py-10 sm:py-16 bg-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">Nossos Serviços</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-                        <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                        <div class="p-4 sm:p-6">
-                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
-                                <i class="fas fa-bolt text-white text-xl sm:text-2xl"></i>
-                            </div>
-                            <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Instalações Elétricas</h3>
-                            <p class="text-gray-900 text-center text-sm sm:text-base">Realizamos instalações elétricas residenciais, comerciais e industriais com segurança e qualidade.</p>
-                        </div>
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">Nossos Serviços</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+
+            <a href="#" onclick="openWhatsAppService('elétrica'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
+                <div class="p-4 sm:p-6">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                        <i class="fa-solid fa-bolt-lightning text-white text-xl sm:text-2xl"></i>
                     </div>
-                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-                        <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                        <div class="p-4 sm:p-6">
-                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
-                                <i class="fas fa-snowflake text-white text-xl sm:text-2xl"></i>
-                            </div>
-                            <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Ar-Condicionado</h3>
-                            <p class="text-gray-900 text-center text-sm sm:text-base">Instalação, manutenção, limpeza e higienização de aparelhos de ar-condicionado.</p>
-                        </div>
-                    </div>
-                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-                        <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                        <div class="p-4 sm:p-6">
-                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
-                                <i class="fas fa-home text-white text-xl sm:text-2xl"></i>
-                            </div>
-                            <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Automação Residencial</h3>
-                            <p class="text-gray-900 text-center text-sm sm:text-base">Transforme sua casa em um ambiente inteligente com nossas soluções de automação.</p>
-                        </div>
-                    </div>
-                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-                        <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                        <div class="p-4 sm:p-6">
-                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
-                                <i class="fas fa-plug text-white text-xl sm:text-2xl"></i>
-                            </div>
-                            <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Padrão Light</h3>
-                            <p class="text-gray-900 text-center text-sm sm:text-base">Instalação de padrões de entrada conforme normas da Light, garantindo segurança e conformidade para seu imóvel.</p>
-                        </div>
-                    </div>
-                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-                        <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                        <div class="p-4 sm:p-6">
-                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
-                                <i class="fas fa-building text-white text-xl sm:text-2xl"></i>
-                            </div>
-                            <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Instalações Comerciais</h3>
-                            <p class="text-gray-900 text-center text-sm sm:text-base">Projetos e instalações elétricas para ambientes comerciais, garantindo eficiência e segurança para seu negócio.</p>
-                        </div>
-                    </div>
-                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-                        <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                        <div class="p-4 sm:p-6">
-                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
-                                <i class="fas fa-cogs text-white text-xl sm:text-2xl"></i>
-                            </div>
-                            <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Fabricação de Quadros Elétricos</h3>
-                            <p class="text-gray-900 text-center text-sm sm:text-base">Produção de quadros elétricos personalizados para residências e condomínios, com alta qualidade e segurança.</p>
-                        </div>
-                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Instalações Elétricas</h3>
+                    <p class="text-gray-900 text-center text-sm sm:text-base">Realizamos instalações elétricas residenciais, comerciais e industriais com segurança e qualidade.</p>
                 </div>
-            </div>
-        </section>
+            </a>
+
+            <a href="#" onclick="openWhatsAppService('refrigeração'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
+                <div class="p-4 sm:p-6">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                        <i class="fa-solid fa-snowflake text-white text-xl sm:text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Ar-Condicionado</h3>
+                    <p class="text-gray-900 text-center text-sm sm:text-base">Instalação, manutenção, limpeza e higienização de aparelhos de ar-condicionado.</p>
+                </div>
+            </a>
+
+            <a href="#" onclick="openWhatsAppService('automação'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
+                <div class="p-4 sm:p-6">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                        <i class="fa-solid fa-house-signal text-white text-xl sm:text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Automação Residencial</h3>
+                    <p class="text-gray-900 text-center text-sm sm:text-base">Transforme sua casa em um ambiente inteligente com nossas soluções de automação.</p>
+                </div>
+            </a>
+
+            <a href="#" onclick="openWhatsAppService('padrão light'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
+                <div class="p-4 sm:p-6">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                        <i class="fa-solid fa-plug-circle-bolt text-white text-xl sm:text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Padrão Light</h3>
+                    <p class="text-gray-900 text-center text-sm sm:text-base">Instalação de padrões de entrada conforme normas da Light, garantindo segurança e conformidade para seu imóvel.</p>
+                </div>
+            </a>
+
+            <a href="#" onclick="openWhatsAppService('instalações comerciais'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
+                <div class="p-4 sm:p-6">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                        <i class="fa-solid fa-store text-white text-xl sm:text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Instalações Comerciais</h3>
+                    <p class="text-gray-900 text-center text-sm sm:text-base">Projetos e instalações elétricas para ambientes comerciais, garantindo eficiência e segurança para seu negócio.</p>
+                </div>
+            </a>
+
+            <a href="#" onclick="openWhatsAppService('quadros elétricos'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
+                <div class="p-4 sm:p-6">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                        <i class="fa-solid fa-server text-white text-xl sm:text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Fabricação de Quadros Elétricos</h3>
+                    <p class="text-gray-900 text-center text-sm sm:text-base">Produção de quadros elétricos personalizados para residências e condomínios, com alta qualidade e segurança.</p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
 
         <section id="galeria" class="py-10 sm:py-16 bg-gray-100 gallery-container">
     <div class="container mx-auto px-4">
@@ -408,5 +415,14 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script src="script.js"></script>
+    <a href="#" onclick="openWhatsApp()" aria-label="Entre em contato pelo WhatsApp" id="whatsapp-fab">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
 </body>
 </html>
