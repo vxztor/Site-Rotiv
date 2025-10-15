@@ -42,7 +42,17 @@ document.addEventListener('DOMContentLoaded', function () {
         {url: "imagens/eletrica-25.jpg", descricao: "Serviço de elétrica"},
         {url: "imagens/eletrica-26.jpg", descricao: "Serviço de elétrica"},
         {url: "imagens/eletrica-27.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-28.jpg", descricao: "Serviço de elétrica"}
+        {url: "imagens/eletrica-28.jpg", descricao: "Serviço de elétrica"},
+        {url: "imagens/eletrica-29.jpg", descricao: "Serviço de elétrica"},
+        {url: "imagens/eletrica-30.jpg", descricao: "Serviço de elétrica"},
+        {url: "imagens/eletrica-31.jpg", descricao: "Serviço de elétrica"},
+        {url: "imagens/eletrica-32.jpg", descricao: "Serviço de elétrica"},
+        {url: "imagens/eletrica-33.jpg", descricao: "Serviço de elétrica"},
+        {url: "imagens/eletrica-34.jpg", descricao: "Serviço de elétrica"},
+        {url: "imagens/eletrica-35.jpg", descricao: "Serviço de elétrica"},
+        {url: "imagens/eletrica-36.jpg", descricao: "Serviço de elétrica"},
+        {url: "imagens/eletrica-37.jpg", descricao: "Serviço de elétrica"},
+        {url: "imagens/eletrica-38.jpg", descricao: "Serviço de elétrica"}
     ];
 
     // Initialize GLightbox for Gallery
