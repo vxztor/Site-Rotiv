@@ -52,8 +52,14 @@ document.addEventListener('DOMContentLoaded', function () {
         {url: "imagens/eletrica-35.jpg", descricao: "Serviço de elétrica"},
         {url: "imagens/eletrica-36.jpg", descricao: "Serviço de elétrica"},
         {url: "imagens/eletrica-37.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-38.jpg", descricao: "Serviço de elétrica"}
+        {url: "imagens/eletrica-38.jpg", descricao: "Serviço de elétrica"},
+        {url: "imagens/eletrica-39.jpg.jpeg", descricao: "Serviço de elétrica"}
     ];
+
+    const imagensArCondicionado = [
+    {url: "imagens/ar-condicionado-24.jpeg", descricao: "Serviço de ar-condicionado"}
+];
+
 
     // Initialize GLightbox for Gallery
     const lightbox = GLightbox({
@@ -91,6 +97,37 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    const loadMoreArBtn = document.getElementById('load-more-ar');
+if (loadMoreArBtn) {
+    loadMoreArBtn.addEventListener('click', function() {
+        const arGallery = document.querySelector('#ar-condicionado-gallery .grid');
+        if (arGallery) {
+            imagensArCondicionado.forEach(imageData => {
+                const newLink = document.createElement('a');
+                newLink.href = imageData.url;
+                newLink.className = 'glightbox';
+                newLink.setAttribute('data-gallery', 'ar-condicionado');
+
+                newLink.innerHTML = `
+                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image">
+                        <div class="h-40 sm:h-52 rounded overflow-hidden">
+                            <img src="${imageData.url}" alt="${imageData.descricao}" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                `;
+
+                arGallery.appendChild(newLink);
+            });
+
+            // Atualiza o GLightbox
+            lightbox.reload();
+
+            // Esconde o botão depois de carregar
+            this.style.display = 'none';
+        }
+    });
+}
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
