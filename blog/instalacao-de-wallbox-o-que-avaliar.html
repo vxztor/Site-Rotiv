@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../imagens/logo-rotiv.jpg" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Instalação de Wallbox: o que é preciso avaliar antes de instalar | Blog ROTIV</title>
+    <meta name="description" content="Saiba o que avaliar antes da instalação de um Wallbox: carga elétrica, disjuntor, cabeamento, distância, proteção e segurança.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://rotiveletricarefrigeracao.com.br/blog/instalacao-de-wallbox-o-que-avaliar.html">
+
+    <meta property="og:title" content="Instalação de Wallbox: o que é preciso avaliar antes de instalar">
+    <meta property="og:description" content="Entenda o que deve ser analisado antes da instalação de um Wallbox para garantir segurança e bom funcionamento.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="../imagens/logo-rotiv.jpg">
+    <meta property="og:locale" content="pt_BR">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rotiv-blue': '#0E4666',
+                        'rotiv-orange': '#F47C20',
+                    }
+                },
+                fontFamily: {
+                    'sans': ['Montserrat', 'sans-serif'],
+                }
+            }
+        }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Instalação de Wallbox: o que é preciso avaliar antes de instalar",
+      "description": "Saiba o que avaliar antes da instalação de um Wallbox: carga elétrica, disjuntor, cabeamento, distância, proteção e segurança.",
+      "author": {
+        "@type": "Organization",
+        "name": "ROTIV Elétrica e Refrigeração"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ROTIV Elétrica e Refrigeração",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://rotiveletricarefrigeracao.com.br/imagens/logo-rotiv.jpg"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://rotiveletricarefrigeracao.com.br/blog/instalacao-de-wallbox-o-que-avaliar.html"
+      }
+    }
+    </script>
+
+    <style>
+        .article-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #0E4666;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0E4666;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-content p,
+        .article-content li {
+            color: #374151;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .article-content ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+
+    <header class="bg-white shadow-md fixed w-full z-50 top-0">
+        <div class="container mx-auto px-3 sm:px-4 py-2 flex justify-between items-center">
+            <a href="../index.html">
+                <img src="../imagens/logo-rotiv.jpg" alt="Logo ROTIV" class="h-12 sm:h-16 w-auto">
+            </a>
+
+    <nav class="hidden md:flex space-x-4 lg:space-x-6">
+        <a href="../index.html" class="text-gray-900 hover:text-rotiv-orange font-medium">Início</a>
+        <a href="./" class="text-gray-900 hover:text-rotiv-orange font-medium">Blog</a>
+        <a href="../index.html#contato" class="text-gray-900 hover:text-rotiv-orange font-medium">Contato</a>
+    </nav>
+
+            <button class="md:hidden text-gray-900 focus:outline-none" id="menu-toggle" aria-label="Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div class="md:hidden hidden bg-white w-full py-3 px-4 shadow-md" id="mobile-menu">
+            <div class="flex flex-col space-y-3">
+                <a href="../index.html" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Início</a>
+                <a href="./" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Blog</a>
+                <a href="../index.html#contato" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Contato</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-28 pb-16">
+        <div class="container mx-auto px-4 max-w-4xl mb-6">
+    <nav class="text-sm text-gray-600">
+        <a href="../index.html" class="hover:text-rotiv-orange">Início</a>
+        <span class="mx-2">/</span>
+        <a href="./" class="hover:text-rotiv-orange">Blog</a>
+        <span class="mx-2">/</span>
+        <span class="text-rotiv-blue font-medium">Artigo</span>
+    </nav>
+</div>
+        <article class="max-w-4xl mx-auto px-4 py-12">
+
+<h1 class="text-3xl font-bold mb-6">
+Instalação de Wallbox: o que é preciso avaliar antes de instalar
+</h1>
+
+<p class="mb-6">
+Com o crescimento dos carros elétricos no Brasil, muitos proprietários estão buscando instalar um <strong>carregador Wallbox em casa</strong>. Esse tipo de carregador é muito mais rápido e seguro do que utilizar uma tomada comum, permitindo carregar o veículo com mais eficiência.
+</p>
+
+<p class="mb-6">
+Porém, antes de realizar a instalação, alguns fatores importantes precisam ser avaliados na rede elétrica da residência ou do estabelecimento. Neste artigo você vai entender os principais pontos que devem ser analisados antes de instalar um Wallbox.
+</p>
+
+<div class="blog-image">
+<img src="../imagens/wallbox-carregador.webp" alt="Carregador Wallbox para carro elétrico">
+<span>Carregador Wallbox utilizado para carregamento residencial de carros elétricos.</span>
+</div>
+
+<h2 class="text-2xl font-bold mt-10 mb-4">
+1. Capacidade da rede elétrica
+</h2>
+
+<p class="mb-6">
+O primeiro ponto que precisa ser analisado é se a instalação elétrica do imóvel suporta a potência do carregador. Um Wallbox normalmente possui potência entre <strong>3,7 kW e 22 kW</strong>, dependendo do modelo e da configuração da rede.
+</p>
+
+<p class="mb-6">
+Por isso é importante que um eletricista avalie o quadro de energia, a entrada de energia da concessionária e a capacidade dos cabos utilizados.
+</p>
+
+<h2 class="text-2xl font-bold mt-10 mb-4">
+2. Disjuntor e proteção elétrica
+</h2>
+
+<p class="mb-6">
+Um carregador Wallbox precisa de um circuito exclusivo com proteção adequada. Isso inclui a instalação de disjuntor específico e, em muitos casos, dispositivos de proteção como DR e DPS.
+</p>
+
+<p class="mb-6">
+Esses equipamentos garantem segurança tanto para o carregador quanto para a instalação elétrica da residência.
+</p>
+
+<div class="blog-image">
+<img src="../imagens/quadro-eletrico-wallbox.webp" alt="Quadro elétrico preparado para instalação de Wallbox">
+<span>Quadro elétrico preparado para alimentar o carregador do carro elétrico.</span>
+</div>
+
+<h2 class="text-2xl font-bold mt-10 mb-4">
+3. Distância entre o quadro elétrico e o carregador
+</h2>
+
+<p class="mb-6">
+A distância entre o quadro de distribuição e o local onde o Wallbox será instalado influencia diretamente no tipo e na espessura do cabo que será utilizado.
+</p>
+
+<p class="mb-6">
+Quanto maior a distância, maior pode ser a necessidade de cabos mais robustos para evitar queda de tensão e garantir segurança na instalação.
+</p>
+
+<h2 class="text-2xl font-bold mt-10 mb-4">
+4. Local de instalação
+</h2>
+
+<p class="mb-6">
+Outro ponto importante é escolher corretamente o local onde o carregador será instalado. O equipamento normalmente é instalado em garagens ou áreas de estacionamento, mas precisa estar protegido contra chuva excessiva e impactos.
+</p>
+
+<p class="mb-6">
+Também é importante considerar a posição do veículo para facilitar a conexão do cabo de carregamento.
+</p>
+
+<h2 class="text-2xl font-bold mt-10 mb-4">
+5. Avaliação técnica profissional
+</h2>
+
+<p class="mb-6">
+Cada imóvel possui características elétricas diferentes. Por isso, antes de instalar um carregador para carro elétrico, o ideal é realizar uma avaliação técnica feita por um profissional qualificado.
+</p>
+
+<p class="mb-6">
+Essa análise garante que a instalação seja feita de forma segura e dentro das normas elétricas.
+</p>
+
+<div class="blog-image">
+    <img src="../imagens/wallbox-instalado-garagem.jpg" alt="Wallbox instalado em garagem residencial para carregamento de carro elétrico">
+    <span>Exemplo de Wallbox instalado em garagem residencial.</span>
+</div>
+
+</article>
+
+<div class="bg-gray-100 p-6 rounded-lg mt-10">
+<h3 class="text-xl font-bold mb-3">Leia também</h3>
+
+<p>
+Se você está procurando uma empresa para fazer a instalação, veja também nosso artigo:
+</p>
+
+<a href="quem-instala-wallbox-no-rio-de-janeiro.html" class="text-rotiv-orange font-semibold hover:underline">
+Quem instala Wallbox no Rio de Janeiro?
+</a>
+</div>
+
+
+    <a href="#" onclick="openWhatsAppArticle(event)" aria-label="Entre em contato pelo WhatsApp" id="whatsapp-fab">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        function openWhatsAppArticle(event) {
+            if (event) event.preventDefault();
+            const phoneNumber = "5521971129223";
+            const message = encodeURIComponent("Olá! Li o artigo sobre instalação de Wallbox no site da Rotiv e gostaria de fazer um orçamento.");
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
+
+<footer id="contato" class="bg-gray-900 text-white pt-8 sm:pt-12 pb-4 sm:pb-6">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap">
+            <div class="w-full md:w-1/3 mb-6 sm:mb-8 footer-section">
+                <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Contato</h3>
+                <p class="flex items-center mb-2 sm:mb-3 md:justify-start justify-center text-sm sm:text-base">
+                    <i class="fas fa-phone mr-3 text-rotiv-orange"></i>
+                    <span>&#40;21&#41; 97112-9223</span>
+                </p>
+                <p class="flex items-center mb-2 sm:mb-3 md:justify-start justify-center text-sm sm:text-base">
+                    <i class="fas fa-envelope mr-3 text-rotiv-orange"></i>
+                    <span>rotiveletrica@gmail.com</span>
+                </p>
+                <p class="flex items-center mb-2 sm:mb-3 md:justify-start justify-center text-sm sm:text-base">
+                    <i class="fas fa-map-marker-alt mr-3 text-rotiv-orange"></i>
+                    <span>Nova Iguaçu, RJ</span>
+                </p>
+                <div class="flex mt-4 sm:mt-6 md:justify-start justify-center">
+                    <a href="#" class="mr-4 hover:text-rotiv-orange transition-colors" onclick="openWhatsAppArticle(event)">
+                        <i class="fab fa-whatsapp text-xl sm:text-2xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/rotiv2018/" target="_blank" rel="noopener noreferrer" class="mr-4 hover:text-rotiv-orange transition-colors">
+                        <i class="fab fa-instagram text-xl sm:text-2xl"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@rotiv2018" target="_blank" rel="noopener noreferrer" class="hover:text-rotiv-orange transition-colors">
+                        <i class="fab fa-tiktok text-xl sm:text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/3 mb-6 sm:mb-8 footer-section">
+                <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Serviços</h3>
+                <ul class="space-y-1 sm:space-y-2 text-sm sm:text-base">
+                    <li><a href="../index.html#servicos" class="hover:text-rotiv-orange transition-colors">Instalações Elétricas</a></li>
+                    <li><a href="../index.html#servicos" class="hover:text-rotiv-orange transition-colors">Ar-Condicionado</a></li>
+                    <li><a href="../index.html#servicos" class="hover:text-rotiv-orange transition-colors">Automação Residencial</a></li>
+                    <li><a href="../index.html#servicos" class="hover:text-rotiv-orange transition-colors">Padrão Light</a></li>
+                    <li><a href="../index.html#servicos" class="hover:text-rotiv-orange transition-colors">Instalações Comerciais</a></li>
+                    <li><a href="../index.html#servicos" class="hover:text-rotiv-orange transition-colors">Fabricação de Quadros Elétricos</a></li>
+                </ul>
+            </div>
+
+            <div class="w-full md:w-1/3 mb-6 sm:mb-8 footer-section">
+                <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Sobre a ROTIV</h3>
+                <p class="mb-3 sm:mb-4 text-sm sm:text-base">
+                    Empresa especializada em instalações elétricas e refrigeração, atendendo clientes residenciais e comerciais desde 2018.
+                </p>
+                <p class="text-sm sm:text-base">
+                    Mais do que serviços elétricos, entregamos segurança e tranquilidade. A Rotiv evoluiu de uma equipe apaixonada para se tornar uma referência em soluções de elétrica e climatização.
+                </p>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-6 sm:mt-8 pt-4 sm:pt-6 text-center text-xs sm:text-sm text-gray-400">
+            <p>&copy; 2025 ROTIV. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>

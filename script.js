@@ -1,17 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
-
-    // Initialize WhatsApp link variable
     window.currentWhatsAppLink = 'https://wa.me/message/GJJKUM7Q6UJTA1';
 
-    // WhatsApp Function
-    window.openWhatsApp = function() {
+    window.openWhatsApp = function () {
         window.open(window.currentWhatsAppLink, '_blank');
-    }
+    };
 
-    // Mobile Menu Toggle
     const menuToggle = document.getElementById('menu-toggle');
     if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
+        menuToggle.addEventListener('click', function () {
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenu) {
                 mobileMenu.classList.toggle('hidden');
@@ -19,14 +15,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Gallery Tabs
     const galleryTabs = document.querySelectorAll('.gallery-tab');
     const galleryContents = document.querySelectorAll('.gallery-content');
+
     galleryTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             galleryTabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
+
             const tabName = tab.getAttribute('data-tab');
+
             galleryContents.forEach(content => {
                 content.classList.add('hidden');
                 if (content.id === `${tabName}-gallery`) {
@@ -36,113 +34,171 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // "Load More" photos data
-    const imagensEletricas = [
-        {url: "imagens/eletrica-24.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-25.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-26.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-27.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-28.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-29.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-30.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-31.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-32.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-33.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-34.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-35.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-36.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-37.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-38.jpg", descricao: "Serviço de elétrica"},
-        {url: "imagens/eletrica-39.jpg.jpeg", descricao: "Serviço de elétrica"}
-    ];
-
-    const imagensArCondicionado = [
-    {url: "imagens/ar-condicionado-24.jpeg", descricao: "Serviço de ar-condicionado"}
-];
-
-
-    // Initialize GLightbox for Gallery
     const lightbox = GLightbox({
         selector: '.glightbox',
         loop: true,
         touchNavigation: true,
     });
 
-    // "Load More" photos functionality
+    // ====================================================
+    // SISTEMA NOVO DE IMAGENS COM FALLBACK DE EXTENSÃO
+    // ====================================================
+
+    const EXTENSOES_PADRAO = ['webp', 'jpg', 'jpeg', 'png'];
+
+    function tentarCarregarImagem(caminhos) {
+        return new Promise((resolve, reject) => {
+            let indice = 0;
+
+            function testarProxima() {
+                if (indice >= caminhos.length) {
+                    reject(new Error('Nenhuma imagem encontrada.'));
+                    return;
+                }
+
+                const img = new Image();
+                const caminhoAtual = caminhos[indice];
+
+                img.onload = () => resolve(caminhoAtual);
+                img.onerror = () => {
+                    indice++;
+                    testarProxima();
+                };
+
+                img.src = caminhoAtual;
+            }
+
+            testarProxima();
+        });
+    }
+
+    function montarListaDeCaminhos(pasta, nomeBase, extensoes = EXTENSOES_PADRAO) {
+        return extensoes.map(ext => `${pasta}/${nomeBase}.${ext}`);
+    }
+
+    async function criarCardImagem({ pasta, nome, alt, gallery }) {
+        const caminhos = montarListaDeCaminhos(pasta, nome);
+
+        try {
+            const caminhoValido = await tentarCarregarImagem(caminhos);
+
+            const link = document.createElement('a');
+            link.href = caminhoValido;
+            link.className = 'glightbox';
+            link.setAttribute('data-gallery', gallery);
+
+            link.innerHTML = `
+                <div class="bg-white p-1 rounded-lg shadow-md gallery-image">
+                    <div class="h-40 sm:h-52 rounded overflow-hidden">
+                        <img
+                            src="${caminhoValido}"
+                            alt="${alt}"
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </div>
+                </div>
+            `;
+
+            return link;
+        } catch (error) {
+            console.warn(`Imagem não encontrada para: ${nome}`);
+            return null;
+        }
+    }
+
+    async function renderizarImagens(container, imagens, galleryName) {
+        for (const imagem of imagens) {
+            const card = await criarCardImagem({
+                pasta: 'imagens',
+                nome: imagem.nome,
+                alt: imagem.alt,
+                gallery: galleryName
+            });
+
+            if (card) {
+                container.appendChild(card);
+            }
+        }
+
+        lightbox.reload();
+    }
+
+    // ====================================================
+    // AQUI VOCÊ SÓ CADASTRA NOME + ALT
+    // ====================================================
+
+    const imagensEletricasExtras = [
+        { nome: "eletrica-24", alt: "Serviço de elétrica em Nova Iguaçu" },
+        { nome: "eletrica-25", alt: "Serviço de elétrica com terminal WAGO" },
+        { nome: "eletrica-26", alt: "Montagem de quadro elétrico em Nova Iguaçu" },
+        { nome: "eletrica-27", alt: "Serviço de elétrica residencial" },
+        { nome: "eletrica-28", alt: "Serviço de elétrica comercial" },
+        { nome: "eletrica-29", alt: "Serviço de elétrica profissional" },
+        { nome: "eletrica-30", alt: "Instalação elétrica organizada" },
+        { nome: "eletrica-31", alt: "Serviço elétrico com acabamento profissional" },
+        { nome: "eletrica-32", alt: "Execução de instalação elétrica" },
+        { nome: "eletrica-33", alt: "Serviço de elétrica em ambiente residencial" },
+        { nome: "eletrica-34", alt: "Infraestrutura elétrica em residência" },
+        { nome: "eletrica-35", alt: "Serviço de elétrica com segurança" },
+        { nome: "eletrica-36", alt: "Montagem e organização elétrica" },
+        { nome: "eletrica-37", alt: "Serviço técnico de elétrica" },
+        { nome: "eletrica-38", alt: "Instalação elétrica realizada pela ROTIV" },
+        { nome: "eletrica-39", alt: "Serviço de elétrica com acabamento limpo" }
+    ];
+
+    const imagensArExtras = [
+        { nome: "ar-condicionado-24", alt: "Serviço de instalação de ar-condicionado" },
+        { nome: "ar-condicionado-25", alt: "Instalação de ar-condicionado residencial" },
+        { nome: "ar-condicionado-26", alt: "Serviço técnico de ar-condicionado" },
+        { nome: "ar-condicionado-27", alt: "Instalação profissional de ar-condicionado" }
+    ];
+
     const loadMoreBtn = document.getElementById('load-more-eletrica');
     if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', function() {
+        loadMoreBtn.addEventListener('click', async function () {
             const electricalGallery = document.querySelector('#eletrica-gallery .grid');
-            if (electricalGallery) {
-                imagensEletricas.forEach(imageData => {
-                    const newLink = document.createElement('a');
-                    newLink.href = imageData.url;
-                    newLink.className = 'glightbox';
-                    newLink.setAttribute('data-gallery', 'eletrica');
-                    
-                    newLink.innerHTML = `
-                        <div class="bg-white p-1 rounded-lg shadow-md gallery-image">
-                            <div class="h-40 sm:h-52 rounded overflow-hidden">
-                                <img src="${imageData.url}" alt="${imageData.descricao}" class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                    `;
-                    electricalGallery.appendChild(newLink);
-                });
+            if (!electricalGallery) return;
 
-                // ESSENCIAL: Avisa a galeria que novas imagens foram adicionadas
-                lightbox.reload();
-                
-                this.style.display = 'none';
-            }
+            this.disabled = true;
+            this.textContent = 'Carregando...';
+
+            await renderizarImagens(electricalGallery, imagensEletricasExtras, 'eletrica');
+
+            this.style.display = 'none';
         });
     }
 
     const loadMoreArBtn = document.getElementById('load-more-ar');
-if (loadMoreArBtn) {
-    loadMoreArBtn.addEventListener('click', function() {
-        const arGallery = document.querySelector('#ar-condicionado-gallery .grid');
-        if (arGallery) {
-            imagensArCondicionado.forEach(imageData => {
-                const newLink = document.createElement('a');
-                newLink.href = imageData.url;
-                newLink.className = 'glightbox';
-                newLink.setAttribute('data-gallery', 'ar-condicionado');
+    if (loadMoreArBtn) {
+        loadMoreArBtn.addEventListener('click', async function () {
+            const arGallery = document.querySelector('#ar-condicionado-gallery .grid');
+            if (!arGallery) return;
 
-                newLink.innerHTML = `
-                    <div class="bg-white p-1 rounded-lg shadow-md gallery-image">
-                        <div class="h-40 sm:h-52 rounded overflow-hidden">
-                            <img src="${imageData.url}" alt="${imageData.descricao}" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                `;
+            this.disabled = true;
+            this.textContent = 'Carregando...';
 
-                arGallery.appendChild(newLink);
-            });
+            await renderizarImagens(arGallery, imagensArExtras, 'ar-condicionado');
 
-            // Atualiza o GLightbox
-            lightbox.reload();
-
-            // Esconde o botão depois de carregar
             this.style.display = 'none';
-        }
-    });
-}
+        });
+    }
 
-    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
+
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-            
+
             if (targetElement) {
-                let offset = 80; // Default offset for desktop
-                if (window.innerWidth < 768) offset = 60; // Offset for mobile
-                else if (window.innerWidth < 1024) offset = 70; // Offset for tablet
-                
+                let offset = 80;
+                if (window.innerWidth < 768) offset = 60;
+                else if (window.innerWidth < 1024) offset = 70;
+
                 const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -156,8 +212,7 @@ if (loadMoreArBtn) {
         });
     });
 
-    // Initialize Swiper Carousel for Reviews
-    const swiper = new Swiper('.mySwiper', {
+    new Swiper('.mySwiper', {
         slidesPerView: 1,
         spaceBetween: 20,
         autoplay: {
@@ -176,13 +231,13 @@ if (loadMoreArBtn) {
         loop: true,
     });
 });
-// ================================================ //
-// FUNÇÃO PARA WHATSAPP COM MENSAGEM DE SERVIÇO     //
-// ================================================ //
 
+// ================================================
+// FUNÇÃO PARA WHATSAPP COM MENSAGEM DE SERVIÇO
+// ================================================
 function openWhatsAppService(serviceType) {
     let message = "";
-    const phoneNumber = "5521971129223"; // Seu número de telefone
+    const phoneNumber = "5521971129223";
 
     switch (serviceType) {
         case 'refrigeração':
@@ -203,6 +258,9 @@ function openWhatsAppService(serviceType) {
         case 'quadros elétricos':
             message = "Olá! Gostaria de solicitar um orçamento para a fabricação de um quadro elétrico.";
             break;
+        case 'instalação wallbox':
+            message = "Olá! Gostaria de solicitar um orçamento para uma instalação de carregador Wallbox.";
+        break;   
         default:
             message = "Olá, gostaria de solicitar um orçamento.";
             break;
@@ -211,5 +269,4 @@ function openWhatsAppService(serviceType) {
     const encodedMessage = encodeURIComponent(message);
     const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(url, '_blank');
-    event.preventDefault(); // Previne o comportamento padrão do link
 }

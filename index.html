@@ -45,6 +45,38 @@
             }
         }
     </script>
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Electrician",
+ "name": "ROTIV Elétrica e Refrigeração",
+ "image": "https://rotiveletricarefrigeracao.com.br/imagens/logo-rotiv.jpg",
+ "@id": "https://rotiveletricarefrigeracao.com.br",
+ "url": "https://rotiveletricarefrigeracao.com.br",
+ "telephone": "+55 21 97112-9223",
+ "address": {
+   "@type": "PostalAddress",
+   "addressLocality": "Nova Iguaçu",
+   "addressRegion": "RJ",
+   "addressCountry": "BR"
+ },
+ "areaServed": [
+   "Nova Iguaçu",
+   "Baixada Fluminense",
+   "Rio de Janeiro"
+ ],
+ "serviceType": [
+   "Instalações Elétricas",
+   "Instalação de Wallbox",
+   "Automação Residencial",
+   "Instalação de Ar Condicionado"
+ ],
+ "sameAs": [
+   "https://www.instagram.com/rotiv2018/",
+   "https://www.tiktok.com/@rotiv2018"
+ ]
+}
+</script>
 </head>
 <body class="font-sans bg-gray-50">
 
@@ -61,6 +93,7 @@
                 <a href="#galeria" class="text-gray-900 hover:text-rotiv-orange font-medium text-sm lg:text-base">Galeria</a>
                 <a href="#quem-somos" class="text-gray-900 hover:text-rotiv-orange font-medium text-sm lg:text-base">Quem Somos</a>
                 <a href="#avaliacoes" class="text-gray-900 hover:text-rotiv-orange font-medium text-sm lg:text-base">Avaliações</a>
+                <a href="blog/" class="text-gray-900 hover:text-rotiv-orange font-medium text-sm lg:text-base">Blog</a>
                 <a href="#contato" class="text-gray-900 hover:text-rotiv-orange font-medium text-sm lg:text-base">Contato</a>
             </nav>
             <button class="md:hidden text-gray-900 focus:outline-none" id="menu-toggle" aria-label="Menu">
@@ -76,6 +109,7 @@
                 <a href="#galeria" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Galeria</a>
                 <a href="#quem-somos" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Quem Somos</a>
                 <a href="#avaliacoes" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Avaliações</a>
+                <a href="blog/" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Blog</a>
                 <a href="#contato" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Contato</a>
             </div>
         </div>
@@ -100,10 +134,10 @@
 
         <section id="servicos" class="py-10 sm:py-16 bg-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">Nossos Serviços de Elétrica e Climatização</h2> <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                    <a href="#" onclick="openWhatsAppService('elétrica'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">Nossos Serviços Oferecidos</h2> <div class="services-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                    <a href="#" onclick="openWhatsAppService('elétrica'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 h-full">
                         <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                        <div class="p-4 sm:p-6">
+                        <div class="p-4 sm:p-6 h-full flex flex-col">
                             <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
                                 <i class="fa-solid fa-bolt-lightning text-white text-xl sm:text-2xl"></i>
                             </div>
@@ -111,9 +145,9 @@
                             <p class="text-gray-900 text-center text-sm sm:text-base">Realizamos instalações elétricas residenciais, comerciais e industriais com segurança e qualidade.</p>
                         </div>
                     </a>
-                    <a href="#" onclick="openWhatsAppService('refrigeração'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <a href="#" onclick="openWhatsAppService('refrigeração'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 h-full">
                         <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                        <div class="p-4 sm:p-6">
+                        <div class="p-4 sm:p-6 h-full flex flex-col">
                             <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
                                 <i class="fa-solid fa-snowflake text-white text-xl sm:text-2xl"></i>
                             </div>
@@ -121,9 +155,9 @@
                             <p class="text-gray-900 text-center text-sm sm:text-base">Instalação, manutenção, limpeza e higienização de aparelhos de ar-condicionado.</p>
                         </div>
                     </a>
-                    <a href="#" onclick="openWhatsAppService('automação'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <a href="#" onclick="openWhatsAppService('automação'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 h-full">
                         <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                        <div class="p-4 sm:p-6">
+                        <div class="p-4 sm:p-6 h-full flex flex-col">
                             <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
                                 <i class="fa-solid fa-house-signal text-white text-xl sm:text-2xl"></i>
                             </div>
@@ -131,9 +165,9 @@
                             <p class="text-gray-900 text-center text-sm sm:text-base">Transforme sua casa em um ambiente inteligente com nossas soluções de automação.</p>
                         </div>
                     </a>
-                    <a href="#" onclick="openWhatsAppService('padrão light'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <a href="#" onclick="openWhatsAppService('padrão light'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 h-full">
                         <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                        <div class="p-4 sm:p-6">
+                        <div class="p-4 sm:p-6 h-full flex flex-col">
                             <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
                                 <i class="fa-solid fa-plug-circle-bolt text-white text-xl sm:text-2xl"></i>
                             </div>
@@ -141,9 +175,9 @@
                             <p class="text-gray-900 text-center text-sm sm:text-base">Instalação de padrões de entrada conforme normas da Light, garantindo segurança e conformidade para seu imóvel.</p>
                         </div>
                     </a>
-                    <a href="#" onclick="openWhatsAppService('instalações comerciais'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <a href="#" onclick="openWhatsAppService('instalações comerciais'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 h-full">
                         <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                        <div class="p-4 sm:p-6">
+                        <div class="p-4 sm:p-6 h-full flex flex-col">
                             <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
                                 <i class="fa-solid fa-store text-white text-xl sm:text-2xl"></i>
                             </div>
@@ -151,9 +185,9 @@
                             <p class="text-gray-900 text-center text-sm sm:text-base">Projetos e instalações elétricas para ambientes comerciais, garantindo eficiência e segurança para seu negócio.</p>
                         </div>
                     </a>
-                    <a href="#" onclick="openWhatsAppService('quadros elétricos'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <a href="#" onclick="openWhatsAppService('quadros elétricos'); event.preventDefault();" class="service-card block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 h-full">
                         <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
-                        <div class="p-4 sm:p-6">
+                        <div class="p-4 sm:p-6 h-full flex flex-col">
                             <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
                                 <i class="fa-solid fa-server text-white text-xl sm:text-2xl"></i>
                             </div>
@@ -161,23 +195,36 @@
                             <p class="text-gray-900 text-center text-sm sm:text-base">Produção de quadros elétricos personalizados para residências e condomínios, com alta qualidade e segurança.</p>
                         </div>
                     </a>
+                    <a href="#" onclick="openWhatsAppService('instalação wallbox'); event.preventDefault();" class="service-card service-card-wallbox block bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 h-full">
+                        <div class="h-2 sm:h-3 bg-rotiv-orange"></div>
+                        <div class="p-4 sm:p-6 h-full flex flex-col">
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-rotiv-blue rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                                <i class="fa-solid fa-charging-station text-white text-xl sm:text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-semibold text-center mb-2 sm:mb-3">Instalação de Wallbox</h3>
+                            <p class="text-gray-900 text-center text-sm sm:text-base">
+                                Instalação profissional de carregadores Wallbox para veículos elétricos, com avaliação da rede elétrica, dimensionamento correto e total segurança para residências e empresas.</p>
+                        </div> 
+                    </a> 
                 </div>
             </div>
         </section>
 
+<!--!!!!!!!!GALERIA DE IMAGENS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
         <section id="galeria" class="py-10 sm:py-16 bg-gray-100 gallery-container">
             <div class="container mx-auto px-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Galeria de Serviços Realizados</h2> <div class="flex justify-center mb-6 sm:mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Galeria de Serviços</h2> <div class="flex justify-center mb-6 sm:mb-8">
                     <button class="gallery-tab active px-3 sm:px-6 py-2 rounded-l-lg border border-rotiv-orange font-medium text-xs sm:text-base" data-tab="eletrica">Elétrica</button>
                     <button class="gallery-tab px-3 sm:px-6 py-2 rounded-r-lg border border-rotiv-orange font-medium text-xs sm:text-base" data-tab="ar-condicionado">Ar-Condicionado</button>
                 </div>
                 <div id="eletrica-gallery" class="gallery-content">
                     <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-                        <a href="imagens/eletrica-01.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-01.jpg" alt="Quadro elétrico residencial" class="w-full h-full object-cover"></div></a>
-                        <a href="imagens/eletrica-02.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-02.jpg" alt="Quadro elétrico de embutir" class="w-full h-full object-cover"></div></a>
+                        <a href="imagens/eletrica-01.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-01.jpg" alt=" Montagem de quadro elétrico residencial em Nova Iguaçu" class="w-full h-full object-cover"></div></a>
+                        <a href="imagens/eletrica-40.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-40.jpg" alt="Instalação de Wallbox em Nova Iguaçu" class="w-full h-full object-cover"></div></a>
                         <a href="imagens/eletrica-03.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-03.jpg" alt="Quadro de distribuição elétrica" class="w-full h-full object-cover"></div></a>
                         <a href="imagens/eletrica-04.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-04.jpg" alt="Iluminação de garagem com LED" class="w-full h-full object-cover"></div></a>
-                        <a href="imagens/eletrica-05.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-05.jpg" alt="Quadro elétrico organizado" class="w-full h-full object-cover"></div></a>
+                        <a href="imagens/eletrica-05.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-05.jpg" alt="Serviço de Elétrica em Nova Iguaçu" class="w-full h-full object-cover"></div></a>
                         <a href="imagens/eletrica-06.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-06.jpg" alt="Iluminação de estúdio chroma key" class="w-full h-full object-cover"></div></a>
                         <a href="imagens/eletrica-07.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-07.jpg" alt="Padrão de entrada coletivo" class="w-full h-full object-cover"></div></a>
                         <a href="imagens/eletrica-08.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-08.jpg" alt="Iluminação de sala com LED embutido" class="w-full h-full object-cover"></div></a>
@@ -193,8 +240,8 @@
                         <a href="imagens/eletrica-18.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-18.jpg" alt="Iluminação de fachada noturna" class="w-full h-full object-cover"></div></a>
                         <a href="imagens/eletrica-19.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-19.jpg" alt="Instalação de luminária pendente" class="w-full h-full object-cover"></div></a>
                         <a href="imagens/eletrica-20.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-20.jpg" alt="Padrão de entrada Light" class="w-full h-full object-cover"></div></a>
-                        <a href="imagens/eletrica-21.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-21.jpg" alt="Instalação de carregador veicular BYD" class="w-full h-full object-cover"></div></a>
-                        <a href="imagens/eletrica-22.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-22.jpg" alt="Montagem de comando elétrico" class="w-full h-full object-cover"></div></a>
+                        <a href="imagens/eletrica-21.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-21.jpg" alt="Instalação de carregador de carro elétrico - Em todo o RJ" class="w-full h-full object-cover"></div></a>
+                        <a href="imagens/eletrica-22.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-22.jpg" alt="Montagem de comando elétrico em Nova Iguaçu" class="w-full h-full object-cover"></div></a>
                         <a href="imagens/eletrica-23.jpg" class="glightbox" data-gallery="eletrica"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/eletrica-23.jpg" alt="Painel de comando com medidor" class="w-full h-full object-cover"></div></a>
                     </div>
                     <div class="text-center mt-6 sm:mt-8">
@@ -203,12 +250,12 @@
                 </div>
                 <div id="ar-condicionado-gallery" class="gallery-content hidden">
                     <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-                        <a href="imagens/ar-condicionado-01.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-01.jpg" alt="Instalação de ar condicionado split" class="w-full h-full object-cover"></div></a>
-                        <a href="imagens/ar-condicionado-02.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-02.jpg" alt="Instalação de condensadoras de ar condicionado" class="w-full h-full object-cover"></div></a>
+                        <a href="imagens/ar-condicionado-01.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-01.jpg" alt="Instalação de ar condicionado split em Nova Iguaçu" class="w-full h-full object-cover"></div></a>
+                        <a href="imagens/ar-condicionado-02.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-02.jpg" alt="Instalação de condensadoras de ar condicionado no Rio de Janeiro" class="w-full h-full object-cover"></div></a>
                         <a href="imagens/ar-condicionado-03.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-03.jpg" alt="Instalação de condensadora Carrier" class="w-full h-full object-cover"></div></a>
                         <a href="imagens/ar-condicionado-04.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-04.jpg" alt="Ar condicionado Gree instalado" class="w-full h-full object-cover"></div></a>
-                        <a href="imagens/ar-condicionado-05.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-05.jpg" alt="Ar condicionado Midea instalado" class="w-full h-full object-cover"></div></a>
-                        <a href="imagens/ar-condicionado-06.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-06.jpg" alt="Ar condicionado em quarto" class="w-full h-full object-cover"></div></a>
+                        <a href="imagens/ar-condicionado-05.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-05.jpg" alt="Ar condicionado Midea instalado em Nova Iguaçu" class="w-full h-full object-cover" loading="lazy" decoding="async"></div></a>
+                        <a href="imagens/ar-condicionado-06.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-06.jpg" alt="Ar condicionado em quarto" class="w-full h-full object-cover" loading="lazy" decoding="async"></div></a>
                         <a href="imagens/ar-condicionado-07.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-07.jpg" alt="Ar condicionado Panasonic em ambiente clean" class="w-full h-full object-cover"></div></a>
                         <a href="imagens/ar-condicionado-08.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-08.jpg" alt="Ar condicionado Samsung Digital Inverter" class="w-full h-full object-cover"></div></a>
                         <a href="imagens/ar-condicionado-09.jpg" class="glightbox" data-gallery="ar-condicionado"><div class="bg-white p-1 rounded-lg shadow-md h-40 sm:h-52 overflow-hidden"><img src="imagens/ar-condicionado-09.jpg" alt="Manutenção de ar condicionado com manifold" class="w-full h-full object-cover"></div></a>
