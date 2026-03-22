@@ -1,20 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-<url>
-<loc>https://rotiveletricarefrigeracao.com.br/</loc>
-</url>
-
-<url>
-<loc>https://rotiveletricarefrigeracao.com.br/blog/</loc>
-</url>
-
-<url>
-<loc>https://rotiveletricarefrigeracao.com.br/blog/instalacao-de-wallbox-o-que-avaliar.html</loc>
-</url>
-
-<url>
-<loc>https://rotiveletricarefrigeracao.com.br/blog/quem-instala-wallbox-no-rio-de-janeiro.html</loc>
-</url>
-
+ 
+    <url>
+        <loc>https://Rotiveletricarefrigeracao.com.br/</loc>
+        <lastmod>2026-03-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+ 
+    <url>
+        <loc>https://Rotiveletricarefrigeracao.com.br/blog/</loc>
+        <lastmod>2026-03-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+ 
+    <url>
+        <loc>https://Rotiveletricarefrigeracao.com.br/blog/instalacao-de-wallbox-o-que-avaliar.html</loc>
+        <lastmod>2026-03-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+ 
+    <url>
+        <loc>https://Rotiveletricarefrigeracao.com.br/blog/quem-instala-wallbox-no-rio-de-janeiro.html</loc>
+        <lastmod>2026-03-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+ 
+    <url>
+        <loc>https://Rotiveletricarefrigeracao.com.br/blog/higienizacao-de-ar-condicionado.html</loc>
+        <lastmod>2026-03-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+ 
 </urlset>

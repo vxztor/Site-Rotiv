@@ -1,9 +1,28 @@
 document.addEventListener('DOMContentLoaded', function () {
-    window.currentWhatsAppLink = 'https://wa.me/message/GJJKUM7Q6UJTA1';
 
-    window.openWhatsApp = function () {
-        window.open(window.currentWhatsAppLink, '_blank');
-    };
+    // ================================================
+    // CONFIGURAÇÕES GLOBAIS
+    // ================================================
+
+    const PHONE_NUMBER = "5521971129223";
+    window.currentWhatsAppLink = 'https://wa.me/message/GJJKUM7Q6UJTA1';
+    // Controle de carregamento completo da galeria
+    let eletricaCarregada = false;
+    let arCarregada = false;
+    let comandosCarregada = false;
+    let wallboxCarregada = false;
+    // ================================================
+    // ANO DE COPYRIGHT DINÂMICO
+    // ================================================
+
+    const yearEl = document.getElementById('current-year');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+
+    // ================================================
+    // MENU MOBILE
+    // ================================================
 
     const menuToggle = document.getElementById('menu-toggle');
     if (menuToggle) {
@@ -11,17 +30,27 @@ document.addEventListener('DOMContentLoaded', function () {
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenu) {
                 mobileMenu.classList.toggle('hidden');
+                const expanded = !mobileMenu.classList.contains('hidden');
+                this.setAttribute('aria-expanded', expanded);
             }
         });
     }
+
+    // ================================================
+    // ABAS DA GALERIA
+    // ================================================
 
     const galleryTabs = document.querySelectorAll('.gallery-tab');
     const galleryContents = document.querySelectorAll('.gallery-content');
 
     galleryTabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            galleryTabs.forEach(t => t.classList.remove('active'));
+            galleryTabs.forEach(t => {
+                t.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
             tab.classList.add('active');
+            tab.setAttribute('aria-selected', 'true');
 
             const tabName = tab.getAttribute('data-tab');
 
@@ -34,15 +63,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // ================================================
+    // LIGHTBOX
+    // ================================================
+
     const lightbox = GLightbox({
         selector: '.glightbox',
         loop: true,
         touchNavigation: true,
+        width: '90vw',
+        height: 'auto',
+        zoomable: false,
+        draggable: true,
     });
 
-    // ====================================================
-    // SISTEMA NOVO DE IMAGENS COM FALLBACK DE EXTENSÃO
-    // ====================================================
+    // ================================================
+    // SISTEMA DE IMAGENS COM FALLBACK DE EXTENSÃO
+    // ================================================
 
     const EXTENSOES_PADRAO = ['webp', 'jpg', 'jpeg', 'png'];
 
@@ -77,7 +114,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function criarCardImagem({ pasta, nome, alt, gallery }) {
-        const caminhos = montarListaDeCaminhos(pasta, nome);
+        // Se nome já tem extensão (ex: "comando-01.jpg"), testa só esse caminho
+        // Se não, testa todas as extensões padrão
+        let caminhos;
+        if (/\.\w{2,4}$/.test(nome)) {
+            caminhos = [`${pasta}/${nome}`];
+        } else {
+            caminhos = montarListaDeCaminhos(pasta, nome);
+        }
 
         try {
             const caminhoValido = await tentarCarregarImagem(caminhos);
@@ -103,31 +147,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
             return link;
         } catch (error) {
-            console.warn(`Imagem não encontrada para: ${nome}`);
+            console.warn(`Imagem não encontrada: ${nome}`);
             return null;
         }
     }
 
-    async function renderizarImagens(container, imagens, galleryName) {
+    async function renderizarImagens(container, imagens, galleryName, pasta = 'imagens') {
         for (const imagem of imagens) {
             const card = await criarCardImagem({
-                pasta: 'imagens',
+                pasta: pasta,
                 nome: imagem.nome,
                 alt: imagem.alt,
                 gallery: galleryName
             });
 
-            if (card) {
-                container.appendChild(card);
-            }
+            if (card) container.appendChild(card);
         }
 
         lightbox.reload();
     }
 
-    // ====================================================
-    // AQUI VOCÊ SÓ CADASTRA NOME + ALT
-    // ====================================================
+    // ================================================
+    // IMAGENS EXTRAS DA GALERIA
+    // ================================================
 
     const imagensEletricasExtras = [
         { nome: "eletrica-24", alt: "Serviço de elétrica em Nova Iguaçu" },
@@ -155,6 +197,31 @@ document.addEventListener('DOMContentLoaded', function () {
         { nome: "ar-condicionado-27", alt: "Instalação profissional de ar-condicionado" }
     ];
 
+    const imagensComandosExtras = [
+        { nome: "comando-09", alt: "Fabricação de painel de controle elétrico – eletricista ROTIV RJ" },
+        { nome: "comando-10", alt: "Quadro elétrico residencial montado pela ROTIV em Nova Iguaçu" },
+        { nome: "comando-11", alt: "Montagem de comando elétrico com relé – ROTIV Elétrica Nova Iguaçu" },
+        { nome: "comando-12", alt: "Painel elétrico industrial com acabamento profissional – ROTIV" },
+        { nome: "comando-13", alt: "Instalação de quadro de disjuntores em condomínio – ROTIV RJ" },
+        { nome: "comando-14", alt: "Quadro elétrico com DPS e DR instalado pela ROTIV em Nova Iguaçu" },
+        { nome: "comando-15", alt: "Painel de comando elétrico finalizado pela equipe ROTIV" }
+    ];
+
+    const imagensWallboxExtras = [
+        { nome: "outros-11", alt: "Ponto de recarga para veículo elétrico instalado pela ROTIV" },
+        { nome: "outros-12", alt: "Wallbox com cabeamento dimensionado para carga segura – ROTIV RJ" },
+        { nome: "outros-13", alt: "Instalação de carregador Wallbox 7kW em residência – ROTIV Nova Iguaçu" },
+        { nome: "outros-14", alt: "Wallbox com tomada tipo 2 instalado pela ROTIV no Rio de Janeiro" },
+        { nome: "outros-15", alt: "Infraestrutura elétrica para Wallbox em condomínio – ROTIV" },
+        { nome: "outros-16", alt: "Carregador elétrico Wallbox com disjuntor exclusivo – ROTIV Nova Iguaçu" },
+        { nome: "outros-17", alt: "Instalação de Wallbox com organização de cabos profissional – ROTIV" },
+        { nome: "outros-18", alt: "Ponto de abastecimento elétrico para veículo instalado pela ROTIV RJ" }
+    ];
+
+    // ================================================
+    // BOTÕES CARREGAR MAIS
+    // ================================================
+
     const loadMoreBtn = document.getElementById('load-more-eletrica');
     if (loadMoreBtn) {
         loadMoreBtn.addEventListener('click', async function () {
@@ -164,8 +231,8 @@ document.addEventListener('DOMContentLoaded', function () {
             this.disabled = true;
             this.textContent = 'Carregando...';
 
-            await renderizarImagens(electricalGallery, imagensEletricasExtras, 'eletrica');
-
+            await renderizarImagens(electricalGallery, imagensEletricasExtras, 'eletrica', 'imagens/eletrica');
+            eletricaCarregada = true;
             this.style.display = 'none';
         });
     }
@@ -179,17 +246,126 @@ document.addEventListener('DOMContentLoaded', function () {
             this.disabled = true;
             this.textContent = 'Carregando...';
 
-            await renderizarImagens(arGallery, imagensArExtras, 'ar-condicionado');
-
+            await renderizarImagens(arGallery, imagensArExtras, 'ar-condicionado', 'imagens/ar-condicionado');
+            arCarregada = true;
             this.style.display = 'none';
         });
     }
+
+    const loadMoreComandosBtn = document.getElementById('load-more-comandos');
+    if (loadMoreComandosBtn) {
+        loadMoreComandosBtn.addEventListener('click', async function () {
+            const comandosGallery = document.querySelector('#comandos-gallery .grid');
+            if (!comandosGallery) return;
+
+            this.disabled = true;
+            this.textContent = 'Carregando...';
+
+            await renderizarImagens(comandosGallery, imagensComandosExtras, 'comandos', 'imagens/comandos-eletricos');
+            comandosCarregada = true;
+            this.style.display = 'none';
+        });
+    }
+
+    const loadMoreWallboxBtn = document.getElementById('load-more-wallbox');
+    if (loadMoreWallboxBtn) {
+        loadMoreWallboxBtn.addEventListener('click', async function () {
+            const wallboxGallery = document.querySelector('#wallbox-gallery .grid');
+            if (!wallboxGallery) return;
+
+            this.disabled = true;
+            this.textContent = 'Carregando...';
+
+            await renderizarImagens(wallboxGallery, imagensWallboxExtras, 'wallbox', 'imagens/outros');
+            wallboxCarregada = true;
+            this.style.display = 'none';
+        });
+    }
+
+    // ================================================
+    // PRÉ-CARREGAMENTO AO ABRIR O LIGHTBOX
+    // Ao clicar em qualquer imagem da galeria, carrega
+    // todas as extras silenciosamente antes de abrir,
+    // garantindo navegação completa pela seta direita.
+    // ================================================
+
+    document.addEventListener('click', async function (e) {
+        const link = e.target.closest('a.glightbox');
+        if (!link) return;
+
+        const gallery = link.getAttribute('data-gallery');
+
+        if (gallery === 'eletrica' && !eletricaCarregada) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            const container = document.querySelector('#eletrica-gallery .grid');
+            if (container) {
+                await renderizarImagens(container, imagensEletricasExtras, 'eletrica', 'imagens/eletrica');
+                eletricaCarregada = true;
+                const btn = document.getElementById('load-more-eletrica');
+                if (btn) btn.style.display = 'none';
+            }
+
+            lightbox.open(link);
+
+        } else if (gallery === 'ar-condicionado' && !arCarregada) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            const container = document.querySelector('#ar-condicionado-gallery .grid');
+            if (container) {
+                await renderizarImagens(container, imagensArExtras, 'ar-condicionado', 'imagens/ar-condicionado');
+                arCarregada = true;
+                const btn = document.getElementById('load-more-ar');
+                if (btn) btn.style.display = 'none';
+            }
+
+            lightbox.open(link);
+
+        } else if (gallery === 'comandos' && !comandosCarregada) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            const container = document.querySelector('#comandos-gallery .grid');
+            if (container) {
+                await renderizarImagens(container, imagensComandosExtras, 'comandos', 'imagens/comandos-eletricos');
+                comandosCarregada = true;
+                const btn = document.getElementById('load-more-comandos');
+                if (btn) btn.style.display = 'none';
+            }
+
+            lightbox.open(link);
+
+        } else if (gallery === 'wallbox' && !wallboxCarregada) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            const container = document.querySelector('#wallbox-gallery .grid');
+            if (container) {
+                await renderizarImagens(container, imagensWallboxExtras, 'wallbox', 'imagens/outros');
+                wallboxCarregada = true;
+                const btn = document.getElementById('load-more-wallbox');
+                if (btn) btn.style.display = 'none';
+            }
+
+            lightbox.open(link);
+        }
+    }, true);
+
+    // ================================================
+    // SMOOTH SCROLL
+    // ================================================
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
 
             const targetId = this.getAttribute('href');
+
+            // Ignora links sem destino real (ex: href="#")
+            if (!targetId || targetId === '#') return;
+
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
@@ -199,10 +375,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
 
                 const mobileMenu = document.getElementById('mobile-menu');
                 if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
@@ -212,61 +385,81 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // ================================================
+    // SWIPER (AVALIAÇÕES)
+    // ================================================
+
     new Swiper('.mySwiper', {
         slidesPerView: 1,
-        spaceBetween: 20,
+        spaceBetween: 24,
         autoplay: {
             delay: 5000,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true,
         },
         pagination: {
-            el: '.swiper-pagination',
+            el: '.avaliacoes-pagination',
             clickable: true,
         },
         breakpoints: {
-            768: { slidesPerView: 2, spaceBetween: 30 },
-            1024: { slidesPerView: 3, spaceBetween: 30 },
+            768:  { slidesPerView: 2, spaceBetween: 24 },
+            1024: { slidesPerView: 3, spaceBetween: 24 },
         },
         autoHeight: false,
         loop: true,
     });
+
+    // ================================================
+    // FAQ ACCORDION
+    // ================================================
+
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const answer = this.nextElementSibling;
+            const isOpen = this.getAttribute('aria-expanded') === 'true';
+
+            // Fecha todos os outros
+            document.querySelectorAll('.faq-question').forEach(other => {
+                if (other !== this) {
+                    other.setAttribute('aria-expanded', 'false');
+                    const otherAnswer = other.nextElementSibling;
+                    if (otherAnswer) otherAnswer.hidden = true;
+                }
+            });
+
+            // Alterna o atual
+            this.setAttribute('aria-expanded', String(!isOpen));
+            if (answer) answer.hidden = isOpen;
+        });
+    });
+
+    // ================================================
+    // WHATSAPP GERAL
+    // ================================================
+
+    window.openWhatsApp = function () {
+        window.open(window.currentWhatsAppLink, '_blank', 'noopener,noreferrer');
+    };
+
 });
 
 // ================================================
-// FUNÇÃO PARA WHATSAPP COM MENSAGEM DE SERVIÇO
+// WHATSAPP POR SERVIÇO
 // ================================================
+
 function openWhatsAppService(serviceType) {
-    let message = "";
-    const phoneNumber = "5521971129223";
+    const PHONE_NUMBER = "5521971129223";
 
-    switch (serviceType) {
-        case 'refrigeração':
-            message = "Olá, gostaria de solicitar um serviço de refrigeração.";
-            break;
-        case 'elétrica':
-            message = "Olá, gostaria de solicitar um serviço de instalações elétricas.";
-            break;
-        case 'automação':
-            message = "Olá, gostaria de solicitar um serviço de automação residencial.";
-            break;
-        case 'padrão light':
-            message = "Olá! Vi no site que vocês instalam Padrão Light e gostaria de mais informações.";
-            break;
-        case 'instalações comerciais':
-            message = "Olá! Gostaria de fazer um orçamento para um projeto de instalação elétrica comercial.";
-            break;
-        case 'quadros elétricos':
-            message = "Olá! Gostaria de solicitar um orçamento para a fabricação de um quadro elétrico.";
-            break;
-        case 'instalação wallbox':
-            message = "Olá! Gostaria de solicitar um orçamento para uma instalação de carregador Wallbox.";
-        break;   
-        default:
-            message = "Olá, gostaria de solicitar um orçamento.";
-            break;
-    }
+    const mensagens = {
+        'refrigeração':           'Olá, gostaria de solicitar um serviço de refrigeração.',
+        'elétrica':               'Olá, gostaria de solicitar um serviço de instalações elétricas.',
+        'automação':              'Olá, gostaria de solicitar um serviço de automação residencial.',
+        'padrão light':           'Olá! Vi no site que vocês instalam Padrão Light e gostaria de mais informações.',
+        'quadros elétricos':      'Olá! Gostaria de solicitar um orçamento para a fabricação de um quadro elétrico.',
+        'instalação wallbox':     'Olá! Gostaria de solicitar um orçamento para uma instalação de carregador Wallbox.',
+    };
 
-    const encodedMessage = encodeURIComponent(message);
-    const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(url, '_blank');
+    const message = mensagens[serviceType] || 'Olá, gostaria de solicitar um orçamento.';
+    const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
 }

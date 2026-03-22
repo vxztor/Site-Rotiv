@@ -2,24 +2,45 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../imagens/logo-rotiv.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="../imagens/logo-Rotiv.jpg" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Blog ROTIV | Wallbox, Instalações Elétricas e Dicas no Rio de Janeiro</title>
-    <meta name="description" content="Leia no Blog da ROTIV conteúdos sobre instalação de Wallbox, elétrica residencial e comercial, segurança, custos e dicas para clientes no Rio de Janeiro.">
+    <title>Blog Rotiv | Wallbox, Instalações Elétricas e Dicas no Rio de Janeiro</title>
+    <meta name="description" content="Leia no Blog da Rotiv conteúdos sobre instalação de Wallbox, elétrica residencial e comercial, segurança, custos e dicas para clientes no Rio de Janeiro.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://rotiveletricarefrigeracao.com.br/blog/">
+    <link rel="canonical" href="https://Rotiveletricarefrigeracao.com.br/blog/">
 
-    <meta property="og:title" content="Blog ROTIV | Wallbox, Instalações Elétricas e Dicas no Rio de Janeiro">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Blog Rotiv | Wallbox, Instalações Elétricas e Dicas no Rio de Janeiro">
     <meta property="og:description" content="Conteúdos sobre instalação de Wallbox, elétrica e soluções para residências e empresas no Rio de Janeiro.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="../imagens/logo-rotiv.jpg">
+    <meta property="og:url" content="https://Rotiveletricarefrigeracao.com.br/blog/">
+    <meta property="og:image" content="https://Rotiveletricarefrigeracao.com.br/imagens/logo-Rotiv.jpg">
     <meta property="og:locale" content="pt_BR">
 
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Blog ROTIV | Wallbox, Instalações Elétricas e Dicas no Rio de Janeiro">
+    <meta name="twitter:title" content="Blog Rotiv | Wallbox, Instalações Elétricas e Dicas no Rio de Janeiro">
     <meta name="twitter:description" content="Conteúdos sobre instalação de Wallbox, elétrica e soluções para residências e empresas no Rio de Janeiro.">
-    <meta name="twitter:image" content="https://rotiveletricarefrigeracao.com.br/imagens/logo-rotiv.jpg">
+    <meta name="twitter:image" content="https://Rotiveletricarefrigeracao.com.br/imagens/logo-Rotiv.jpg">
+
+    <!-- Cor do navegador mobile -->
+    <meta name="theme-color" content="#0E4666">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QESLCNM5YY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QESLCNM5YY');
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -30,8 +51,8 @@
             theme: {
                 extend: {
                     colors: {
-                        'rotiv-blue': '#0E4666',
-                        'rotiv-orange': '#F47C20',
+                        'Rotiv-blue': '#0E4666',
+                        'Rotiv-orange': '#F47C20',
                     }
                 },
                 fontFamily: {
@@ -43,228 +64,285 @@
 
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "Blog",
-      "name": "Blog ROTIV",
-      "description": "Blog da ROTIV com conteúdos sobre instalação de Wallbox, elétrica e soluções para clientes no Rio de Janeiro.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "ROTIV Elétrica e Refrigeração",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://rotiveletricarefrigeracao.com.br/imagens/logo-rotiv.jpg"
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Blog Rotiv",
+        "description": "Blog da Rotiv com conteúdos sobre instalação de Wallbox, elétrica e soluções para clientes no Rio de Janeiro.",
+        "url": "https://Rotiveletricarefrigeracao.com.br/blog/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Rotiv Elétrica e Refrigeração",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://Rotiveletricarefrigeracao.com.br/imagens/logo-Rotiv.jpg"
+            }
         }
-      },
-      "url": "https://rotiveletricarefrigeracao.com.br/blog/"
     }
     </script>
 
     <style>
-    .blog-hero-banner {
-        width: 100%;
-        display: block;
-        height: auto;
-    }
+        .blog-hero-banner {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
 
-    .blog-card:hover {
-        transform: translateY(-6px);
-        transition: 0.3s ease;
-    }
-</style>
+        .blog-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QESLCNM5YY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-QESLCNM5YY');
-</script>
 
 <body class="font-sans bg-gray-50">
 
+    <!-- HEADER -->
     <header class="bg-white shadow-md fixed w-full z-50 top-0">
         <div class="container mx-auto px-3 sm:px-4 py-2 flex justify-between items-center">
             <div class="flex items-center">
                 <a href="../index.html" class="w-auto">
-                <img src="../imagens/logo-rotiv.jpg" alt="Logo ROTIV Elétrica e Refrigeração" class="h-12 sm:h-16 w-auto">
+                    <img src="../imagens/logo-Rotiv.jpg" alt="Rotiv Elétrica e Refrigeração" class="h-12 sm:h-16 w-auto">
                 </a>
             </div>
 
-            <nav class="hidden md:flex space-x-4 lg:space-x-6">
-                <a href="../index.html" class="hover:text-rotiv-orange">Início</a>
-                <a href="../index.html#servicos" class="hover:text-rotiv-orange">Serviços</a>
-                <a href="../index.html#galeria" class="hover:text-rotiv-orange">Galeria</a>
-                <a href="../index.html#quem-somos" class="hover:text-rotiv-orange">Quem Somos</a>
-                <a href="./" class="text-rotiv-orange font-semibold">Blog</a>
-                <a href="../index.html#contato" class="hover:text-rotiv-orange">Contato</a>
+            <nav class="hidden md:flex space-x-4 lg:space-x-6" aria-label="Menu principal">
+                <a href="../index.html" class="text-gray-900 hover:text-Rotiv-orange font-medium">Início</a>
+                <a href="../index.html#servicos" class="text-gray-900 hover:text-Rotiv-orange font-medium">Serviços</a>
+                <a href="../index.html#galeria" class="text-gray-900 hover:text-Rotiv-orange font-medium">Galeria</a>
+                <a href="../index.html#quem-somos" class="text-gray-900 hover:text-Rotiv-orange font-medium">Quem Somos</a>
+                <a href="./" class="text-Rotiv-orange font-semibold">Blog</a>
+                <a href="#contato" class="text-gray-900 hover:text-Rotiv-orange font-medium">Contato</a>
             </nav>
 
-            <button class="md:hidden text-gray-900 focus:outline-none" id="menu-toggle" aria-label="Menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button
+                class="md:hidden text-gray-900 focus:outline-none"
+                id="menu-toggle"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+            >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
         </div>
 
-        <div class="md:hidden hidden bg-white w-full py-3 px-4 shadow-md" id="mobile-menu">
+        <div class="md:hidden hidden bg-white w-full py-3 px-4 shadow-md" id="mobile-menu" role="navigation" aria-label="Menu mobile">
             <div class="flex flex-col space-y-3">
-                <a href="../index.html" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Início</a>
-                <a href="../index.html#servicos" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Serviços</a>
-                <a href="../index.html#galeria" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Galeria</a>
-                <a href="./" class="text-rotiv-orange font-medium py-2 text-center">Blog</a>
-                <a href="../index.html#contato" class="text-gray-900 hover:text-rotiv-orange font-medium py-2 text-center">Contato</a>
+                <a href="../index.html" class="text-gray-900 hover:text-Rotiv-orange font-medium py-2 text-center">Início</a>
+                <a href="../index.html#servicos" class="text-gray-900 hover:text-Rotiv-orange font-medium py-2 text-center">Serviços</a>
+                <a href="../index.html#galeria" class="text-gray-900 hover:text-Rotiv-orange font-medium py-2 text-center">Galeria</a>
+                <a href="./" class="text-Rotiv-orange font-medium py-2 text-center">Blog</a>
+                <a href="#contato" class="text-gray-900 hover:text-Rotiv-orange font-medium py-2 text-center">Contato</a>
             </div>
         </div>
     </header>
 
-<main>
-    <section>
-        <img src="../imagens/banner-blog-rotiv.jpg" alt="Blog da ROTIV sobre instalação de Wallbox e serviços elétricos no Rio de Janeiro" class="blog-hero-banner">
-    </section>
+    <main>
 
+        <!-- BANNER -->
+        <section>
+            <img
+                src="../imagens/banner-blog-Rotiv.jpg"
+                alt="Blog da Rotiv sobre instalação de Wallbox e serviços elétricos no Rio de Janeiro"
+                class="blog-hero-banner"
+                fetchpriority="high"
+                loading="eager"
+                decoding="async"
+            >
+        </section>
+
+        <!-- ARTIGOS -->
         <section class="py-12 sm:py-16">
             <div class="container mx-auto px-4">
                 <div class="max-w-3xl mx-auto text-center mb-12">
-                    <h2 class="text-2xl sm:text-4xl font-bold text-rotiv-blue mb-4">Primeiros artigos do blog</h2>
+                    <h1 class="text-2xl sm:text-4xl font-bold text-Rotiv-blue mb-4">Primeiros artigos do blog</h1>
                     <p class="text-gray-700 text-base sm:text-lg">
                         Conteúdos criados para responder dúvidas reais de quem busca instalação de Wallbox e serviços elétricos no Rio de Janeiro.
                     </p>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+
                     <article class="blog-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
                         <div class="p-6 sm:p-8">
-                            <span class="inline-block text-sm font-semibold text-rotiv-orange mb-3">Wallbox • Guia completo</span>
-                            <h3 class="text-2xl font-bold text-rotiv-blue mb-4">
+                            <span class="inline-block text-sm font-semibold text-Rotiv-orange mb-3">Wallbox • Guia completo</span>
+                            <h2 class="text-2xl font-bold text-Rotiv-blue mb-4">
                                 Instalação de Wallbox: o que é preciso avaliar antes de instalar
-                            </h3>
+                            </h2>
                             <p class="text-gray-700 mb-6 leading-relaxed">
                                 Entenda o que deve ser analisado antes da instalação: carga elétrica, disjuntor, cabeamento, distância, proteção e segurança.
                             </p>
-                            <a href="instalacao-de-wallbox-o-que-avaliar.html" class="inline-flex items-center bg-rotiv-orange hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
+                            <a href="instalacao-de-wallbox-o-que-avaliar.html" class="inline-flex items-center bg-Rotiv-orange hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
                                 Ler artigo
-                                <i class="fas fa-arrow-right ml-2"></i>
+                                <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
                             </a>
                         </div>
                     </article>
 
                     <article class="blog-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
                         <div class="p-6 sm:p-8">
-                            <span class="inline-block text-sm font-semibold text-rotiv-orange mb-3">Rio de Janeiro • Serviço especializado</span>
-                            <h3 class="text-2xl font-bold text-rotiv-blue mb-4">
+                            <span class="inline-block text-sm font-semibold text-Rotiv-orange mb-3">Rio de Janeiro • Serviço especializado</span>
+                            <h2 class="text-2xl font-bold text-Rotiv-blue mb-4">
                                 Quem instala Wallbox no Rio de Janeiro?
-                            </h3>
+                            </h2>
                             <p class="text-gray-700 mb-6 leading-relaxed">
                                 Saiba como escolher um profissional ou empresa para instalar Wallbox com segurança, qualidade e atendimento no RJ.
                             </p>
-                            <a href="quem-instala-wallbox-no-rio-de-janeiro.html" class="inline-flex items-center bg-rotiv-orange hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
+                            <a href="quem-instala-wallbox-no-rio-de-janeiro.html" class="inline-flex items-center bg-Rotiv-orange hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
                                 Ler artigo
-                                <i class="fas fa-arrow-right ml-2"></i>
+                                <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
                             </a>
                         </div>
                     </article>
+                    
+                    <article class="blog-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="p-6 sm:p-8">
+                            <span class="inline-block text-sm font-semibold text-Rotiv-orange mb-3">Ar-Condicionado • Manutenção</span>
+                            <h2 class="text-2xl font-bold text-Rotiv-blue mb-4">
+                                Higienização de Ar-Condicionado: Saiba sobre todas as vantagenscos e benefícios
+                            </h2>
+                            <p class="text-gray-700 mb-6 leading-relaxed">
+                                O que acontece quando você não higieniza o ar-condicionado e quais são os benefícios de uma limpeza profissional.
+                            </p>
+                            <a href="higienizacao-de-ar-condicionado.html" class="inline-flex items-center bg-Rotiv-orange hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
+                                Ler artigo
+                                <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
                 </div>
             </div>
         </section>
 
+        <!-- CTA -->
         <section class="py-12 sm:py-16 bg-white">
             <div class="container mx-auto px-4">
-                <div class="max-w-4xl mx-auto bg-rotiv-blue text-white rounded-3xl p-8 sm:p-12 text-center shadow-xl">
+                <div class="max-w-4xl mx-auto bg-Rotiv-blue text-white rounded-3xl p-8 sm:p-12 text-center shadow-xl">
                     <h2 class="text-2xl sm:text-4xl font-bold mb-4">Precisa instalar um Wallbox com segurança?</h2>
                     <p class="text-base sm:text-lg mb-8 text-gray-100">
-                        A ROTIV atende clientes residenciais e comerciais no Rio de Janeiro com foco em segurança, organização e execução profissional.
+                        A Rotiv atende clientes residenciais e comerciais no Rio de Janeiro com foco em segurança, organização e execução profissional.
                     </p>
-                    <a href="#" onclick="openWhatsAppBlog(event)" class="inline-flex items-center bg-rotiv-orange hover:bg-orange-600 text-white text-lg font-bold px-8 py-4 rounded-full shadow-lg transition">
+                    <button
+                        type="button"
+                        onclick="openWhatsAppBlog()"
+                        class="inline-flex items-center bg-Rotiv-orange hover:bg-orange-600 text-white text-lg font-bold px-8 py-4 rounded-full shadow-lg transition"
+                        aria-label="Solicitar orçamento pelo WhatsApp"
+                    >
                         Solicitar orçamento no WhatsApp
-                        <i class="fab fa-whatsapp ml-3 text-xl"></i>
-                    </a>
+                        <i class="fab fa-whatsapp ml-3 text-xl" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
         </section>
+
     </main>
 
+    <!-- FOOTER -->
     <footer id="contato" class="bg-gray-900 text-white pt-8 sm:pt-12 pb-4 sm:pb-6">
-    <div class="container mx-auto px-4">
-        <div class="flex flex-wrap">
-            <div class="w-full md:w-1/3 mb-6 sm:mb-8 footer-section">
-                <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Contato</h3>
-                <p class="flex items-center mb-2 sm:mb-3 md:justify-start justify-center text-sm sm:text-base">
-                    <i class="fas fa-phone mr-3 text-rotiv-orange"></i>
-                    <span>&#40;21&#41; 97112-9223</span>
-                </p>
-                <p class="flex items-center mb-2 sm:mb-3 md:justify-start justify-center text-sm sm:text-base">
-                    <i class="fas fa-envelope mr-3 text-rotiv-orange"></i>
-                    <span>rotiveletrica@gmail.com</span>
-                </p>
-                <p class="flex items-center mb-2 sm:mb-3 md:justify-start justify-center text-sm sm:text-base">
-                    <i class="fas fa-map-marker-alt mr-3 text-rotiv-orange"></i>
-                    <span>Nova Iguaçu, RJ</span>
-                </p>
-                <div class="flex mt-4 sm:mt-6 md:justify-start justify-center">
-                    <a href="#" class="mr-4 hover:text-rotiv-orange transition-colors" onclick="openWhatsAppBlog(event)">
-                        <i class="fab fa-whatsapp text-xl sm:text-2xl"></i>
-                    </a>
-                    <a href="https://www.instagram.com/rotiv2018/" target="_blank" rel="noopener noreferrer" class="mr-4 hover:text-rotiv-orange transition-colors">
-                        <i class="fab fa-instagram text-xl sm:text-2xl"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@rotiv2018" target="_blank" rel="noopener noreferrer" class="hover:text-rotiv-orange transition-colors">
-                        <i class="fab fa-tiktok text-xl sm:text-2xl"></i>
-                    </a>
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap">
+
+                <!-- Contato -->
+                <div class="w-full md:w-1/3 mb-6 sm:mb-8 footer-section">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Contato</h3>
+                    <p class="flex items-center mb-2 sm:mb-3 md:justify-start justify-center text-sm sm:text-base">
+                        <i class="fas fa-phone mr-3 text-Rotiv-orange" aria-hidden="true"></i>
+                        <a href="tel:+5521971129223" class="hover:text-Rotiv-orange transition-colors">(21) 97112-9223</a>
+                    </p>
+                    <p class="flex items-center mb-2 sm:mb-3 md:justify-start justify-center text-sm sm:text-base">
+                        <i class="fas fa-envelope mr-3 text-Rotiv-orange" aria-hidden="true"></i>
+                        <a href="mailto:rotiveletrica@gmail.com" class="hover:text-Rotiv-orange transition-colors">rotiveletrica@gmail.com</a>
+                    </p>
+                    <p class="flex items-center mb-2 sm:mb-3 md:justify-start justify-center text-sm sm:text-base">
+                        <i class="fas fa-map-marker-alt mr-3 text-Rotiv-orange" aria-hidden="true"></i>
+                        <span>Nova Iguaçu, RJ</span>
+                    </p>
+                    <div class="flex mt-4 sm:mt-6 md:justify-start justify-center gap-4">
+                        <a href="#" onclick="openWhatsAppBlog(); return false;" class="hover:text-Rotiv-orange transition-colors" aria-label="WhatsApp da Rotiv">
+                            <i class="fab fa-whatsapp text-xl sm:text-2xl" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.instagram.com/Rotiv2018/" target="_blank" rel="noopener noreferrer" class="hover:text-Rotiv-orange transition-colors" aria-label="Instagram da Rotiv">
+                            <i class="fab fa-instagram text-xl sm:text-2xl" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@Rotiv2018" target="_blank" rel="noopener noreferrer" class="hover:text-Rotiv-orange transition-colors" aria-label="TikTok da Rotiv">
+                            <i class="fab fa-tiktok text-xl sm:text-2xl" aria-hidden="true"></i>
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Serviços -->
+                <!-- Serviços -->
+                <div class="w-full md:w-1/3 mb-6 sm:mb-8 footer-section">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Serviços</h3>
+                    <ul class="space-y-1 sm:space-y-2 text-sm sm:text-base">
+                        <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Instalações Elétricas</a></li>
+                        <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Ar-Condicionado</a></li>
+                        <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Automação Residencial</a></li>
+                        <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Padrão Light</a></li>
+                        <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Instalação de Wallbox</a></li>
+                        <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Fabricação de Quadros Elétricos</a></li>
+                        
+                    </ul>
+                </div>
+
+                <!-- Sobre -->
+                <div class="w-full md:w-1/3 mb-6 sm:mb-8 footer-section">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Sobre a Rotiv</h3>
+                    <p class="mb-3 sm:mb-4 text-sm sm:text-base">
+                        Empresa especializada em instalações elétricas e refrigeração, atendendo clientes residenciais e comerciais desde 2018.
+                    </p>
+                    <p class="text-sm sm:text-base">
+                        Mais do que serviços elétricos, entregamos segurança e tranquilidade. A Rotiv evoluiu de uma equipe apaixonada para se tornar uma referência em soluções de elétrica e climatização.
+                    </p>
+                </div>
+
             </div>
 
-            <div class="w-full md:w-1/3 mb-6 sm:mb-8 footer-section">
-                <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Serviços</h3>
-                <ul class="space-y-1 sm:space-y-2 text-sm sm:text-base">
-                    <li><a href="../index.html#servicos" class="hover:text-rotiv-orange transition-colors">Instalações Elétricas</a></li>
-                    <li><a href="../index.html#servicos" class="hover:text-rotiv-orange transition-colors">Ar-Condicionado</a></li>
-                    <li><a href="../index.html#servicos" class="hover:text-rotiv-orange transition-colors">Automação Residencial</a></li>
-                    <li><a href="../index.html#servicos" class="hover:text-rotiv-orange transition-colors">Padrão Light</a></li>
-                    <li><a href="../index.html#servicos" class="hover:text-rotiv-orange transition-colors">Instalações Comerciais</a></li>
-                    <li><a href="../index.html#servicos" class="hover:text-rotiv-orange transition-colors">Fabricação de Quadros Elétricos</a></li>
-                </ul>
-            </div>
-
-            <div class="w-full md:w-1/3 mb-6 sm:mb-8 footer-section">
-                <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Sobre a ROTIV</h3>
-                <p class="mb-3 sm:mb-4 text-sm sm:text-base">
-                    Empresa especializada em instalações elétricas e refrigeração, atendendo clientes residenciais e comerciais desde 2018.
-                </p>
-                <p class="text-sm sm:text-base">
-                    Mais do que serviços elétricos, entregamos segurança e tranquilidade. A Rotiv evoluiu de uma equipe apaixonada para se tornar uma referência em soluções de elétrica e climatização. Nosso foco é combinar técnica apurada com um atendimento próximo, garantindo a excelência em cada projeto e fortalecendo a confiança que nos une aos nossos clientes.
-                </p>
+            <div class="border-t border-gray-800 mt-6 sm:mt-8 pt-4 sm:pt-6 text-center text-xs sm:text-sm text-gray-400">
+                <p>&copy; <span id="current-year">2026</span> Rotiv. Todos os direitos reservados.</p>
             </div>
         </div>
+    </footer>
 
-        <div class="border-t border-gray-800 mt-6 sm:mt-8 pt-4 sm:pt-6 text-center text-xs sm:text-sm text-gray-400">
-            <p>&copy; 2025 ROTIV. Todos os direitos reservados.</p>
-        </div>
-    </div>
-</footer>
+    <!-- BOTÃO FLUTUANTE WHATSAPP -->
+    <button
+        type="button"
+        onclick="openWhatsAppBlog()"
+        aria-label="Entre em contato pelo WhatsApp"
+        id="whatsapp-fab"
+    >
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </button>
 
-    <a href="#" onclick="openWhatsAppBlog(event)" aria-label="Entre em contato pelo WhatsApp" id="whatsapp-fab">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Menu mobile
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
-
         if (menuToggle && mobileMenu) {
             menuToggle.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
+                const expanded = !mobileMenu.classList.contains('hidden');
+                menuToggle.setAttribute('aria-expanded', expanded);
             });
         }
 
-        function openWhatsAppBlog(event) {
-            if (event) event.preventDefault();
-            const phoneNumber = "5521971129223";
-            const message = encodeURIComponent("Olá! Vi o blog da ROTIV e gostaria de solicitar um orçamento para instalação de Wallbox.");
-            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        // Copyright dinâmico
+        const yearEl = document.getElementById('current-year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        // WhatsApp
+        function openWhatsAppBlog() {
+                    const phoneNumber = "5521971129223";
+            const message = encodeURIComponent("Olá! Gostaria de solicitar um orçamento pelo site da Rotiv.");
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
         }
     </script>
+
 </body>
 </html>
