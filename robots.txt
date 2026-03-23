@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://Rotiveletricarefrigeracao.com.br/sitemap.xml
+Sitemap: https://rotiveletricarefrigeracao.com.br/sitemap.xml

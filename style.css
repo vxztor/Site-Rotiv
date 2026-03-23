@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+/* ================================================ */
+/* FONT DISPLAY — evita texto invisível             */
+/* ================================================ */
+
+@font-face {
+    font-family: 'Montserrat';
+    font-display: swap;
+}
 
 /* ================================================ */
 /* BASE                                             */
