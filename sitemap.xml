@@ -49,5 +49,18 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
- 
+    
+    <url>
+        <loc>https://rotiveletricarefrigeracao.com.br/blog/padrao-de-entrada-de-energia-o-que-e-quando-instalar.html</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://rotiveletricarefrigeracao.com.br/blog/ar-condicionado-nao-gela-principais-causas.html</loc>
+        <lastmod>2026-07-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
 </urlset>

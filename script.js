@@ -187,14 +187,30 @@ document.addEventListener('DOMContentLoaded', function () {
         { nome: "eletrica-36", alt: "Montagem e organização elétrica" },
         { nome: "eletrica-37", alt: "Serviço técnico de elétrica" },
         { nome: "eletrica-38", alt: "Instalação elétrica realizada pela ROTIV" },
-        { nome: "eletrica-39", alt: "Serviço de elétrica com acabamento limpo" }
+        { nome: "eletrica-39", alt: "Serviço de elétrica com acabamento limpo" },
+        { nome: "eletrica-40", alt: "Serviço de elétrica" },
+        { nome: "eletrica-41", alt: "Padrão de entrada instalado" },
+        { nome: "eletrica-42", alt: "Serviço de elétrica com DPS e DR" },
+        { nome: "eletrica-43", alt: "Serviço de elétrica com disjuntor exclusivo" }
     ];
 
     const imagensArExtras = [
         { nome: "ar-condicionado-24", alt: "Serviço de instalação de ar-condicionado" },
         { nome: "ar-condicionado-25", alt: "Instalação de ar-condicionado residencial" },
         { nome: "ar-condicionado-26", alt: "Serviço técnico de ar-condicionado" },
-        { nome: "ar-condicionado-27", alt: "Instalação profissional de ar-condicionado" }
+        { nome: "ar-condicionado-27", alt: "Instalação profissional de ar-condicionado" },
+        { nome: "ar-condicionado-28", alt: "Serviço de ar-condicionado com acabamento limpo" },
+        { nome: "ar-condicionado-29", alt: "Instalação de ar-condicionado em Nova Iguaçu" },
+        { nome: "ar-condicionado-30", alt: "Serviço de ar-condicionado com segurança" },
+        { nome: "ar-condicionado-31", alt: "Instalação de ar-condicionado comercial" },
+        { nome: "ar-condicionado-32", alt: "Serviço de ar-condicionado com organização" },
+        { nome: "ar-condicionado-33", alt: "Instalação de ar-condicionado residencial e comercial" },
+        { nome: "ar-condicionado-34", alt: "Serviço de ar-condicionado com acabamento profissional" },
+        { nome: "ar-condicionado-35", alt: "Instalação de ar-condicionado com terminal WAGO" },
+        { nome: "ar-condicionado-36", alt: "Serviço de ar-condicionado em ambiente residencial" },
+        { nome: "ar-condicionado-37", alt: "Instalação de ar-condicionado com segurança" },
+        { nome: "ar-condicionado-38", alt: "Serviço de ar-condicionado realizado pela ROTIV" },
+        { nome: "ar-condicionado-39", alt: "Instalação de ar-condicionado com acabamento limpo" }
     ];
 
     const imagensComandosExtras = [
@@ -204,7 +220,15 @@ document.addEventListener('DOMContentLoaded', function () {
         { nome: "comando-12", alt: "Painel elétrico industrial com acabamento profissional – ROTIV" },
         { nome: "comando-13", alt: "Instalação de quadro de disjuntores em condomínio – ROTIV RJ" },
         { nome: "comando-14", alt: "Quadro elétrico com DPS e DR instalado pela ROTIV em Nova Iguaçu" },
-        { nome: "comando-15", alt: "Painel de comando elétrico finalizado pela equipe ROTIV" }
+        { nome: "comando-15", alt: "Painel de comando elétrico finalizado pela equipe ROTIV" },
+        { nome: "comando-16", alt: "Montagem de quadro elétrico com organização de cabos – ROTIV" },
+        { nome: "comando-17", alt: "Painel elétrico com disjuntor exclusivo para segurança – ROTIV RJ" },
+        { nome: "comando-18", alt: "Instalação de quadro de comando elétrico residencial – ROTIV" },
+        { nome: "comando-19", alt: "Quadro elétrico com aterramento adequado – ROTIV Nova Iguaçu" },
+        { nome: "comando-20", alt: "Painel elétrico com acabamento limpo e profissional – ROTIV" },
+        { nome: "comando-21", alt: "Montagem de quadro elétrico com terminal WAGO – ROTIV RJ" },
+        { nome: "comando-22", alt: "Painel de comando elétrico com organização de cabos – ROTIV" },
+        { nome: "comando-23", alt: "Instalação de quadro elétrico com proteção elétrica – ROTIV Nova Iguaçu" }
     ];
 
     const imagensWallboxExtras = [
@@ -215,7 +239,8 @@ document.addEventListener('DOMContentLoaded', function () {
         { nome: "outros-15", alt: "Infraestrutura elétrica para Wallbox em condomínio – ROTIV" },
         { nome: "outros-16", alt: "Carregador elétrico Wallbox com disjuntor exclusivo – ROTIV Nova Iguaçu" },
         { nome: "outros-17", alt: "Instalação de Wallbox com organização de cabos profissional – ROTIV" },
-        { nome: "outros-18", alt: "Ponto de abastecimento elétrico para veículo instalado pela ROTIV RJ" }
+        { nome: "outros-18", alt: "Ponto de abastecimento elétrico para veículo instalado pela ROTIV RJ" },
+        { nome: "outros-19", alt: "Wallbox com aterramento adequado e proteção elétrica – ROTIV" }
     ];
 
     // ================================================
