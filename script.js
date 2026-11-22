@@ -463,6 +463,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // ================================================
 
     window.openWhatsApp = function () {
+        if (typeof gtag_report_conversion === 'function') {
+            gtag_report_conversion();
+        }
         window.open(window.currentWhatsAppLink, '_blank', 'noopener,noreferrer');
     };
 
@@ -473,6 +476,9 @@ document.addEventListener('DOMContentLoaded', function () {
 // ================================================
 
 function openWhatsAppService(serviceType) {
+    if (typeof gtag_report_conversion === 'function') {
+        gtag_report_conversion();
+    }
     const PHONE_NUMBER = "5521971129223";
 
     const mensagens = {

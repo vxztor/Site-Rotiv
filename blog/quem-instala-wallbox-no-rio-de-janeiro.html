@@ -43,6 +43,23 @@
   gtag('js', new Date());
   gtag('config', 'G-QESLCNM5YY');
   gtag('config', 'AW-17170517876');
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) !== 'undefined') {
+        window.location = url;
+      }
+    };
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17170517876/wMl_COiJyL0dEPSexfs_',
+        'transport_type': 'beacon',
+        'event_callback': callback
+      });
+    } else if (typeof(url) !== 'undefined') {
+      window.location = url;
+    }
+    return typeof(url) === 'undefined';
+  }
 </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -294,6 +311,7 @@
                             href="https://wa.me/5521971129223?text=Ol%C3%A1!%20Li%20o%20artigo%20sobre%20instala%C3%A7%C3%A3o%20de%20Wallbox%20no%20Rio%20de%20Janeiro%20no%20site%20da%20Rotiv%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
                             target="_blank"
                             rel="noopener noreferrer"
+                            onclick="gtag_report_conversion();"
                             class="inline-flex items-center gap-2 bg-Rotiv-orange hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-full transition-colors duration-300 text-base"
                             aria-label="Solicitar orçamento pelo WhatsApp"
                         >
@@ -329,7 +347,7 @@
                         <span>Nova Iguaçu, RJ</span>
                     </p>
                     <div class="flex mt-4 sm:mt-6 md:justify-start justify-center gap-4">
-                        <a href="#" onclick="openWhatsAppBlog(); return false;" class="hover:text-Rotiv-orange transition-colors" aria-label="WhatsApp da Rotiv">
+                        <a href="#" onclick="openWhatsAppArticle(); return false;" class="hover:text-Rotiv-orange transition-colors" aria-label="WhatsApp da Rotiv">
                             <i class="fab fa-whatsapp text-xl sm:text-2xl" aria-hidden="true"></i>
                         </a>
                         <a href="https://www.instagram.com/Rotiv2018/" target="_blank" rel="noopener noreferrer" class="hover:text-Rotiv-orange transition-colors" aria-label="Instagram da Rotiv">
@@ -403,6 +421,7 @@
 
         // WhatsApp
         function openWhatsAppArticle() {
+            gtag_report_conversion();
                     const phoneNumber = "5521971129223";
             const message = encodeURIComponent("Olá! Li o artigo sobre instalação de Wallbox no Rio de Janeiro no site da Rotiv e gostaria de solicitar um orçamento.");
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
