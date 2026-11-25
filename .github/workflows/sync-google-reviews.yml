@@ -1,0 +1,42 @@
+name: Atualizar Avaliações do Google
+
+on:
+  # Automação agendada pausada (Places API exige faturamento no Google Cloud).
+  # Para reativar no futuro, basta descomentar as duas linhas abaixo:
+  # schedule:
+  #   - cron: '0 8,20 * * *'
+  workflow_dispatch:
+    # Permite atualizar manualmente na hora caso ative o faturamento no futuro
+
+permissions:
+  contents: write
+
+jobs:
+  sync-reviews:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Buscar nota, total e comentários no Google Places API
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+        run: python scripts/sync_google_reviews.py
+
+      - name: Publicar alterações se houver novas avaliações
+        run: |
+          git config user.name "Rotiv Bot"
+          git config user.email "rotiveletrica@gmail.com"
+          git add data/reviews.json index.html
+          if git diff --cached --quiet; then
+            echo "Nenhuma novidade nas avaliações do Google."
+          else
+            git commit -m "chore(reviews): atualizar avaliações do Google"
+            git push
+          fi

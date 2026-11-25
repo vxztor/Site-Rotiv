@@ -2,8 +2,9 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../imagens/logo-Rotiv.jpg" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" sizes="32x32" href="../imagens/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../imagens/apple-touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Blog Rotiv | Wallbox, Instalações Elétricas e Dicas no Rio de Janeiro</title>
     <meta name="description" content="Leia no Blog da Rotiv conteúdos sobre instalação de Wallbox, elétrica residencial e comercial, segurança, custos e dicas para clientes no Rio de Janeiro.">
@@ -15,14 +16,14 @@
     <meta property="og:description" content="Conteúdos sobre instalação de Wallbox, elétrica e soluções para residências e empresas no Rio de Janeiro.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rotiveletricarefrigeracao.com.br/blog/">
-    <meta property="og:image" content="https://rotiveletricarefrigeracao.com.br/imagens/logo-Rotiv.jpg">
+    <meta property="og:image" content="https://rotiveletricarefrigeracao.com.br/imagens/og-rotiv.jpg">
     <meta property="og:locale" content="pt_BR">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Blog Rotiv | Wallbox, Instalações Elétricas e Dicas no Rio de Janeiro">
     <meta name="twitter:description" content="Conteúdos sobre instalação de Wallbox, elétrica e soluções para residências e empresas no Rio de Janeiro.">
-    <meta name="twitter:image" content="https://rotiveletricarefrigeracao.com.br/imagens/logo-Rotiv.jpg">
+    <meta name="twitter:image" content="https://rotiveletricarefrigeracao.com.br/imagens/og-rotiv.jpg">
 
     <!-- Cor do navegador mobile -->
     <meta name="theme-color" content="#0E4666">
@@ -30,11 +31,10 @@
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <!-- Google Fonts não bloqueante -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"></noscript>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap"></noscript>
 
     <!-- Google Tag Manager -->                            <script async src="https://www.googletagmanager.com/gtag/js?id=G-QESLCNM5YY"></script>
 <script>
@@ -43,44 +43,31 @@
   gtag('js', new Date());
   gtag('config', 'G-QESLCNM5YY');
   gtag('config', 'AW-17170517876');
-  function gtag_report_conversion(url) {
-    var callback = function () {
-      if (typeof(url) !== 'undefined') {
-        window.location = url;
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+          'send_to': 'AW-17170517876/wMl_COiJyL0dEPSexfs_',
+          'transport_type': 'beacon',
+          'event_callback': callback
+        });
+        return false;
       }
-    };
-    if (typeof gtag === 'function') {
-      gtag('event', 'conversion', {
-        'send_to': 'AW-17170517876/wMl_COiJyL0dEPSexfs_',
-        'transport_type': 'beacon',
-        'event_callback': callback
+      document.addEventListener('click', function (e) {
+        var link = e.target && e.target.closest ? e.target.closest('a[href*="wa.me/"], a[href*="api.whatsapp.com/send"]') : null;
+        if (link && typeof gtag_report_conversion === 'function') {
+          gtag_report_conversion();
+        }
       });
-    } else if (typeof(url) !== 'undefined') {
-      window.location = url;
-    }
-    return typeof(url) === 'undefined';
-  }
 </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../style.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'Rotiv-blue': '#0E4666',
-                        'Rotiv-orange': '#F47C20',
-                    }
-                },
-                fontFamily: {
-                    'sans': ['Montserrat', 'sans-serif'],
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="../css/tailwind.min.css?v=20261125j">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="../style.css?v=20261125j">
 
     <script type="application/ld+json">
     {
@@ -94,52 +81,42 @@
             "name": "Rotiv Elétrica e Refrigeração",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://rotiveletricarefrigeracao.com.br/imagens/logo-Rotiv.jpg"
+                "url": "https://rotiveletricarefrigeracao.com.br/imagens/logo-rotiv.png"
             }
         }
     }
     </script>
-
-    <style>
-        .blog-hero-banner {
-            width: 100%;
-            display: block;
-            height: auto;
-        }
-
-        .blog-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
-        }
-    </style>
 </head>
 
 <body class="font-sans bg-gray-50">
 
     <!-- HEADER -->
-    <header class="bg-white shadow-md fixed w-full z-50 top-0">
-        <div class="container mx-auto px-3 sm:px-4 py-2 flex justify-between items-center">
-            <div class="flex items-center">
-                <a href="../index.html" class="w-auto">
-                    <img src="../imagens/logo-Rotiv.jpg" alt="Rotiv Elétrica e Refrigeração" class="h-12 sm:h-16 w-auto">
-                </a>
-            </div>
+    <header class="bg-white shadow-sm border-b border-gray-100 sticky w-full z-50 top-0">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center gap-4">
+            <a href="../index.html" class="flex items-center flex-shrink-0" aria-label="Rotiv Elétrica e Refrigeração - Voltar ao início">
+                <img src="../imagens/logo-rotiv.webp" alt="Rotiv Elétrica e Refrigeração" class="h-6 sm:h-7 w-auto" width="380" height="112" decoding="async">
+            </a>
 
-            <nav class="hidden md:flex space-x-4 lg:space-x-6" aria-label="Menu principal">
-                <a href="../index.html" class="text-gray-900 hover:text-Rotiv-orange font-medium">Início</a>
-                <a href="../index.html#servicos" class="text-gray-900 hover:text-Rotiv-orange font-medium">Serviços</a>
-                <a href="../index.html#galeria" class="text-gray-900 hover:text-Rotiv-orange font-medium">Galeria</a>
-                <a href="../index.html#quem-somos" class="text-gray-900 hover:text-Rotiv-orange font-medium">Quem Somos</a>
-                <a href="./" class="text-Rotiv-orange font-semibold">Blog</a>
-                <a href="#contato" class="text-gray-900 hover:text-Rotiv-orange font-medium">Contato</a>
+            <nav class="hidden md:flex items-center space-x-4 lg:space-x-6" aria-label="Menu principal">
+                <a href="../index.html" class="text-Rotiv-blue hover:text-Rotiv-orange font-heading font-semibold text-sm transition-colors">Início</a>
+                <a href="../index.html#servicos" class="text-Rotiv-blue hover:text-Rotiv-orange font-heading font-semibold text-sm transition-colors">Serviços</a>
+                <a href="../index.html#areas-atendidas" class="text-Rotiv-blue hover:text-Rotiv-orange font-heading font-semibold text-sm transition-colors">Área</a>
+                <a href="../index.html#galeria" class="text-Rotiv-blue hover:text-Rotiv-orange font-heading font-semibold text-sm transition-colors">Galeria</a>
+                <a href="./" class="text-Rotiv-orange font-heading font-semibold text-sm transition-colors">Blog</a>
+                <a href="#contato" class="text-Rotiv-blue hover:text-Rotiv-orange font-heading font-semibold text-sm transition-colors">Contato</a>
             </nav>
 
+            <a
+                href="../orcamento/"
+                class="hidden lg:inline-flex items-center gap-2 bg-Rotiv-orange hover:bg-orange-600 text-white font-heading font-bold text-sm px-4 py-2.5 rounded-lg transition-colors shadow-sm"
+            >
+                <i class="fas fa-clipboard-list text-sm" aria-hidden="true"></i>
+                Solicitar Orçamento
+            </a>
+
             <button
-                class="md:hidden text-gray-900 focus:outline-none"
+                type="button"
+                class="md:hidden text-Rotiv-blue p-2 rounded-lg focus:outline-none"
                 id="menu-toggle"
                 aria-label="Abrir menu"
                 aria-expanded="false"
@@ -151,217 +128,235 @@
             </button>
         </div>
 
-        <div class="md:hidden hidden bg-white w-full py-3 px-4 shadow-md" id="mobile-menu" role="navigation" aria-label="Menu mobile">
-            <div class="flex flex-col space-y-3">
-                <a href="../index.html" class="text-gray-900 hover:text-Rotiv-orange font-medium py-2 text-center">Início</a>
-                <a href="../index.html#servicos" class="text-gray-900 hover:text-Rotiv-orange font-medium py-2 text-center">Serviços</a>
-                <a href="../index.html#galeria" class="text-gray-900 hover:text-Rotiv-orange font-medium py-2 text-center">Galeria</a>
-                <a href="./" class="text-Rotiv-orange font-medium py-2 text-center">Blog</a>
-                <a href="#contato" class="text-gray-900 hover:text-Rotiv-orange font-medium py-2 text-center">Contato</a>
+        <div class="md:hidden hidden absolute left-0 right-0 top-full bg-white w-full py-3 px-4 shadow-md border-t border-gray-100" id="mobile-menu" role="navigation" aria-label="Menu mobile">
+            <div class="flex flex-col space-y-2">
+                <a href="../index.html" class="text-Rotiv-blue hover:text-Rotiv-orange font-heading font-semibold py-2 text-center">Início</a>
+                <a href="../index.html#servicos" class="text-Rotiv-blue hover:text-Rotiv-orange font-heading font-semibold py-2 text-center">Serviços</a>
+                <a href="../index.html#areas-atendidas" class="text-Rotiv-blue hover:text-Rotiv-orange font-heading font-semibold py-2 text-center">Área</a>
+                <a href="../index.html#galeria" class="text-Rotiv-blue hover:text-Rotiv-orange font-heading font-semibold py-2 text-center">Galeria</a>
+                <a href="./" class="text-Rotiv-orange font-heading font-semibold py-2 text-center">Blog</a>
+                <a href="#contato" class="text-Rotiv-blue hover:text-Rotiv-orange font-heading font-semibold py-2 text-center">Contato</a>
+                <a href="../orcamento/" class="mt-2 inline-flex items-center justify-center gap-2 bg-Rotiv-orange text-white font-heading font-bold py-3 px-4 rounded-lg">
+                    <i class="fas fa-clipboard-list" aria-hidden="true"></i> Solicitar Orçamento
+                </a>
             </div>
         </div>
     </header>
 
     <main>
 
-        <!-- BANNER -->
-        <section>
-            <img
-                src="../imagens/banner-blog-Rotiv.jpg"
-                alt="Blog da Rotiv sobre instalação de Wallbox e serviços elétricos no Rio de Janeiro"
-                class="blog-hero-banner"
-                fetchpriority="high"
-                loading="eager"
-                decoding="async"
-            >
-        </section>
+        <!-- BANNER HERO DO BLOG EM HTML COM DEGRADÊ (PADRÃO ROTIV) -->
+        <section class="rotiv-hero rotiv-hero-blog">
+            <div class="rotiv-hero-accent-line" aria-hidden="true"></div>
 
-        <!-- ARTIGOS -->
-        <section class="py-12 sm:py-16">
-            <div class="container mx-auto px-4">
-                <div class="max-w-3xl mx-auto text-center mb-12">
-                    <h1 class="text-2xl sm:text-4xl font-bold text-Rotiv-blue mb-4">Artigos do blog</h1>
-                    <p class="text-gray-700 text-base sm:text-lg">
-                        Conteúdos criados para responder dúvidas reais de quem busca serviços elétricos, Wallbox e ar-condicionado no Rio de Janeiro.
+            <div class="rotiv-hero-bg" aria-hidden="true"></div>
+            <div class="rotiv-hero-scrim" aria-hidden="true"></div>
+
+            <div class="container mx-auto px-4 py-12 sm:py-16 relative z-10">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h1 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-4">
+                        Conteúdos sobre Elétrica, Wallbox e Climatização
+                    </h1>
+
+                    <p class="text-white text-opacity-90 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-7">
+                        Guias práticos e orientações técnicas para residências, condomínios e empresas em Nova Iguaçu e todo o Rio de Janeiro.
                     </p>
-                </div>
 
-                <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-
-                    <!-- Artigo 1 -->
-                    <article class="blog-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-                        <div class="p-6 sm:p-8">
-                            <span class="inline-block text-sm font-semibold text-Rotiv-orange mb-3">Wallbox • Guia completo</span>
-                            <h2 class="text-2xl font-bold text-Rotiv-blue mb-4">
-                                Instalação de Wallbox: o que é preciso avaliar antes de instalar
-                            </h2>
-                            <p class="text-gray-700 mb-6 leading-relaxed">
-                                Entenda o que deve ser analisado antes da instalação: carga elétrica, disjuntor, cabeamento, distância, proteção e segurança.
-                            </p>
-                            <a href="instalacao-de-wallbox-o-que-avaliar.html" class="inline-flex items-center bg-Rotiv-orange hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
-                                Ler artigo
-                                <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Artigo 2 -->
-                    <article class="blog-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-                        <div class="p-6 sm:p-8">
-                            <span class="inline-block text-sm font-semibold text-Rotiv-orange mb-3">Rio de Janeiro • Serviço especializado</span>
-                            <h2 class="text-2xl font-bold text-Rotiv-blue mb-4">
-                                Quem instala Wallbox no Rio de Janeiro?
-                            </h2>
-                            <p class="text-gray-700 mb-6 leading-relaxed">
-                                Saiba como escolher um profissional ou empresa para instalar Wallbox com segurança, qualidade e atendimento no RJ.
-                            </p>
-                            <a href="quem-instala-wallbox-no-rio-de-janeiro.html" class="inline-flex items-center bg-Rotiv-orange hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
-                                Ler artigo
-                                <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Artigo 3 -->
-                    <article class="blog-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-                        <div class="p-6 sm:p-8">
-                            <span class="inline-block text-sm font-semibold text-Rotiv-orange mb-3">Ar-Condicionado • Manutenção</span>
-                            <h2 class="text-2xl font-bold text-Rotiv-blue mb-4">
-                                Higienização de Ar-Condicionado: vantagens e benefícios
-                            </h2>
-                            <p class="text-gray-700 mb-6 leading-relaxed">
-                                O que acontece quando você não higieniza o ar-condicionado e quais são os benefícios de uma limpeza profissional.
-                            </p>
-                            <a href="higienizacao-de-ar-condicionado.html" class="inline-flex items-center bg-Rotiv-orange hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
-                                Ler artigo
-                                <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Artigo 4 -->
-                    <article class="blog-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-                        <div class="p-6 sm:p-8">
-                            <span class="inline-block text-sm font-semibold text-Rotiv-orange mb-3">Automação • Guia prático</span>
-                            <h2 class="text-2xl font-bold text-Rotiv-blue mb-4">
-                                Automação Residencial: O que é? Como Funciona?
-                            </h2>
-                            <p class="text-gray-700 mb-6 leading-relaxed">
-                                Entenda como automatizar luzes, tomadas e climatização da sua casa com segurança e custo acessível no Rio de Janeiro.
-                            </p>
-                            <a href="automacao-residencial-como-funciona.html" class="inline-flex items-center bg-Rotiv-orange hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
-                                Ler artigo
-                                <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Artigo 5 -->
-                    <article class="blog-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-                        <div class="p-6 sm:p-8">
-                            <span class="inline-block text-sm font-semibold text-Rotiv-orange mb-3">Elétrica • Segurança</span>
-                            <h2 class="text-2xl font-bold text-Rotiv-blue mb-4">
-                                Instalação elétrica antiga: sinais de que está na hora de renovar
-                            </h2>
-                            <p class="text-gray-700 mb-6 leading-relaxed">
-                                Conheça os principais sinais de alerta de uma instalação elétrica fora das normas e os riscos de adiar essa decisão.
-                            </p>
-                            <a href="instalacao-eletrica-quando-renovar.html" class="inline-flex items-center bg-Rotiv-orange hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
-                                Ler artigo
-                                <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Artigo 6 -->
-                    <article class="blog-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-                        <div class="p-6 sm:p-8">
-                           <span class="inline-block text-sm font-semibold text-Rotiv-orange mb-3">Elétrica • Padrão de Entrada de Energia</span>
-                            <h2 class="text-2xl font-bold text-Rotiv-blue mb-4">
-                            Padrão de Entrada de Energia: o que é e quando você precisa instalar
-                            </h2>
-                            <p class="text-gray-700 mb-6 leading-relaxed">
-                                Entenda o que é o Padrão de Entrada de Energia, quando ele é obrigatório e o que é avaliado na instalação.
-                            </p>
-                            <a href="padrao-de-entrada-de-energia-o-que-e-quando-instalar.html" class="inline-flex items-center bg-Rotiv-orange hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
-                                Ler artigo
-                                <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Artigo 7 -->
-                    <article class="blog-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-                        <div class="p-6 sm:p-8">
-                            <span class="inline-block text-sm font-semibold text-Rotiv-orange mb-3">Ar-Condicionado • Diagnóstico</span>
-                            <h2 class="text-2xl font-bold text-Rotiv-blue mb-4">
-                                Ar-condicionado não gela: principais causas
-                            </h2>
-                            <p class="text-gray-700 mb-6 leading-relaxed">
-                                Descubra os principais motivos do ar-condicionado não gelar e quando chamar um profissional.
-                            </p>
-                            <a href="ar-condicionado-nao-gela-principais-causas.html" class="inline-flex items-center bg-Rotiv-orange hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition">
-                                Ler artigo
-                                <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </article>
-
+                    <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+                        <a
+                            href="../orcamento/"
+                            class="rotiv-hero-cta-primary text-base"
+                        >
+                            <i class="fas fa-clipboard-list text-lg" aria-hidden="true"></i>
+                            <span>Solicitar Orçamento</span>
+                        </a>
+                        <a
+                            href="https://wa.me/5521971129223?text=Ol%C3%A1%21%20Vim%20pelo%20blog%20da%20Rotiv%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="rotiv-hero-cta-secondary text-base"
+                        >
+                            <i class="fab fa-whatsapp text-xl" aria-hidden="true"></i>
+                            <span>Chamar no WhatsApp</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA -->
-        <section class="py-12 sm:py-16 bg-white">
+        <!-- ARTIGOS -->
+        <section id="artigos" class="py-12 sm:py-16">
             <div class="container mx-auto px-4">
-                <div class="max-w-4xl mx-auto bg-Rotiv-blue text-white rounded-3xl p-8 sm:p-12 text-center shadow-xl">
-                    <h2 class="text-2xl sm:text-4xl font-bold mb-4">Precisa de um serviço elétrico ou de ar-condicionado?</h2>
-                    <p class="text-base sm:text-lg mb-8 text-gray-100">
-                        A Rotiv atende clientes residenciais e comerciais no Rio de Janeiro com foco em segurança, organização e execução profissional.
-                    </p>
-                    <button
-                        type="button"
-                        onclick="openWhatsAppBlog()"
-                        class="inline-flex items-center bg-Rotiv-orange hover:bg-orange-600 text-white text-lg font-bold px-8 py-4 rounded-full shadow-lg transition"
-                        aria-label="Solicitar orçamento pelo WhatsApp"
-                    >
-                        Solicitar orçamento no WhatsApp
-                        <i class="fab fa-whatsapp ml-3 text-xl" aria-hidden="true"></i>
-                    </button>
+                <h2 class="text-2xl sm:text-3xl font-bold text-Rotiv-blue text-center uppercase mb-8 sm:mb-12">Artigos Recentes</h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    <article class="blog-card">
+                        <a href="padrao-de-entrada-de-energia-o-que-e-quando-instalar.html" class="blog-card-cover-link" aria-label="Ler artigo: Padrão de Entrada de Energia: o que é e quando você precisa instalar">
+                            <img src="../imagens/blog/capas/padrao-entrada.webp" alt="Padrão de Entrada de Energia: o que é e quando você precisa instalar" class="blog-card-cover" width="800" height="500" loading="lazy" decoding="async">
+                        </a>
+                        <div class="blog-card-body">
+                            <div class="blog-card-meta">
+                                <span class="blog-cat-pill">Elétrica • Padrão Light</span>
+                                <time datetime="2026-07-27" class="blog-card-date">27 de julho de 2026</time>
+                            </div>
+                            <h3 class="blog-card-title">
+                                <a href="padrao-de-entrada-de-energia-o-que-e-quando-instalar.html">Padrão de Entrada de Energia: o que é e quando você precisa instalar</a>
+                            </h3>
+                            <p class="blog-card-excerpt">Entenda o que é o Padrão de Entrada de Energia, quando ele é obrigatório e o que a concessionária avalia na instalação.</p>
+                            <a href="padrao-de-entrada-de-energia-o-que-e-quando-instalar.html" class="blog-card-link">
+                                <span>Ler artigo</span>
+                                <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <a href="ar-condicionado-nao-gela-principais-causas.html" class="blog-card-cover-link" aria-label="Ler artigo: Ar-condicionado não gela: principais causas e quando chamar um profissional">
+                            <img src="../imagens/blog/capas/ar-nao-gela.webp" alt="Ar-condicionado não gela: principais causas e quando chamar um profissional" class="blog-card-cover" width="800" height="500" loading="lazy" decoding="async">
+                        </a>
+                        <div class="blog-card-body">
+                            <div class="blog-card-meta">
+                                <span class="blog-cat-pill">Ar-Condicionado • Diagnóstico</span>
+                                <time datetime="2026-07-27" class="blog-card-date">27 de julho de 2026</time>
+                            </div>
+                            <h3 class="blog-card-title">
+                                <a href="ar-condicionado-nao-gela-principais-causas.html">Ar-condicionado não gela: principais causas e quando chamar um profissional</a>
+                            </h3>
+                            <p class="blog-card-excerpt">Descubra os principais motivos de o ar-condicionado parar de gelar, o que checar primeiro e quando acionar assistência técnica.</p>
+                            <a href="ar-condicionado-nao-gela-principais-causas.html" class="blog-card-link">
+                                <span>Ler artigo</span>
+                                <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <a href="instalacao-eletrica-quando-renovar.html" class="blog-card-cover-link" aria-label="Ler artigo: Instalação Elétrica Antiga: sinais de que está na hora de renovar">
+                            <img src="../imagens/blog/capas/eletrica-antiga.webp" alt="Instalação Elétrica Antiga: sinais de que está na hora de renovar" class="blog-card-cover" width="800" height="500" loading="lazy" decoding="async">
+                        </a>
+                        <div class="blog-card-body">
+                            <div class="blog-card-meta">
+                                <span class="blog-cat-pill">Elétrica • Segurança</span>
+                                <time datetime="2026-03-22" class="blog-card-date">22 de março de 2026</time>
+                            </div>
+                            <h3 class="blog-card-title">
+                                <a href="instalacao-eletrica-quando-renovar.html">Instalação Elétrica Antiga: sinais de que está na hora de renovar</a>
+                            </h3>
+                            <p class="blog-card-excerpt">Conheça os principais sinais de alerta de uma instalação elétrica fora das normas NBR 5410 e os riscos de adiar a modernização.</p>
+                            <a href="instalacao-eletrica-quando-renovar.html" class="blog-card-link">
+                                <span>Ler artigo</span>
+                                <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <a href="automacao-residencial-como-funciona.html" class="blog-card-cover-link" aria-label="Ler artigo: Automação Residencial: o que é e como funciona na prática">
+                            <img src="../imagens/blog/capas/automacao-residencial.webp" alt="Automação Residencial: o que é e como funciona na prática" class="blog-card-cover" width="800" height="500" loading="lazy" decoding="async">
+                        </a>
+                        <div class="blog-card-body">
+                            <div class="blog-card-meta">
+                                <span class="blog-cat-pill">Automação • Guia prático</span>
+                                <time datetime="2026-03-22" class="blog-card-date">22 de março de 2026</time>
+                            </div>
+                            <h3 class="blog-card-title">
+                                <a href="automacao-residencial-como-funciona.html">Automação Residencial: o que é e como funciona na prática</a>
+                            </h3>
+                            <p class="blog-card-excerpt">Entenda como automatizar iluminação, tomadas e climatização da sua casa com interruptores inteligentes, Alexa e controle pelo celular.</p>
+                            <a href="automacao-residencial-como-funciona.html" class="blog-card-link">
+                                <span>Ler artigo</span>
+                                <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <a href="higienizacao-de-ar-condicionado.html" class="blog-card-cover-link" aria-label="Ler artigo: Higienização de Ar-Condicionado: riscos de não fazer e benefícios">
+                            <img src="../imagens/blog/capas/higienizacao-ar.webp" alt="Higienização de Ar-Condicionado: riscos de não fazer e benefícios" class="blog-card-cover" width="800" height="500" loading="lazy" decoding="async">
+                        </a>
+                        <div class="blog-card-body">
+                            <div class="blog-card-meta">
+                                <span class="blog-cat-pill">Ar-Condicionado • Manutenção</span>
+                                <time datetime="2026-03-19" class="blog-card-date">19 de março de 2026</time>
+                            </div>
+                            <h3 class="blog-card-title">
+                                <a href="higienizacao-de-ar-condicionado.html">Higienização de Ar-Condicionado: riscos de não fazer e benefícios</a>
+                            </h3>
+                            <p class="blog-card-excerpt">Veja o que acontece quando você adia a limpeza do ar-condicionado e como a higienização profissional melhora saúde, desempenho e consumo.</p>
+                            <a href="higienizacao-de-ar-condicionado.html" class="blog-card-link">
+                                <span>Ler artigo</span>
+                                <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <a href="instalacao-de-wallbox-o-que-avaliar.html" class="blog-card-cover-link" aria-label="Ler artigo: Instalação de Wallbox: o que é preciso avaliar antes de instalar">
+                            <img src="../imagens/blog/capas/wallbox-avaliar.webp" alt="Instalação de Wallbox: o que é preciso avaliar antes de instalar" class="blog-card-cover" width="800" height="500" loading="lazy" decoding="async">
+                        </a>
+                        <div class="blog-card-body">
+                            <div class="blog-card-meta">
+                                <span class="blog-cat-pill">Wallbox • Guia completo</span>
+                                <time datetime="2025-03-18" class="blog-card-date">18 de março de 2025</time>
+                            </div>
+                            <h3 class="blog-card-title">
+                                <a href="instalacao-de-wallbox-o-que-avaliar.html">Instalação de Wallbox: o que é preciso avaliar antes de instalar</a>
+                            </h3>
+                            <p class="blog-card-excerpt">Entenda o que deve ser analisado antes da instalação: capacidade da rede elétrica, disjuntor, cabeamento, distância e proteções DR/DPS.</p>
+                            <a href="instalacao-de-wallbox-o-que-avaliar.html" class="blog-card-link">
+                                <span>Ler artigo</span>
+                                <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <a href="quem-instala-wallbox-no-rio-de-janeiro.html" class="blog-card-cover-link" aria-label="Ler artigo: Quem instala Wallbox no Rio de Janeiro?">
+                            <img src="../imagens/blog/capas/wallbox-rj.webp" alt="Quem instala Wallbox no Rio de Janeiro?" class="blog-card-cover" width="800" height="500" loading="lazy" decoding="async">
+                        </a>
+                        <div class="blog-card-body">
+                            <div class="blog-card-meta">
+                                <span class="blog-cat-pill">Wallbox • Rio de Janeiro</span>
+                                <time datetime="2025-03-18" class="blog-card-date">18 de março de 2025</time>
+                            </div>
+                            <h3 class="blog-card-title">
+                                <a href="quem-instala-wallbox-no-rio-de-janeiro.html">Quem instala Wallbox no Rio de Janeiro?</a>
+                            </h3>
+                            <p class="blog-card-excerpt">Saiba o que avaliar antes de contratar uma empresa para instalar carregador de carro elétrico em casas, condomínios e empresas no RJ.</p>
+                            <a href="quem-instala-wallbox-no-rio-de-janeiro.html" class="blog-card-link">
+                                <span>Ler artigo</span>
+                                <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer id="contato" class="bg-gray-900 text-white pt-8 sm:pt-12 pb-4 sm:pb-6">
+    <!-- FOOTER INSTITUCIONAL PADRONIZADO -->
+    <footer id="contato" class="rotiv-footer text-white pt-10 sm:pt-12 pb-6">
         <div class="container mx-auto px-4">
             <div class="flex flex-wrap">
 
                 <!-- Contato -->
                 <div class="w-full md:w-1/3 mb-6 sm:mb-8 footer-section">
-                    <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Contato</h3>
-                    <p class="flex items-center mb-2 sm:mb-3 md:justify-start justify-center text-sm sm:text-base">
+                    <h3 class="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Contato</h3>
+                    <p class="flex items-center mb-2.5 md:justify-start justify-center text-sm sm:text-base">
                         <i class="fas fa-phone mr-3 text-Rotiv-orange" aria-hidden="true"></i>
-                        <a href="tel:+5521971129223" class="hover:text-Rotiv-orange transition-colors">(21) 97112-9223</a>
+                        <a href="tel:+5521971129223" class="text-white text-opacity-90 hover:text-Rotiv-orange transition-colors">(21) 97112-9223</a>
                     </p>
-                    <p class="flex items-center mb-2 sm:mb-3 md:justify-start justify-center text-sm sm:text-base">
+                    <p class="flex items-center mb-2.5 md:justify-start justify-center text-sm sm:text-base">
                         <i class="fas fa-envelope mr-3 text-Rotiv-orange" aria-hidden="true"></i>
-                        <a href="mailto:rotiveletrica@gmail.com" class="hover:text-Rotiv-orange transition-colors">rotiveletrica@gmail.com</a>
+                        <a href="mailto:rotiveletrica@gmail.com" class="text-white text-opacity-90 hover:text-Rotiv-orange transition-colors">rotiveletrica@gmail.com</a>
                     </p>
-                    <p class="flex items-center mb-2 sm:mb-3 md:justify-start justify-center text-sm sm:text-base">
+                    <p class="flex items-center mb-2.5 md:justify-start justify-center text-sm sm:text-base text-white text-opacity-90">
                         <i class="fas fa-map-marker-alt mr-3 text-Rotiv-orange" aria-hidden="true"></i>
-                        <span>Nova Iguaçu, RJ</span>
+                        <span>Nova Iguaçu, Baixada Fluminense e RJ</span>
                     </p>
-                    <div class="flex mt-4 sm:mt-6 md:justify-start justify-center gap-4">
-                        <a href="#" onclick="openWhatsAppBlog(); return false;" class="hover:text-Rotiv-orange transition-colors" aria-label="WhatsApp da Rotiv">
+                    <div class="flex mt-5 md:justify-start justify-center gap-5">
+                        <a href="https://wa.me/5521971129223?text=Ol%C3%A1%21%20Vim%20pelo%20blog%20da%20Rotiv%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="text-white text-opacity-90 hover:text-Rotiv-orange transition-colors" aria-label="WhatsApp da Rotiv">
                             <i class="fab fa-whatsapp text-xl sm:text-2xl" aria-hidden="true"></i>
                         </a>
-                        <a href="https://www.instagram.com/Rotiv2018/" target="_blank" rel="noopener noreferrer" class="hover:text-Rotiv-orange transition-colors" aria-label="Instagram da Rotiv">
+                        <a href="https://www.instagram.com/rotiv2018/" target="_blank" rel="noopener noreferrer" class="text-white text-opacity-90 hover:text-Rotiv-orange transition-colors" aria-label="Instagram da Rotiv">
                             <i class="fab fa-instagram text-xl sm:text-2xl" aria-hidden="true"></i>
                         </a>
-                        <a href="https://www.tiktok.com/@Rotiv2018" target="_blank" rel="noopener noreferrer" class="hover:text-Rotiv-orange transition-colors" aria-label="TikTok da Rotiv">
+                        <a href="https://www.tiktok.com/@rotiv2018" target="_blank" rel="noopener noreferrer" class="text-white text-opacity-90 hover:text-Rotiv-orange transition-colors" aria-label="TikTok da Rotiv">
                             <i class="fab fa-tiktok text-xl sm:text-2xl" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -369,32 +364,32 @@
 
                 <!-- Serviços -->
                 <div class="w-full md:w-1/3 mb-6 sm:mb-8 footer-section">
-                    <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Serviços</h3>
-                    <ul class="space-y-1 sm:space-y-2 text-sm sm:text-base">
+                    <h3 class="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Serviços</h3>
+                    <ul class="space-y-1.5 sm:space-y-2 text-sm sm:text-base text-white text-opacity-90">
                         <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Instalações Elétricas</a></li>
-                        <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Ar-Condicionado</a></li>
-                        <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Automação Residencial</a></li>
-                        <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Padrão Light</a></li>
                         <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Instalação de Wallbox</a></li>
-                        <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Fabricação de Quadros Elétricos</a></li>
+                        <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Quadros e Comandos Elétricos</a></li>
+                        <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Padrão Light</a></li>
+                        <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Automação Residencial</a></li>
+                        <li><a href="../index.html#servicos" class="hover:text-Rotiv-orange transition-colors">Ar-Condicionado</a></li>
                     </ul>
                 </div>
 
                 <!-- Sobre -->
                 <div class="w-full md:w-1/3 mb-6 sm:mb-8 footer-section">
-                    <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Sobre a Rotiv</h3>
-                    <p class="mb-3 sm:mb-4 text-sm sm:text-base">
-                        Empresa especializada em instalações elétricas e refrigeração, atendendo clientes residenciais e comerciais desde 2018.
+                    <h3 class="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Sobre a Rotiv</h3>
+                    <p class="mb-3 text-sm sm:text-base text-white text-opacity-90 leading-relaxed">
+                        Empresa especializada em instalações elétricas, Wallbox e refrigeração, atendendo clientes residenciais, condomínios e empresas desde 2018.
                     </p>
-                    <p class="text-sm sm:text-base">
-                        Mais do que serviços elétricos, entregamos segurança e tranquilidade. A Rotiv evoluiu de uma equipe apaixonada para se tornar uma referência em soluções de elétrica e climatização.
+                    <p class="text-sm sm:text-base text-white text-opacity-85 leading-relaxed">
+                        Mais do que serviços elétricos, entregamos segurança, acabamento técnico e tranquilidade em cada projeto.
                     </p>
                 </div>
 
             </div>
 
-            <div class="border-t border-gray-800 mt-6 sm:mt-8 pt-4 sm:pt-6 text-center text-xs sm:text-sm text-gray-400">
-                <p>&copy; <span id="current-year">2026</span> Rotiv. Todos os direitos reservados.</p>
+            <div class="border-t border-white border-opacity-15 mt-6 sm:mt-8 pt-5 text-center text-xs sm:text-sm text-white text-opacity-75">
+                <p>&copy; <span id="current-year">2026</span> Rotiv Elétrica e Refrigeração. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -409,7 +404,7 @@
         <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </button>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Menu mobile
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -427,9 +422,9 @@
 
         // WhatsApp
         function openWhatsAppBlog() {
-            gtag_report_conversion();
             const phoneNumber = "5521971129223";
                     const message = encodeURIComponent("Olá! Gostaria de solicitar um orçamento pelo site da Rotiv.");
+            if (typeof gtag_report_conversion === 'function') gtag_report_conversion();
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
         }
     </script>

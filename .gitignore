@@ -1,0 +1,14 @@
+# Segurança: nunca subir chaves ou credenciais para o Git
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+service-account*.json
+client_secret*.json
+
+# Temporários e sistema
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc

@@ -5,16 +5,31 @@
   Cache-Control: public, max-age=31536000, immutable
 
 # ================================================
-# CSS e JS — cache médio (1 semana)
+# CSS e JS — cache médio (1 semana com revalidação)
 # ================================================
+/css/*
+  Cache-Control: public, max-age=604800, must-revalidate
+
 /style.css
   Cache-Control: public, max-age=604800, must-revalidate
 
 /script.js
   Cache-Control: public, max-age=604800, must-revalidate
 
+/orcamento/*.css
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/orcamento/*.js
+  Cache-Control: public, max-age=604800, must-revalidate
+
 # ================================================
-# HTML — sem cache (sempre atualizado)
+# DADOS DINÂMICOS (Galeria e Avaliações) — 5 min
+# ================================================
+/data/*.json
+  Cache-Control: public, max-age=300, must-revalidate
+
+# ================================================
+# HTML — sempre revalidado
 # ================================================
 /*.html
   Cache-Control: no-cache, no-store, must-revalidate

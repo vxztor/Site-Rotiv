@@ -1,0 +1,116 @@
+{
+  "rating": 5.0,
+  "totalReviews": 61,
+  "updatedAt": "2026-11-25",
+  "googleUrl": "https://share.google/UBCZ7d7xqXqlW3DLI",
+  "reviews": [
+    {
+      "author": "Daiany Anjos",
+      "initial": "D",
+      "color": "#0E4666",
+      "avatar": "imagens/avaliacoes/daiany-anjos.webp",
+      "timeAgo": "10 meses atrás",
+      "rating": 5,
+      "text": "Sem palavras pela organização e capricho do Marcos! Super ágil, com uma visão perfeita do que ficava melhor! Instalação do wallbox perfeita e ainda refez meu quadro elétrico que estava às trevas e agora virou o céu! Recomendo de olhos fechados! Ah e super pontual!"
+    },
+    {
+      "author": "Ligia Santana",
+      "initial": "L",
+      "color": "#1E88C7",
+      "avatar": "imagens/avaliacoes/ligia-santana.webp",
+      "timeAgo": "3 dias atrás",
+      "rating": 5,
+      "text": "Ótimo profissional, realizou o serviço com bastante cuidado, demonstrando profissionalismo e organização. Fiquei muito satisfeita com o atendimento e recomendo!"
+    },
+    {
+      "author": "Eric Aranda",
+      "initial": "E",
+      "color": "#1E88C7",
+      "avatar": "imagens/avaliacoes/eric-aranda.webp",
+      "timeAgo": "8 meses atrás",
+      "rating": 5,
+      "text": "Atendimento diferenciado! Atenção aos detalhes, me passou tudo por telefone, e a instalação do meu carro ficou top. Só alegria, Marcos tá de parabéns!!!"
+    },
+    {
+      "author": "Marco Campos",
+      "initial": "M",
+      "color": "#F47C20",
+      "avatar": "imagens/avaliacoes/marco-campos.webp",
+      "timeAgo": "8 meses atrás",
+      "rating": 5,
+      "text": "Profissional extremamente atencioso, cordial e muito detalhista no trabalho que oferece. O Marcos Davi fez um serviço de elétrica na casa da minha mãe, deixando-a bastante satisfeita e grata pelo serviço e pelo trabalho organizado e limpo. Rotiv está de parabéns! Recomendo sempre."
+    },
+    {
+      "author": "Luciana Brum",
+      "initial": "L",
+      "color": "#34A853",
+      "avatar": "imagens/avaliacoes/luciana-brum.webp",
+      "timeAgo": "11 meses atrás",
+      "rating": 5,
+      "text": "Excelente profissional! Super confiável, competente, rápido, extremamente limpo e ainda preocupado em deixar meu local esteticamente bonito! Serviço excelente!! Super recomendo!!!"
+    },
+    {
+      "author": "Juliana Santana",
+      "initial": "J",
+      "color": "#F47C20",
+      "avatar": "imagens/avaliacoes/juliana-santana.webp",
+      "timeAgo": "3 dias atrás",
+      "rating": 5,
+      "text": "Marcos é um excelente profissional! Fui muito bem atendida e fiquei bastante satisfeita com a qualidade e o resultado. Recomendo!"
+    },
+    {
+      "author": "Felipe Roque Dias",
+      "initial": "F",
+      "color": "#4285F4",
+      "avatar": "imagens/avaliacoes/felipe-roque.webp",
+      "timeAgo": "1 ano atrás",
+      "rating": 5,
+      "text": "Serviço de altíssima qualidade! A equipe da Rotiv Elétrica e Refrigeração é muito profissional, pontual e caprichosa. Resolveram o problema de forma rápida e com um ótimo custo-benefício. Super recomendo para quem busca confiança e um atendimento de primeira."
+    },
+    {
+      "author": "Clara Braga",
+      "initial": "C",
+      "color": "#0E4666",
+      "avatar": "imagens/avaliacoes/clara-braga.webp",
+      "timeAgo": "1 ano atrás",
+      "rating": 5,
+      "text": "Sr Marcos muito atencioso e rapidamente atendeu o meu contato e em 30 min já estava na minha residência realizando o conserto do chuveiro que estava com a fiação derretida."
+    },
+    {
+      "author": "Rogério",
+      "initial": "R",
+      "color": "#A142F4",
+      "avatar": "imagens/avaliacoes/rogerio.webp",
+      "timeAgo": "1 ano atrás",
+      "rating": 5,
+      "text": "Fiquei muito satisfeito com o serviço prestado pela Rotiv. Fizeram todo o serviço de instalação elétrica e ainda implementaram a automação residencial que eu queria. Eu recomendo!"
+    },
+    {
+      "author": "Andréa Siqueira",
+      "initial": "A",
+      "color": "#EA4335",
+      "avatar": "imagens/avaliacoes/andrea-siqueira.webp",
+      "timeAgo": "1 ano atrás",
+      "rating": 5,
+      "text": "Excelente profissional. Atendimento com cordialidade e profissionalismo. Demonstra conhecimento técnico e compromisso com a segurança e qualidade do serviço. Recomendo a todos que buscam serviços elétricos confiáveis e eficientes."
+    },
+    {
+      "author": "Danielle Ferreira",
+      "initial": "D",
+      "color": "#34A853",
+      "avatar": "imagens/avaliacoes/danielle-ferreira.webp",
+      "timeAgo": "1 ano atrás",
+      "rating": 5,
+      "text": "Excelente profissional, rápido, atencioso e usa materiais de alta qualidade. Merece 10 de 10 estrelas."
+    },
+    {
+      "author": "Henrique Roque",
+      "initial": "H",
+      "color": "#4285F4",
+      "avatar": "imagens/avaliacoes/henrique-roque.webp",
+      "timeAgo": "1 ano atrás",
+      "rating": 5,
+      "text": "Serviço excelente! Já contratei a Rotiv Elétrica e Refrigeração e fui muito bem atendido. Trabalho rápido, honesto e de qualidade. Recomendo!"
+    }
+  ]
+}

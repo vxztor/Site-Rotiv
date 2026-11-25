@@ -1,0 +1,529 @@
+/* ======================================================== */
+/* SIMULADOR DE ORÇAMENTO ROTIV — IDENTIDADE VISUAL OFICIAL */
+/* Paleta: #0E4666 | #F47C20 | #FFFFFF (Montserrat + Roboto)*/
+/* ======================================================== */
+
+.budget-shell {
+    min-height: calc(100vh - 64px);
+    background-color: #F4F7FA;
+}
+
+.budget-subhero {
+    position: relative;
+    background: linear-gradient(135deg, #07273A 0%, #0E4666 60%, #0B3A56 100%);
+    color: #FFFFFF;
+    overflow: hidden;
+}
+
+.budget-subhero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 14% 22%, rgba(244, 124, 32, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 86% 80%, rgba(255, 255, 255, 0.06) 0%, transparent 45%);
+    pointer-events: none;
+}
+
+/* Barra superior interna durante etapas do simulador */
+.budget-step-topbar {
+    background-color: #0E4666;
+    color: #FFFFFF;
+    border-bottom: 3px solid #F47C20;
+}
+
+.budget-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.budget-icon-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* Cards principais de escolha de categoria */
+.budget-cat-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    text-align: left;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(14, 70, 102, 0.06);
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.budget-cat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #F47C20;
+}
+
+.budget-cat-card:hover {
+    transform: translateY(-4px);
+    border-color: #F47C20;
+    box-shadow: 0 12px 26px rgba(14, 70, 102, 0.12);
+}
+
+@media (min-width: 1024px) {
+    .budget-cat-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 26px 24px 22px;
+    }
+
+    .budget-cat-chevron {
+        display: none !important;
+    }
+}
+
+.budget-cat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background-color: #0E4666;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    flex-shrink: 0;
+    transition: background-color 0.22s ease;
+}
+
+.budget-cat-card:hover .budget-cat-icon {
+    background-color: #F47C20;
+}
+
+/* Acordeão de grupos de Elétrica */
+.budget-group-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(14, 70, 102, 0.04);
+}
+
+.budget-group-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 15px 18px;
+    background: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #0E4666;
+    text-align: left;
+    transition: background-color 0.18s ease;
+}
+
+.budget-group-header:hover {
+    background: #F8FAFC;
+}
+
+.budget-group-header[aria-expanded="true"] {
+    background: #F0F6FA;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.budget-service-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 18px;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+.budget-service-row:last-child {
+    border-bottom: none;
+}
+
+@media (min-width: 640px) {
+    .budget-service-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+/* Controle de quantidade (- / +) */
+.budget-qty-box {
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    border: 1px solid #CBD5E1;
+    border-radius: 10px;
+    background: #FFFFFF;
+    overflow: hidden;
+}
+
+.budget-qty-btn {
+    width: 38px;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #0E4666;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.15s ease;
+}
+
+.budget-qty-btn:hover {
+    background: #F1F5F9;
+}
+
+.budget-qty-val {
+    min-width: 32px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #0E4666;
+}
+
+/* Botões do simulador */
+.budget-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #F47C20;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 0.65rem 1.15rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.18s ease, transform 0.15s ease;
+    text-decoration: none;
+}
+
+.budget-btn-primary:hover:not(:disabled) {
+    background-color: #DC6A14;
+}
+
+.budget-btn-primary:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.budget-btn-added {
+    background-color: #16A34A !important;
+    color: #FFFFFF !important;
+}
+
+@media (max-width: 1023px) {
+    .budget-desktop-only {
+        display: none !important;
+    }
+}
+
+.budget-btn-blue {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #0E4666;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.925rem;
+    padding: 0.85rem 1.35rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.18s ease;
+    text-decoration: none;
+}
+
+.budget-btn-blue:hover:not(:disabled) {
+    background-color: #09324A;
+}
+
+.budget-btn-blue:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.budget-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #FFFFFF;
+    color: #0E4666;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.75rem 1.15rem;
+    border-radius: 10px;
+    border: 1.5px solid #CBD5E1;
+    cursor: pointer;
+    transition: border-color 0.18s ease, background-color 0.18s ease;
+    text-decoration: none;
+}
+
+.budget-btn-outline:hover {
+    border-color: #0E4666;
+    background-color: #F8FAFC;
+}
+
+.budget-btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #16A34A;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.975rem;
+    padding: 0.95rem 1.5rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(22, 163, 74, 0.28);
+    transition: background-color 0.18s ease, transform 0.15s ease;
+    text-decoration: none;
+}
+
+.budget-btn-whatsapp:hover {
+    background-color: #15803D;
+    transform: translateY(-1px);
+}
+
+/* Opções em etapas (Wallbox / Ar-Condicionado) */
+.budget-option-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 18px;
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 14px;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(14, 70, 102, 0.04);
+    transition: border-color 0.18s ease, transform 0.15s ease, box-shadow 0.18s ease;
+}
+
+.budget-option-btn:hover {
+    border-color: #F47C20;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(14, 70, 102, 0.09);
+}
+
+/* Pontos de progresso do wizard */
+.budget-step-dot {
+    height: 7px;
+    width: 10px;
+    border-radius: 9999px;
+    background-color: #CBD5E1;
+    transition: all 0.25s ease;
+}
+
+.budget-step-dot.done {
+    background-color: #F47C20;
+}
+
+.budget-step-dot.current {
+    width: 28px;
+    background-color: #F47C20;
+}
+
+/* Campos de formulário e busca */
+.budget-input {
+    width: 100%;
+    min-height: 46px;
+    padding: 0.65rem 0.9rem;
+    border-radius: 10px;
+    border: 1.5px solid #CBD5E1;
+    background: #FFFFFF;
+    color: #1F2937;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9375rem;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.budget-input:focus {
+    outline: none;
+    border-color: #F47C20;
+    box-shadow: 0 0 0 3px rgba(244, 124, 32, 0.16);
+}
+
+/* Badges e alertas de avaliação técnica */
+.budget-badge-eval {
+    color: #B45309;
+    background: #FEF3C7;
+    border: 1px solid #FDE68A;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.budget-badge-incart {
+    color: #0E4666;
+    background: #E0F2FE;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+/* Barra fixa inferior no mobile */
+.budget-mobile-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    background: #FFFFFF;
+    border-top: 1px solid #E2E8F0;
+    padding: 12px 16px max(12px, env(safe-area-inset-bottom));
+    box-shadow: 0 -8px 24px rgba(14, 70, 102, 0.12);
+}
+
+/* Modal Sobre os Valores */
+.budget-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    background: rgba(7, 37, 56, 0.62);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0;
+}
+
+.budget-modal-backdrop.hidden {
+    display: none !important;
+}
+
+@media (min-width: 640px) {
+    .budget-modal-backdrop {
+        align-items: center;
+        padding: 16px;
+    }
+}
+
+.budget-modal-card {
+    width: 100%;
+    max-width: 480px;
+    background: #FFFFFF;
+    border-radius: 20px 20px 0 0;
+    padding: 24px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.26);
+}
+
+@media (min-width: 640px) {
+    .budget-modal-card {
+        border-radius: 18px;
+    }
+}
+
+/* Chips rápidos de cidades */
+.budget-city-chip {
+    padding: 5px 11px;
+    border-radius: 9999px;
+    border: 1px solid #CBD5E1;
+    background: #F8FAFC;
+    color: #374151;
+    font-size: 0.76rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.budget-city-chip.active,
+.budget-city-chip:hover {
+    background: #0E4666;
+    border-color: #0E4666;
+    color: #FFFFFF;
+}
+
+/* Aviso claro de valores estimados */
+.budget-estimate-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: #FFF8F1;
+    border: 1px solid #FCD9B6;
+    border-left: 4px solid #F47C20;
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #7C2D12;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.budget-estimate-notice i {
+    color: #F47C20;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+/* Resumo das escolhas anteriores no Wizard */
+.budget-step-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.budget-step-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #E8F2F8;
+    color: #0E4666;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 9999px;
+}
+
+/* Card de ajuda direta no WhatsApp */
+.budget-help-card {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F0F6FA 100%);
+    border: 1.5px dashed #0E4666;
+    border-radius: 16px;
+    padding: 20px;
+}

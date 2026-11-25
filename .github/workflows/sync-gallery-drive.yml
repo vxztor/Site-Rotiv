@@ -1,0 +1,44 @@
+name: Sincronizar Galeria do Google Drive
+
+on:
+  schedule:
+    # Roda automaticamente a cada 6 horas (100% grátis)
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    # Permite clicar em "Run workflow" para atualizar na hora pelo celular ou PC
+
+permissions:
+  contents: write
+
+jobs:
+  sync-gallery:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar Pillow (conversão WebP)
+        run: pip install --quiet pillow
+
+      - name: Sincronizar fotos das 4 pastas do Google Drive
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          NEW_UNNUMBERED_FIRST: 'false'
+        run: python scripts/sync_drive_gallery.py
+
+      - name: Publicar alterações se houver fotos novas ou removidas
+        run: |
+          git config user.name "Rotiv Bot"
+          git config user.email "rotiveletrica@gmail.com"
+          git add data/gallery.json data/drive_cache.json imagens/galeria index.html
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração nas fotos do Google Drive."
+          else
+            git commit -m "chore(galeria): sincronizar fotos do Google Drive"
+            git push
+          fi

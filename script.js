@@ -4,20 +4,17 @@ document.addEventListener('DOMContentLoaded', function () {
     // CONFIGURAÇÕES GLOBAIS
     // ================================================
 
-    const PHONE_NUMBER = "5521971129223";
-    window.currentWhatsAppLink = 'https://wa.me/message/GJJKUM7Q6UJTA1';
-    // Controle de carregamento completo da galeria
-    let eletricaCarregada = false;
-    let arCarregada = false;
-    let comandosCarregada = false;
-    let wallboxCarregada = false;
+    const PHONE_NUMBER = '5521971129223';
+    const INITIAL_BATCH = 12;
+    window.currentWhatsAppLink = 'https://wa.me/5521971129223?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Rotiv%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.';
+
     // ================================================
     // ANO DE COPYRIGHT DINÂMICO
     // ================================================
 
     const yearEl = document.getElementById('current-year');
     if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
+        yearEl.textContent = String(new Date().getFullYear());
     }
 
     // ================================================
@@ -25,472 +22,435 @@ document.addEventListener('DOMContentLoaded', function () {
     // ================================================
 
     const menuToggle = document.getElementById('menu-toggle');
-    if (menuToggle) {
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function closeMobileMenu() {
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    }
+
+    if (menuToggle && mobileMenu) {
         menuToggle.addEventListener('click', function () {
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenu) {
-                mobileMenu.classList.toggle('hidden');
-                const expanded = !mobileMenu.classList.contains('hidden');
-                this.setAttribute('aria-expanded', expanded);
-            }
+            mobileMenu.classList.toggle('hidden');
+            const expanded = !mobileMenu.classList.contains('hidden');
+            this.setAttribute('aria-expanded', String(expanded));
         });
     }
 
     // ================================================
-    // ABAS DA GALERIA
+    // GALERIA DINÂMICA (SINCRONIZADA DO GOOGLE DRIVE)
+    // Lê data/gallery.json gerado pelo GitHub Actions
     // ================================================
 
+    let GALLERY_DATA = {
+        'eletrica': [],
+        'ar-condicionado': [],
+        'comandos': [],
+        'wallbox': []
+    };
+
+    const TAB_LABELS = {
+        'eletrica': 'Elétrica',
+        'ar-condicionado': 'Ar-Condicionado',
+        'comandos': 'Comandos Elétricos',
+        'wallbox': 'Wallbox'
+    };
+
+    const renderedCounts = {
+        'eletrica': document.querySelectorAll('[data-grid="eletrica"] a.js-gallery-item').length,
+        'ar-condicionado': 0,
+        'comandos': 0,
+        'wallbox': 0
+    };
+
+    let galleryLoadedPromise = fetch('data/gallery.json', { cache: 'no-cache' })
+        .then(function (resp) {
+            if (!resp.ok) throw new Error('HTTP ' + resp.status);
+            return resp.json();
+        })
+        .then(function (data) {
+            GALLERY_DATA = data;
+            // Atualiza contadores nas abas e botões "Carregar mais"
+            Object.keys(TAB_LABELS).forEach(function (tabKey) {
+                const items = GALLERY_DATA[tabKey] || [];
+                const tabBtn = document.querySelector('.gallery-tab[data-tab="' + tabKey + '"]');
+                if (tabBtn) {
+                    tabBtn.textContent = TAB_LABELS[tabKey] + ' (' + items.length + ')';
+                }
+                updateLoadMoreButton(tabKey);
+            });
+            return data;
+        })
+        .catch(function (err) {
+            console.warn('Não foi possível carregar data/gallery.json:', err);
+            return GALLERY_DATA;
+        });
+
+    function createGalleryCard(item, tabKey, index) {
+        const link = document.createElement('a');
+        link.href = item.full;
+        link.className = 'gallery-card js-gallery-item';
+        link.setAttribute('data-gallery', tabKey);
+        link.setAttribute('data-index', String(index));
+        link.setAttribute('aria-label', 'Ampliar foto: ' + item.alt);
+
+        const frame = document.createElement('div');
+        frame.className = 'gallery-card-frame';
+
+        const img = document.createElement('img');
+        img.src = item.thumb;
+        img.alt = item.alt;
+        img.width = item.w;
+        img.height = item.h;
+        img.loading = 'lazy';
+        img.decoding = 'async';
+
+        frame.appendChild(img);
+        link.appendChild(frame);
+        return link;
+    }
+
+    function updateLoadMoreButton(tabKey) {
+        const items = GALLERY_DATA[tabKey] || [];
+        const btn = document.querySelector('[data-load-more="' + tabKey + '"]');
+        if (!btn) return;
+        const remaining = items.length - (renderedCounts[tabKey] || 0);
+        if (remaining <= 0) {
+            btn.style.display = 'none';
+        } else {
+            btn.style.display = '';
+            btn.textContent = 'Carregar mais fotos (+' + remaining + ')';
+        }
+    }
+
+    function renderBatch(tabKey, countToRender) {
+        const items = GALLERY_DATA[tabKey] || [];
+        const grid = document.querySelector('[data-grid="' + tabKey + '"]');
+        if (!grid) return;
+
+        const start = renderedCounts[tabKey] || 0;
+        const end = Math.min(items.length, countToRender);
+        if (start < end) {
+            const fragment = document.createDocumentFragment();
+            for (let i = start; i < end; i++) {
+                fragment.appendChild(createGalleryCard(items[i], tabKey, i));
+            }
+            grid.appendChild(fragment);
+            renderedCounts[tabKey] = end;
+        }
+        updateLoadMoreButton(tabKey);
+    }
+
+    // Abas da galeria (carregamento sob demanda)
     const galleryTabs = document.querySelectorAll('.gallery-tab');
     const galleryContents = document.querySelectorAll('.gallery-content');
 
-    galleryTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            galleryTabs.forEach(t => {
+    galleryTabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            const tabName = tab.getAttribute('data-tab');
+
+            galleryTabs.forEach(function (t) {
                 t.classList.remove('active');
                 t.setAttribute('aria-selected', 'false');
             });
             tab.classList.add('active');
             tab.setAttribute('aria-selected', 'true');
 
-            const tabName = tab.getAttribute('data-tab');
+            galleryContents.forEach(function (content) {
+                const isTarget = content.id === tabName + '-gallery';
+                content.classList.toggle('hidden', !isTarget);
+            });
 
-            galleryContents.forEach(content => {
-                content.classList.add('hidden');
-                if (content.id === `${tabName}-gallery`) {
-                    content.classList.remove('hidden');
+            galleryLoadedPromise.then(function () {
+                if (renderedCounts[tabName] === 0) {
+                    renderBatch(tabName, INITIAL_BATCH);
                 }
             });
         });
     });
 
-    // ================================================
-    // LIGHTBOX
-    // ================================================
-
-    const lightbox = GLightbox({
-        selector: '.glightbox',
-        loop: true,
-        touchNavigation: true,
-        width: '90vw',
-        height: 'auto',
-        zoomable: false,
-        draggable: true,
+    // Botões "Carregar mais fotos"
+    document.querySelectorAll('[data-load-more]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const tabName = btn.getAttribute('data-load-more');
+            galleryLoadedPromise.then(function () {
+                const items = GALLERY_DATA[tabName] || [];
+                renderBatch(tabName, items.length);
+            });
+        });
     });
 
     // ================================================
-    // SISTEMA DE IMAGENS COM FALLBACK DE EXTENSÃO
+    // LIGHTBOX INSTANTÂNEO (GLIGHTBOX DINÂMICO)
     // ================================================
 
-    const EXTENSOES_PADRAO = ['webp', 'jpg', 'jpeg', 'png'];
+    let activeLightbox = null;
 
-    function tentarCarregarImagem(caminhos) {
-        return new Promise((resolve, reject) => {
-            let indice = 0;
+    document.addEventListener('click', function (e) {
+        const link = e.target.closest('a.js-gallery-item');
+        if (!link || typeof GLightbox === 'undefined') return;
 
-            function testarProxima() {
-                if (indice >= caminhos.length) {
-                    reject(new Error('Nenhuma imagem encontrada.'));
-                    return;
-                }
+        e.preventDefault();
 
-                const img = new Image();
-                const caminhoAtual = caminhos[indice];
+        const tabKey = link.getAttribute('data-gallery');
+        const index = parseInt(link.getAttribute('data-index') || '0', 10);
 
-                img.onload = () => resolve(caminhoAtual);
-                img.onerror = () => {
-                    indice++;
-                    testarProxima();
+        galleryLoadedPromise.then(function () {
+            const items = GALLERY_DATA[tabKey] || [];
+            if (!items.length) return;
+
+            const elements = items.map(function (item) {
+                return {
+                    href: item.full,
+                    type: 'image',
+                    alt: item.alt
                 };
-
-                img.src = caminhoAtual;
-            }
-
-            testarProxima();
-        });
-    }
-
-    function montarListaDeCaminhos(pasta, nomeBase, extensoes = EXTENSOES_PADRAO) {
-        return extensoes.map(ext => `${pasta}/${nomeBase}.${ext}`);
-    }
-
-    async function criarCardImagem({ pasta, nome, alt, gallery }) {
-        // Se nome já tem extensão (ex: "comando-01.jpg"), testa só esse caminho
-        // Se não, testa todas as extensões padrão
-        let caminhos;
-        if (/\.\w{2,4}$/.test(nome)) {
-            caminhos = [`${pasta}/${nome}`];
-        } else {
-            caminhos = montarListaDeCaminhos(pasta, nome);
-        }
-
-        try {
-            const caminhoValido = await tentarCarregarImagem(caminhos);
-
-            const link = document.createElement('a');
-            link.href = caminhoValido;
-            link.className = 'glightbox';
-            link.setAttribute('data-gallery', gallery);
-
-            link.innerHTML = `
-                <div class="bg-white p-1 rounded-lg shadow-md gallery-image">
-                    <div class="h-40 sm:h-52 rounded overflow-hidden">
-                        <img
-                            src="${caminhoValido}"
-                            alt="${alt}"
-                            class="w-full h-full object-cover"
-                            loading="lazy"
-                            decoding="async"
-                        >
-                    </div>
-                </div>
-            `;
-
-            return link;
-        } catch (error) {
-            console.warn(`Imagem não encontrada: ${nome}`);
-            return null;
-        }
-    }
-
-    async function renderizarImagens(container, imagens, galleryName, pasta = 'imagens') {
-        for (const imagem of imagens) {
-            const card = await criarCardImagem({
-                pasta: pasta,
-                nome: imagem.nome,
-                alt: imagem.alt,
-                gallery: galleryName
             });
 
-            if (card) container.appendChild(card);
+            if (activeLightbox) {
+                try { activeLightbox.destroy(); } catch (_) {}
+            }
+
+            activeLightbox = GLightbox({
+                elements: elements,
+                startAt: isNaN(index) ? 0 : index,
+                loop: true,
+                touchNavigation: true,
+                keyboardNavigation: true,
+                closeOnOutsideClick: true,
+                width: '90vw',
+                height: 'auto',
+                zoomable: false,
+                draggable: true
+            });
+
+            activeLightbox.open();
+        });
+    });
+
+    // ================================================
+    // AVALIAÇÕES DO GOOGLE DINÂMICAS (CARROSSEL 4 EM 4)
+    // ================================================
+
+    let reviewsSwiper = null;
+
+    function initSwiper() {
+        if (typeof Swiper === 'undefined' || !document.querySelector('.mySwiper')) return;
+        if (reviewsSwiper) {
+            try { reviewsSwiper.destroy(true, true); } catch (_) {}
         }
-
-        lightbox.reload();
-    }
-
-    // ================================================
-    // IMAGENS EXTRAS DA GALERIA
-    // ================================================
-
-    const imagensEletricasExtras = [
-        { nome: "eletrica-24", alt: "Serviço de elétrica em Nova Iguaçu" },
-        { nome: "eletrica-25", alt: "Serviço de elétrica com terminal WAGO" },
-        { nome: "eletrica-26", alt: "Montagem de quadro elétrico em Nova Iguaçu" },
-        { nome: "eletrica-27", alt: "Serviço de elétrica residencial" },
-        { nome: "eletrica-28", alt: "Serviço de elétrica comercial" },
-        { nome: "eletrica-29", alt: "Serviço de elétrica profissional" },
-        { nome: "eletrica-30", alt: "Instalação elétrica organizada" },
-        { nome: "eletrica-31", alt: "Serviço elétrico com acabamento profissional" },
-        { nome: "eletrica-32", alt: "Execução de instalação elétrica" },
-        { nome: "eletrica-33", alt: "Serviço de elétrica em ambiente residencial" },
-        { nome: "eletrica-34", alt: "Infraestrutura elétrica em residência" },
-        { nome: "eletrica-35", alt: "Serviço de elétrica com segurança" },
-        { nome: "eletrica-36", alt: "Montagem e organização elétrica" },
-        { nome: "eletrica-37", alt: "Serviço técnico de elétrica" },
-        { nome: "eletrica-38", alt: "Instalação elétrica realizada pela ROTIV" },
-        { nome: "eletrica-39", alt: "Serviço de elétrica com acabamento limpo" },
-        { nome: "eletrica-40", alt: "Serviço de elétrica" },
-        { nome: "eletrica-41", alt: "Padrão de entrada instalado" },
-        { nome: "eletrica-42", alt: "Serviço de elétrica com DPS e DR" },
-        { nome: "eletrica-43", alt: "Serviço de elétrica com disjuntor exclusivo" }
-    ];
-
-    const imagensArExtras = [
-        { nome: "ar-condicionado-24", alt: "Serviço de instalação de ar-condicionado" },
-        { nome: "ar-condicionado-25", alt: "Instalação de ar-condicionado residencial" },
-        { nome: "ar-condicionado-26", alt: "Serviço técnico de ar-condicionado" },
-        { nome: "ar-condicionado-27", alt: "Instalação profissional de ar-condicionado" },
-        { nome: "ar-condicionado-28", alt: "Serviço de ar-condicionado com acabamento limpo" },
-        { nome: "ar-condicionado-29", alt: "Instalação de ar-condicionado em Nova Iguaçu" },
-        { nome: "ar-condicionado-30", alt: "Serviço de ar-condicionado com segurança" },
-        { nome: "ar-condicionado-31", alt: "Instalação de ar-condicionado comercial" },
-        { nome: "ar-condicionado-32", alt: "Serviço de ar-condicionado com organização" },
-        { nome: "ar-condicionado-33", alt: "Instalação de ar-condicionado residencial e comercial" },
-        { nome: "ar-condicionado-34", alt: "Serviço de ar-condicionado com acabamento profissional" },
-        { nome: "ar-condicionado-35", alt: "Instalação de ar-condicionado com terminal WAGO" },
-        { nome: "ar-condicionado-36", alt: "Serviço de ar-condicionado em ambiente residencial" },
-        { nome: "ar-condicionado-37", alt: "Instalação de ar-condicionado com segurança" },
-        { nome: "ar-condicionado-38", alt: "Serviço de ar-condicionado realizado pela ROTIV" },
-        { nome: "ar-condicionado-39", alt: "Instalação de ar-condicionado com acabamento limpo" }
-    ];
-
-    const imagensComandosExtras = [
-        { nome: "comando-09", alt: "Fabricação de painel de controle elétrico – eletricista ROTIV RJ" },
-        { nome: "comando-10", alt: "Quadro elétrico residencial montado pela ROTIV em Nova Iguaçu" },
-        { nome: "comando-11", alt: "Montagem de comando elétrico com relé – ROTIV Elétrica Nova Iguaçu" },
-        { nome: "comando-12", alt: "Painel elétrico industrial com acabamento profissional – ROTIV" },
-        { nome: "comando-13", alt: "Instalação de quadro de disjuntores em condomínio – ROTIV RJ" },
-        { nome: "comando-14", alt: "Quadro elétrico com DPS e DR instalado pela ROTIV em Nova Iguaçu" },
-        { nome: "comando-15", alt: "Painel de comando elétrico finalizado pela equipe ROTIV" },
-        { nome: "comando-16", alt: "Montagem de quadro elétrico com organização de cabos – ROTIV" },
-        { nome: "comando-17", alt: "Painel elétrico com disjuntor exclusivo para segurança – ROTIV RJ" },
-        { nome: "comando-18", alt: "Instalação de quadro de comando elétrico residencial – ROTIV" },
-        { nome: "comando-19", alt: "Quadro elétrico com aterramento adequado – ROTIV Nova Iguaçu" },
-        { nome: "comando-20", alt: "Painel elétrico com acabamento limpo e profissional – ROTIV" },
-        { nome: "comando-21", alt: "Montagem de quadro elétrico com terminal WAGO – ROTIV RJ" },
-        { nome: "comando-22", alt: "Painel de comando elétrico com organização de cabos – ROTIV" },
-        { nome: "comando-23", alt: "Instalação de quadro elétrico com proteção elétrica – ROTIV Nova Iguaçu" }
-    ];
-
-    const imagensWallboxExtras = [
-        { nome: "outros-11", alt: "Ponto de recarga para veículo elétrico instalado pela ROTIV" },
-        { nome: "outros-12", alt: "Wallbox com cabeamento dimensionado para carga segura – ROTIV RJ" },
-        { nome: "outros-13", alt: "Instalação de carregador Wallbox 7kW em residência – ROTIV Nova Iguaçu" },
-        { nome: "outros-14", alt: "Wallbox com tomada tipo 2 instalado pela ROTIV no Rio de Janeiro" },
-        { nome: "outros-15", alt: "Infraestrutura elétrica para Wallbox em condomínio – ROTIV" },
-        { nome: "outros-16", alt: "Carregador elétrico Wallbox com disjuntor exclusivo – ROTIV Nova Iguaçu" },
-        { nome: "outros-17", alt: "Instalação de Wallbox com organização de cabos profissional – ROTIV" },
-        { nome: "outros-18", alt: "Ponto de abastecimento elétrico para veículo instalado pela ROTIV RJ" },
-        { nome: "outros-19", alt: "Wallbox com aterramento adequado e proteção elétrica – ROTIV" }
-    ];
-
-    // ================================================
-    // BOTÕES CARREGAR MAIS
-    // ================================================
-
-    const loadMoreBtn = document.getElementById('load-more-eletrica');
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', async function () {
-            const electricalGallery = document.querySelector('#eletrica-gallery .grid');
-            if (!electricalGallery) return;
-
-            this.disabled = true;
-            this.textContent = 'Carregando...';
-
-            await renderizarImagens(electricalGallery, imagensEletricasExtras, 'eletrica', 'imagens/eletrica');
-            eletricaCarregada = true;
-            this.style.display = 'none';
+        reviewsSwiper = new Swiper('.mySwiper', {
+            slidesPerView: 1,
+            spaceBetween: 16,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            pagination: {
+                el: '.avaliacoes-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.reviews-nav-next',
+                prevEl: '.reviews-nav-prev',
+            },
+            breakpoints: {
+                640:  { slidesPerView: 2, spaceBetween: 18 },
+                1024: { slidesPerView: 4, spaceBetween: 20 },
+            },
+            autoHeight: false,
+            loop: true,
         });
     }
 
-    const loadMoreArBtn = document.getElementById('load-more-ar');
-    if (loadMoreArBtn) {
-        loadMoreArBtn.addEventListener('click', async function () {
-            const arGallery = document.querySelector('#ar-condicionado-gallery .grid');
-            if (!arGallery) return;
+    const GOOGLE_G_SVG =
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="review-google-logo" aria-hidden="true">' +
+        '<path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.6 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/>' +
+        '<path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.6 18.9 12 24 12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.6 8.3 6.3 14.7z"/>' +
+        '<path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.5 26.7 36 24 36c-5.2 0-9.7-3.3-11.3-8H6.5C9.8 35.7 16.4 44 24 44z"/>' +
+        '<path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.3 5.6l6.2 5.2C37 39 44 34 44 24c0-1.3-.1-2.6-.4-3.9z"/>' +
+        '</svg>';
 
-            this.disabled = true;
-            this.textContent = 'Carregando...';
-
-            await renderizarImagens(arGallery, imagensArExtras, 'ar-condicionado', 'imagens/ar-condicionado');
-            arCarregada = true;
-            this.style.display = 'none';
-        });
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
     }
 
-    const loadMoreComandosBtn = document.getElementById('load-more-comandos');
-    if (loadMoreComandosBtn) {
-        loadMoreComandosBtn.addEventListener('click', async function () {
-            const comandosGallery = document.querySelector('#comandos-gallery .grid');
-            if (!comandosGallery) return;
+    initSwiper();
 
-            this.disabled = true;
-            this.textContent = 'Carregando...';
+    fetch('data/reviews.json', { cache: 'no-cache' })
+        .then(function (resp) {
+            if (!resp.ok) throw new Error('HTTP ' + resp.status);
+            return resp.json();
+        })
+        .then(function (data) {
+            if (typeof data.rating === 'number') {
+                document.querySelectorAll('[data-reviews-rating]').forEach(function (el) {
+                    el.textContent = data.rating.toFixed(1);
+                });
+            }
+            if (typeof data.totalReviews === 'number') {
+                document.querySelectorAll('[data-reviews-count]').forEach(function (el) {
+                    el.textContent = String(data.totalReviews);
+                });
+            }
+            const grid = document.getElementById('reviews-grid');
+            if (grid && Array.isArray(data.reviews) && data.reviews.length > 0) {
+                grid.innerHTML = data.reviews.slice(0, 12).map(function (r) {
+                    const starsCount = Math.max(1, Math.min(5, Number(r.rating) || 5));
+                    const starsHtml = '<i class="fas fa-star" aria-hidden="true"></i>'.repeat(starsCount);
+                    const author = escapeHtml(r.author || 'Cliente Rotiv');
+                    const initial = escapeHtml(r.initial || author.charAt(0).toUpperCase());
+                    const color = /^#[0-9a-fA-F]{3,6}$/.test(r.color || '') ? r.color : '#0E4666';
+                    const timeAgo = escapeHtml(r.timeAgo || '');
+                    const text = escapeHtml(r.text || '');
+                    const avatarHtml = r.avatar
+                        ? '<img src="' + escapeHtml(r.avatar) + '" alt="Foto de ' + author + '" class="review-avatar-img" width="42" height="42" loading="lazy" decoding="async">'
+                        : '<div class="review-avatar" style="background:' + color + ';" aria-hidden="true">' + initial + '</div>';
 
-            await renderizarImagens(comandosGallery, imagensComandosExtras, 'comandos', 'imagens/comandos-eletricos');
-            comandosCarregada = true;
-            this.style.display = 'none';
+                    return (
+                        '<div class="swiper-slide h-auto">' +
+                        '  <article class="review-card">' +
+                        '    <div class="review-card-header">' +
+                        '      ' + avatarHtml +
+                        '      <div class="review-author-info">' +
+                        '        <span class="review-author-name">' + author + '</span>' +
+                        (timeAgo ? '        <span class="review-time">' + timeAgo + '</span>' : '') +
+                        '      </div>' +
+                        '      ' + GOOGLE_G_SVG +
+                        '    </div>' +
+                        '    <div class="review-stars" role="img" aria-label="Avaliação: ' + starsCount + ' estrelas">' + starsHtml + '</div>' +
+                        '    <p class="review-text">' + text + '</p>' +
+                        '  </article>' +
+                        '</div>'
+                    );
+                }).join('');
+                initSwiper();
+            }
+        })
+        .catch(function () {
+            // Mantém o HTML estático como fallback seguro
         });
-    }
-
-    const loadMoreWallboxBtn = document.getElementById('load-more-wallbox');
-    if (loadMoreWallboxBtn) {
-        loadMoreWallboxBtn.addEventListener('click', async function () {
-            const wallboxGallery = document.querySelector('#wallbox-gallery .grid');
-            if (!wallboxGallery) return;
-
-            this.disabled = true;
-            this.textContent = 'Carregando...';
-
-            await renderizarImagens(wallboxGallery, imagensWallboxExtras, 'wallbox', 'imagens/outros');
-            wallboxCarregada = true;
-            this.style.display = 'none';
-        });
-    }
 
     // ================================================
-    // PRÉ-CARREGAMENTO AO ABRIR O LIGHTBOX
-    // Ao clicar em qualquer imagem da galeria, carrega
-    // todas as extras silenciosamente antes de abrir,
-    // garantindo navegação completa pela seta direita.
+    // SMOOTH SCROLL PARA ÂNCORAS INTERNAS
     // ================================================
 
-    document.addEventListener('click', async function (e) {
-        const link = e.target.closest('a.glightbox');
-        if (!link) return;
-
-        const gallery = link.getAttribute('data-gallery');
-
-        if (gallery === 'eletrica' && !eletricaCarregada) {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-
-            const container = document.querySelector('#eletrica-gallery .grid');
-            if (container) {
-                await renderizarImagens(container, imagensEletricasExtras, 'eletrica', 'imagens/eletrica');
-                eletricaCarregada = true;
-                const btn = document.getElementById('load-more-eletrica');
-                if (btn) btn.style.display = 'none';
-            }
-
-            lightbox.open(link);
-
-        } else if (gallery === 'ar-condicionado' && !arCarregada) {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-
-            const container = document.querySelector('#ar-condicionado-gallery .grid');
-            if (container) {
-                await renderizarImagens(container, imagensArExtras, 'ar-condicionado', 'imagens/ar-condicionado');
-                arCarregada = true;
-                const btn = document.getElementById('load-more-ar');
-                if (btn) btn.style.display = 'none';
-            }
-
-            lightbox.open(link);
-
-        } else if (gallery === 'comandos' && !comandosCarregada) {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-
-            const container = document.querySelector('#comandos-gallery .grid');
-            if (container) {
-                await renderizarImagens(container, imagensComandosExtras, 'comandos', 'imagens/comandos-eletricos');
-                comandosCarregada = true;
-                const btn = document.getElementById('load-more-comandos');
-                if (btn) btn.style.display = 'none';
-            }
-
-            lightbox.open(link);
-
-        } else if (gallery === 'wallbox' && !wallboxCarregada) {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-
-            const container = document.querySelector('#wallbox-gallery .grid');
-            if (container) {
-                await renderizarImagens(container, imagensWallboxExtras, 'wallbox', 'imagens/outros');
-                wallboxCarregada = true;
-                const btn = document.getElementById('load-more-wallbox');
-                if (btn) btn.style.display = 'none';
-            }
-
-            lightbox.open(link);
-        }
-    }, true);
-
-    // ================================================
-    // SMOOTH SCROLL
-    // ================================================
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
             const targetId = this.getAttribute('href');
-
-            // Ignora links sem destino real (ex: href="#")
             if (!targetId || targetId === '#') return;
 
             const targetElement = document.querySelector(targetId);
+            if (!targetElement) return;
 
-            if (targetElement) {
-                let offset = 80;
-                if (window.innerWidth < 768) offset = 60;
-                else if (window.innerWidth < 1024) offset = 70;
+            e.preventDefault();
+            const offset = window.innerWidth < 768 ? 62 : 64;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
 
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-
-                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-            }
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            closeMobileMenu();
         });
     });
 
     // ================================================
-    // SWIPER (AVALIAÇÕES)
+    // MAPA INTERATIVO — ÁREA DE ATENDIMENTO
     // ================================================
 
-    new Swiper('.mySwiper', {
-        slidesPerView: 1,
-        spaceBetween: 24,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-        },
-        pagination: {
-            el: '.avaliacoes-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            768:  { slidesPerView: 2, spaceBetween: 24 },
-            1024: { slidesPerView: 3, spaceBetween: 24 },
-        },
-        autoHeight: false,
-        loop: true,
-    });
+    const regionPills = document.querySelectorAll('[data-region-pill]');
+    const mapSvg = document.querySelector('.rotiv-rj-map');
+
+    if (regionPills.length && mapSvg) {
+        const polyMap = {
+            'nova-iguacu': 'nova-iguacu',
+            'baixada': 'baixada',
+            'centro': 'rio',
+            'zona-norte': 'rio',
+            'zona-sul': 'rio',
+            'zona-oeste': 'rio',
+            'metropolitana': 'metropolitana'
+        };
+
+        function highlightRegion(regionId) {
+            regionPills.forEach(function (p) {
+                p.classList.toggle('is-active', p.getAttribute('data-region-pill') === regionId);
+            });
+            mapSvg.classList.toggle('has-focus', Boolean(regionId));
+
+            const targetPoly = regionId ? polyMap[regionId] : null;
+            mapSvg.querySelectorAll('.map-poly').forEach(function (el) {
+                el.classList.toggle('is-highlighted', Boolean(targetPoly && el.getAttribute('data-map-region') === targetPoly));
+            });
+            mapSvg.querySelectorAll('.map-pin-group').forEach(function (el) {
+                el.classList.toggle('is-highlighted', Boolean(regionId && el.getAttribute('data-pin-region') === regionId));
+            });
+        }
+
+        let lockedRegion = null;
+        regionPills.forEach(function (pill) {
+            const rid = pill.getAttribute('data-region-pill');
+            pill.addEventListener('mouseenter', function () {
+                if (!lockedRegion) highlightRegion(rid);
+            });
+            pill.addEventListener('mouseleave', function () {
+                if (!lockedRegion) highlightRegion(null);
+            });
+            pill.addEventListener('click', function () {
+                lockedRegion = lockedRegion === rid ? null : rid;
+                highlightRegion(lockedRegion);
+            });
+        });
+    }
 
     // ================================================
     // FAQ ACCORDION
     // ================================================
 
-    document.querySelectorAll('.faq-question').forEach(btn => {
+    document.querySelectorAll('.faq-question').forEach(function (btn) {
         btn.addEventListener('click', function () {
             const answer = this.nextElementSibling;
             const isOpen = this.getAttribute('aria-expanded') === 'true';
 
-            // Fecha todos os outros
-            document.querySelectorAll('.faq-question').forEach(other => {
-                if (other !== this) {
+            document.querySelectorAll('.faq-question').forEach(function (other) {
+                if (other !== btn) {
                     other.setAttribute('aria-expanded', 'false');
                     const otherAnswer = other.nextElementSibling;
                     if (otherAnswer) otherAnswer.hidden = true;
                 }
             });
 
-            // Alterna o atual
             this.setAttribute('aria-expanded', String(!isOpen));
             if (answer) answer.hidden = isOpen;
         });
     });
 
-    // ================================================
-    // WHATSAPP GERAL
-    // ================================================
-
+    // Compatibilidade para qualquer chamada externa
     window.openWhatsApp = function () {
-        if (typeof gtag_report_conversion === 'function') {
-            gtag_report_conversion();
-        }
+        if (typeof window.gtag_report_conversion === 'function') window.gtag_report_conversion();
         window.open(window.currentWhatsAppLink, '_blank', 'noopener,noreferrer');
     };
 
-});
+    window.openWhatsAppBlog = window.openWhatsApp;
 
-// ================================================
-// WHATSAPP POR SERVIÇO
-// ================================================
-
-function openWhatsAppService(serviceType) {
-    if (typeof gtag_report_conversion === 'function') {
-        gtag_report_conversion();
-    }
-    const PHONE_NUMBER = "5521971129223";
-
-    const mensagens = {
-        'refrigeração':           'Olá, gostaria de solicitar um serviço de refrigeração.',
-        'elétrica':               'Olá, gostaria de solicitar um serviço de instalações elétricas.',
-        'automação':              'Olá, gostaria de solicitar um serviço de automação residencial.',
-        'padrão light':           'Olá! Vi no site que vocês instalam Padrão Light e gostaria de mais informações.',
-        'quadros elétricos':      'Olá! Gostaria de solicitar um orçamento para a fabricação de um quadro elétrico.',
-        'instalação wallbox':     'Olá! Gostaria de solicitar um orçamento para uma instalação de carregador Wallbox.',
+    window.openWhatsAppService = function (serviceType) {
+        const mensagens = {
+            'refrigeração':       'Olá, gostaria de solicitar um serviço de refrigeração e ar-condicionado.',
+            'elétrica':           'Olá, gostaria de solicitar um serviço de instalações elétricas.',
+            'automação':          'Olá, gostaria de solicitar um serviço de automação residencial.',
+            'padrão light':       'Olá! Vi no site que vocês instalam Padrão Light e gostaria de mais informações.',
+            'quadros elétricos':  'Olá! Gostaria de solicitar um orçamento para a fabricação de um quadro elétrico.',
+            'instalação wallbox': 'Olá! Gostaria de solicitar um orçamento para uma instalação de carregador Wallbox.'
+        };
+        const message = mensagens[serviceType] || 'Olá, gostaria de solicitar um orçamento.';
+        const url = 'https://wa.me/' + PHONE_NUMBER + '?text=' + encodeURIComponent(message);
+        if (typeof window.gtag_report_conversion === 'function') window.gtag_report_conversion();
+        window.open(url, '_blank', 'noopener,noreferrer');
     };
 
-    const message = mensagens[serviceType] || 'Olá, gostaria de solicitar um orçamento.';
-    const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
-}
+});
