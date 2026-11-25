@@ -188,16 +188,79 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let activeLightbox = null;
 
+    const loadedAssets = {};
+    function loadStylesheetOnce(href) {
+        if (loadedAssets[href]) return loadedAssets[href];
+        loadedAssets[href] = new Promise(function (resolve) {
+            if (document.querySelector('link[href="' + href + '"]')) {
+                resolve();
+                return;
+            }
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = href;
+            link.onload = resolve;
+            link.onerror = resolve;
+            document.head.appendChild(link);
+        });
+        return loadedAssets[href];
+    }
+
+    function loadScriptOnce(src) {
+        if (loadedAssets[src]) return loadedAssets[src];
+        loadedAssets[src] = new Promise(function (resolve, reject) {
+            if (document.querySelector('script[src="' + src + '"]')) {
+                resolve();
+                return;
+            }
+            const s = document.createElement('script');
+            s.src = src;
+            s.async = true;
+            s.onload = resolve;
+            s.onerror = reject;
+            document.head.appendChild(s);
+        });
+        return loadedAssets[src];
+    }
+
+    function ensureGLightbox() {
+        if (typeof GLightbox !== 'undefined') return Promise.resolve();
+        return Promise.all([
+            loadStylesheetOnce('https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css'),
+            loadScriptOnce('https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js')
+        ]);
+    }
+
+    function ensureSwiper() {
+        if (typeof Swiper !== 'undefined') return Promise.resolve();
+        return Promise.all([
+            loadStylesheetOnce('https://unpkg.com/swiper/swiper-bundle.min.css'),
+            loadScriptOnce('https://unpkg.com/swiper/swiper-bundle.min.js')
+        ]);
+    }
+
+    const galeriaSection = document.getElementById('galeria');
+    if (galeriaSection && 'IntersectionObserver' in window) {
+        const galeriaObserver = new IntersectionObserver(function (entries) {
+            if (entries.some(function (entry) { return entry.isIntersecting; })) {
+                galeriaObserver.disconnect();
+                ensureGLightbox().catch(function () {});
+            }
+        }, { rootMargin: '400px 0px' });
+        galeriaObserver.observe(galeriaSection);
+    }
+
     document.addEventListener('click', function (e) {
         const link = e.target.closest('a.js-gallery-item');
-        if (!link || typeof GLightbox === 'undefined') return;
+        if (!link) return;
 
         e.preventDefault();
 
         const tabKey = link.getAttribute('data-gallery');
         const index = parseInt(link.getAttribute('data-index') || '0', 10);
 
-        galleryLoadedPromise.then(function () {
+        Promise.all([galleryLoadedPromise, ensureGLightbox()]).then(function () {
+            if (typeof GLightbox === 'undefined') return;
             const items = GALLERY_DATA[tabKey] || [];
             if (!items.length) return;
 
@@ -235,6 +298,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ================================================
 
     let reviewsSwiper = null;
+    let reviewsActivated = false;
 
     function initSwiper() {
         if (typeof Swiper === 'undefined' || !document.querySelector('.mySwiper')) return;
@@ -266,6 +330,30 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    function activateReviewsSwiper() {
+        reviewsActivated = true;
+        ensureSwiper().then(initSwiper).catch(function () {});
+    }
+
+    const avaliacoesSection = document.getElementById('avaliacoes');
+    if (avaliacoesSection && 'IntersectionObserver' in window) {
+        const reviewsObserver = new IntersectionObserver(function (entries) {
+            if (entries.some(function (entry) { return entry.isIntersecting; })) {
+                reviewsObserver.disconnect();
+                activateReviewsSwiper();
+            }
+        }, { rootMargin: '500px 0px' });
+        reviewsObserver.observe(avaliacoesSection);
+    } else if (avaliacoesSection) {
+        activateReviewsSwiper();
+    }
+
+    document.querySelectorAll('.reviews-nav-next, .reviews-nav-prev').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            if (!reviewsSwiper) activateReviewsSwiper();
+        }, { once: true });
+    });
+
     const GOOGLE_G_SVG =
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="review-google-logo" aria-hidden="true">' +
         '<path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.6 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/>' +
@@ -281,8 +369,6 @@ document.addEventListener('DOMContentLoaded', function () {
             .replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;');
     }
-
-    initSwiper();
 
     fetch('data/reviews.json', { cache: 'no-cache' })
         .then(function (resp) {
@@ -331,7 +417,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         '</div>'
                     );
                 }).join('');
-                initSwiper();
+                if (reviewsActivated || typeof Swiper !== 'undefined') {
+                    activateReviewsSwiper();
+                }
             }
         })
         .catch(function () {
