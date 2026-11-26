@@ -101,10 +101,15 @@
 
     const AC_TYPES = [
         { id: 'instalacao', label: 'Instalação de Split', sub: 'A partir de R$ 500 (mão de obra — material à parte). Informe BTUs e distância', price: null },
-        { id: 'higienizacao_split', label: 'Higienização de Split (desmontagem e lavagem)', sub: 'Estimativa: R$ 300 / aparelho · Eliminação de fungos, bactérias e mau cheiro', price: 300 },
+        { id: 'higienizacao_split', label: 'Higienização de Split (desmontagem e lavagem)', sub: 'R$ 300 (até 12.000 BTUs) · R$ 450 (18.000 BTUs ou superior)', price: null },
         { id: 'higienizacao_janela', label: 'Higienização de Ar-Condicionado de Janela', sub: 'Estimativa: R$ 150 / aparelho · Limpeza completa e higienização', price: 150 },
         { id: 'retirada', label: 'Retirada / Desinstalação de Split', sub: 'Estimativa: R$ 240 / aparelho · Desinstalação segura com recolhimento de gás', price: 240 },
         { id: 'manutencao', label: 'Manutenção preventiva ou corretiva', sub: 'Sob avaliação técnica · Diagnóstico, gás, placa ou vazamentos', price: null }
+    ];
+
+    const AC_HYGIENE_BTUS = [
+        { id: 'ate-12', label: 'Até 12.000 BTUs (ex.: 9.000 ou 12.000 BTUs)', shortLabel: 'até 12.000 BTUs', price: 300, sub: 'Estimativa: R$ 300 / aparelho · Desmontagem e lavagem completa' },
+        { id: '18-ou-mais', label: '18.000 BTUs ou superior (18.000, 24.000, 30.000+ BTUs)', shortLabel: '18.000 BTUs ou superior', price: 450, sub: 'Estimativa: R$ 450 / aparelho · Aparelho maior, desmontagem e lavagem completa' }
     ];
 
     const AC_BTUS = [
@@ -814,6 +819,25 @@
             );
         }
 
+        if (state.acType === 'higienizacao_split') {
+            return (
+                '<div class="max-w-xl mx-auto">' +
+                renderEstimateNotice(true) +
+                '  <h2 class="font-heading font-bold text-lg sm:text-xl text-Rotiv-blue mb-4">Qual a capacidade do aparelho Split para higienização?</h2>' +
+                '  <div class="space-y-3">' +
+                AC_HYGIENE_BTUS.map(function (b) {
+                    return (
+                        '<button type="button" class="budget-option-btn" data-action="ac-hygiene-finish" data-btu="' + b.id + '">' +
+                        '  <div><span class="block font-heading font-bold text-sm sm:text-base text-Rotiv-blue">' + esc(b.label) + '</span><span class="block text-xs text-gray-500 mt-1">' + esc(b.sub) + '</span></div>' +
+                        '  <i class="fas fa-check text-Rotiv-orange"></i>' +
+                        '</button>'
+                    );
+                }).join('') +
+                '  </div>' +
+                '</div>'
+            );
+        }
+
         const step = state.acStep;
         const pills = [];
         if (step > 1 && state.acAnswers.btu) {
@@ -1343,7 +1367,7 @@
         } else if (action === 'ac-type') {
             const id = target.getAttribute('data-id');
             const label = target.getAttribute('data-label');
-            if (id === 'instalacao') {
+            if (id === 'instalacao' || id === 'higienizacao_split') {
                 state.acType = id;
                 state.acStep = 1;
                 render();
@@ -1362,6 +1386,23 @@
                 evaluate: !hasPrice,
                 details: hasPrice ? 'Valor estimado de referência por aparelho' : '',
                 evaluateNote: !hasPrice ? 'Preço confirmado pela equipe conforme modelo e condições do aparelho.' : '',
+                allowQty: true
+            }, false);
+        } else if (action === 'ac-hygiene-finish') {
+            const btuId = target.getAttribute('data-btu');
+            const opt = AC_HYGIENE_BTUS.find(function (b) { return b.id === btuId; });
+            if (!opt) return;
+            addItem({
+                key: 'ac:higienizacao_split:' + opt.id,
+                category: 'Ar-Condicionado',
+                name: 'Higienização de Split (' + opt.shortLabel + ')',
+                unit: 'aparelho',
+                qty: 1,
+                unitPrice: opt.price,
+                subtotal: opt.price,
+                evaluate: false,
+                details: 'Desmontagem e lavagem completa · Valor estimado por aparelho',
+                evaluateNote: '',
                 allowQty: true
             }, false);
         } else if (action === 'ac-choose') {
