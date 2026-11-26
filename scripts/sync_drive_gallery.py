@@ -5,7 +5,7 @@ Sincroniza automaticamente as 4 pastas do Google Drive da Rotiv para o site:
   - Comandos Elétricos
   - Wallbox
 
-Baixa apenas fotos novas/alteradas, converte para WebP (miniatura 400px + ampliada 1400px),
+Baixa apenas fotos novas/alteradas, converte para WebP (miniatura 600px + ampliada 1400px),
 preserva rigorosamente a ordem dos arquivos (001_..., 002_...) e atualiza data/gallery.json
 + a prévia inicial em index.html.
 
@@ -162,14 +162,12 @@ def save_webp_pair(raw_bytes: bytes, thumb_path: Path, full_path: Path):
         full_im = im
     full_im.save(full_path, format="WEBP", quality=82, method=6)
 
-    # Thumb (max 400px no maior lado)
-    max_side = max(fw, fh)
-    if max_side > 400:
-        scale = 400 / max_side
-        thumb_im = im.resize((max(1, round(fw * scale)), max(1, round(fh * scale))), Image.Resampling.LANCZOS)
+    # Thumb (max 600px de largura, alta nitidez)
+    if fw > 600:
+        thumb_im = im.resize((600, max(1, round(fh * (600 / fw)))), Image.Resampling.LANCZOS)
     else:
         thumb_im = im
-    thumb_im.save(thumb_path, format="WEBP", quality=78, method=6)
+    thumb_im.save(thumb_path, format="WEBP", quality=85, method=6)
     return thumb_im.size[0], thumb_im.size[1]
 
 
