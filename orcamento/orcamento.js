@@ -1441,6 +1441,12 @@
                     value: totals.total,
                     currency: 'BRL'
                 });
+                window.gtag('event', 'conversion', {
+                    send_to: 'AW-17170517876/xvt9CK6QicAdEPSexfs_',
+                    value: 1.0,
+                    currency: 'BRL',
+                    transport_type: 'beacon'
+                });
             }
         }
     });
