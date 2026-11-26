@@ -226,16 +226,16 @@ document.addEventListener('DOMContentLoaded', function () {
     function ensureGLightbox() {
         if (typeof GLightbox !== 'undefined') return Promise.resolve();
         return Promise.all([
-            loadStylesheetOnce('https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css'),
-            loadScriptOnce('https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js')
+            loadStylesheetOnce('https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css'),
+            loadScriptOnce('https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/js/glightbox.min.js')
         ]);
     }
 
     function ensureSwiper() {
         if (typeof Swiper !== 'undefined') return Promise.resolve();
         return Promise.all([
-            loadStylesheetOnce('https://unpkg.com/swiper/swiper-bundle.min.css'),
-            loadScriptOnce('https://unpkg.com/swiper/swiper-bundle.min.js')
+            loadStylesheetOnce('https://unpkg.com/swiper@14.4.0/swiper-bundle.min.css'),
+            loadScriptOnce('https://unpkg.com/swiper@14.4.0/swiper-bundle.min.js')
         ]);
     }
 
